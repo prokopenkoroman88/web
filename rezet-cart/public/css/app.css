@@ -1,0 +1,262 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.snippet {
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  box-shadow: 2px 2px 3px gray;
+  margin: 0 auto;
+}
+
+.snippet:hover {
+  border: 1px solid red;
+}
+
+@media screen and (min-width: 769px) {
+  .product-snippet {
+    width: 748px;
+  }
+
+  .product-snippet p {
+    display: inline-block;
+    width: calc(99% - 80px);
+  }
+
+  .product-snippet form {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-snippet {
+    width: 95%;
+  }
+
+  .product-snippet p {
+    display: block;
+    width: 95%;
+  }
+
+  .product-snippet form {
+    display: block;
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .cart-snippet {
+    width: 728px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cart-snippet {
+    width: 90%;
+  }
+}
+
+.cart-snippet h2 {
+  display: inline-block;
+  width: calc(99% - 60px);
+}
+
+.cart-snippet .del-form {
+  display: inline-block;
+}
+
+.cart-snippet .del-form button {
+  border: none;
+  background: transparent;
+}
+
+.cart-snippet .del-form .trash-img {
+  height: 1.5em;
+}
+
+.cart-snippet .product-img {
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px black;
+}
+
+@media screen and (min-width: 451px) {
+  .cart-snippet .product-img {
+    width: 120px;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart-snippet .product-img {
+    width: 95%;
+    display: block;
+  }
+}
+
+.cart-snippet .cart-info {
+  vertical-align: top;
+}
+
+@media screen and (min-width: 451px) {
+  .cart-snippet .cart-info {
+    display: inline-block;
+    width: calc(95% - 120px );
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart-snippet .cart-info {
+    display: block;
+  }
+}
+
+.cart-snippet .cart-info .product-descr {
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+@media screen and (min-width: 769px) {
+  .cart-snippet .cart-info .product-descr {
+    display: inline-block;
+    width: calc(95% - 140px);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 768px) {
+  .cart-snippet .cart-info .product-descr {
+    display: inline-block;
+    width: 95%;
+  }
+}
+
+@media (max-width: 450px) {
+  .cart-snippet .cart-info .product-descr {
+    display: block;
+    width: 95%;
+  }
+}
+
+.cart-snippet .cart-info .cart-control {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media screen and (min-width: 769px) {
+  .cart-snippet .cart-info .cart-control {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cart-snippet .cart-info .cart-control {
+    display: block;
+    width: calc(95% - 120px );
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cart-snippet .cart-info .cart-control {
+    display: block;
+    width: 95%;
+  }
+}
+
+.cart-snippet .cart-info .cart-control .sub-form {
+  display: inline-block;
+}
+
+.cart-snippet .cart-info .cart-control .cart-quan {
+  display: inline-block;
+  padding: 4px 10px;
+}
+
+.cart-snippet .cart-info .cart-control .add-form {
+  display: inline-block;
+}
+
+.cart-snippet .cart-info .cart-control .cart-price {
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: bold;
+}
+
+.form-buy input[type=submit],
+.form-buy span {
+  margin-left: calc(99% - 100px);
+}
+
+.text-danger {
+  color: red;
+  font-weight: bold;
+}
+
+.none {
+  display: none;
+}
+
+.shipping-form {
+  display: block;
+  background-color: yellow;
+  border: 1px solid red;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+@media screen and (min-width: 769px) {
+  .shipping-form {
+    width: 748px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shipping-form {
+    width: 95%;
+  }
+}
+
+.shipping-form label span {
+  display: inline-block;
+  margin: 5px 5px;
+}
+
+@media screen and (min-width: 769px) {
+  .shipping-form label span {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shipping-form label span {
+    width: 95%;
+  }
+}
+
+.shipping-form label input,
+.shipping-form label select {
+  border-radius: 6px;
+}
+
+@media screen and (min-width: 769px) {
+  .shipping-form label input,
+  .shipping-form label select {
+    width: 548px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .shipping-form label input,
+  .shipping-form label select {
+    display: block;
+    width: 95%;
+  }
+}
+
+.shipping-form input[type=submit] {
+  display: inline-block;
+  margin: 5px 5px;
+  margin-left: calc(100% - 70px);
+}
+
