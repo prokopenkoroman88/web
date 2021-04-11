@@ -1,0 +1,205 @@
+body{
+	font-size:12px;
+	line-height:12px;
+}
+
+.js-schema{
+	border:1px solid black;
+	position:relative;
+	margin: 8px auto;
+	user-select:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;	
+}
+
+.js-schema .host{
+	position:absolute;
+	/*border:1px dashed red;*/
+	height:100px;
+	width:100px;
+	font-family:arial;
+	font-size:1.0em;	
+}
+
+
+.js-schema .host .struct{
+	position:relative;
+	/*border:1px dashed orange;*/
+	height:100%;
+	width:100%;		
+
+}
+
+.js-schema .host .struct div:nth-child(1){
+	position:absolute;
+	border:2px solid black;	
+	left:0%;
+	top:0%;
+	height:90%;
+	width:30%;
+	background-color:#aaa;
+}
+
+.js-schema .host .struct div:nth-child(2){
+	position:absolute;
+	border:2px solid black;	
+	left:20%;
+	top:90%;
+	height:5%;
+	width:70%;
+	background-color:#e0e0e0;
+}
+
+.js-schema .host .struct div:nth-child(3){
+	position:absolute;
+	border:2px solid black;	
+	left:10%;
+	top:20%;
+	height:70%;
+	width:85%;
+	background-color:#e0e0e0;
+	border-radius:10%;
+}
+
+.js-schema .host .struct div:nth-child(4){
+	position:absolute;
+	border:2px solid black;	
+	left:15%;
+	top:25%;
+	height:55%;
+	width:75%;
+	background-color:#aaa;
+	border-radius:10%;
+}
+
+.js-schema .host:hover .struct div:nth-child(4){
+	background-color:#add;
+}
+
+.js-schema .host .capt{
+	position:absolute;
+	border:none;	
+	left:25%;
+	top:30%;
+	height:45%;
+	width:content;
+	background-color:rgba(255,255,255,0.9);
+	border-radius:10%;
+	padding:5px 10px;
+	box-sizing:	border-box;
+}
+
+.js-schema .host .title{
+	position:absolute;
+	border:none;	
+	left:39%;
+	top:-20%;
+	height:content;
+	width:100%;
+	background-color:transparent;
+	padding:0px;
+	box-sizing:	border-box;
+	vertical-align:bottom;
+	display:block;
+}
+
+.js-schema .host .db-files{
+	position:absolute;
+	border:2px solid black;
+	border-radius:50%;	
+	/*content:'Файлы БД';*/
+	left:75%;
+	top:90%;
+	height:content;
+	width:50%;
+	background-color:#fff;
+	padding:5px;
+	text-align:center;
+	box-sizing:	border-box;
+}
+
+
+.js-schema .line{
+	position:absolute;
+	display:block;	
+	border-left:2px solid black;	
+	width:2px;
+	transform-origin:1px 0%; /* верх - центр стрелки */
+}
+
+.js-schema .line .vert{
+	transform:rotate(0deg);
+}
+
+.js-schema .line .horiz{
+	transform:rotate(90deg);
+}
+
+.js-schema .line .diag1{
+	transform:rotate(45deg);
+}
+
+.js-schema .line .diag2{
+	transform:rotate(135deg);
+}
+
+.js-schema .line .15{	transform:rotate( 15deg);}
+.js-schema .line .30{	transform:rotate( 30deg);}
+.js-schema .line .45{	transform:rotate( 45deg);}
+.js-schema .line .60{	transform:rotate( 60deg);}
+.js-schema .line .75{	transform:rotate( 75deg);}
+.js-schema .line .90{	transform:rotate( 90deg);}
+.js-schema .line .105{	transform:rotate(105deg);}
+.js-schema .line .120{	transform:rotate(120deg);}
+.js-schema .line .135{	transform:rotate(135deg);}
+.js-schema .line .150{	transform:rotate(150deg);}
+.js-schema .line .165{	transform:rotate(165deg);}
+
+
+.js-schema .line.arrow-in:after{
+	content:'';
+	display:block;
+	height:0px;
+	width:0px;
+	border-left:5px solid black;
+	border-top:5px solid black;
+	border-right:5px solid transparent;
+	border-bottom:5px solid transparent;	
+	transform-origin:0% -10%; 
+	transform:rotate( 45deg);
+	position:relative;
+}
+
+.js-schema .line.arrow-out:after{
+	content:'';
+	display:block;
+	height:0px;
+	width:0px;
+	border-left:5px solid black;
+	border-top:5px solid black;
+	border-right:5px solid transparent;
+	border-bottom:5px solid transparent;	
+	transform-origin:0% 2px; 
+	transform:rotate( 235deg);
+	position:relative;
+	top:100%;
+}
+
+
+
+.js-schema .pic-text
+{/* Рис.2-1 */
+	font-family:arial;
+	font-size:1.0em;	
+	position:absolute;
+	border:none;		
+}
+
+.js-schema .pic-label{/* Рис.2-1 */
+	font-weight:bold;
+	font-family:arial;
+	font-size:1.2em;	
+	position:absolute;
+	border:none;		
+}
