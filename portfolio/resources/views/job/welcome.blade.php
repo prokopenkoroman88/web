@@ -29,6 +29,17 @@ if($lang)$lang.='\\';
 	</div>
 </nav>
 <p>text</p>
+
+                <ul>
+                    <li><a href="https://freelance.ua/uk/users/verstka/?page=50">Freelance.ua  (((((((</a> {{--  prokopenkoroman88  fu6Bz9hEC68%Qv^ --}}
+                    </li>
+                    <li><a href="https://freelancepax.com">freelancepax.com ((((</a></li>
+                    <li><a href="https://free-lance.com.ua/">free-lance com ua 75 грн((((</a></li>
+                    <li><a href="https://freelancehunt.com/blog/chi-povinien-frilansier-platiti-podatki/">chi-povinien-frilansier-platiti-podatki</a></li>
+                    <li><a href="https://freelancehunt.com/blog/summary-chto-eto-i-zachiem-iegho-dobavliat-v-rieziumie/">summary-chto-eto-i-zachiem-iegho-dobavliat-v-rieziumie</a></li>
+                    <li><a href="https://grc.ua/article/29047?utm_source=email&utm_medium=email&utm_campaign=vis_20921&utm_content=1st_vis_20921%20">Лайфхаки в офісі: як стати своїм у колективі</a></li>
+                </ul>
+
 <?php
 $firms = App\Firm::all();
 
@@ -67,36 +78,43 @@ $job_talks = App\Job_talk::where('vacancy_id','=',$vacancy->id)->get();
 			<i class="fas fa-edit"></i>
 		</button>
 	</form>
-
-		@foreach($actions as $action)
-		{!! view('common.tables.layouts.redact',compact('path','item','action')); !!}
-		@endforeach</nobr>{{ $job_talk->descr }}
+</nobr>{{ $job_talk->descr }}
 			</li>
 @endforeach
-		<li>
-<?php
-	$path='job/job_talks';//App\Job_talk::path();
-	$action='new';
-?>
-			{!! view('common.tables.layouts.redact',compact('path','action')); !!}
-		</li>
 		<li>
 
 	<form action="job/create_job_talk/{{$vacancy->id}}/{{$firm->id}}" method="GET">
 		<button type="submit" class="redact-btn redact-new">
 			<i class="fas fa-asterisk"></i>
 		</button>
-	</form>
-		создать со ссылкой на вакансию и фирму
+	</form>Новый разговор по вакансии
 
 		</li>
 		</ul>
 	</li>
 @endforeach
+	<li>
+
+	<form action="job/create_vacancy/{{$firm->id}}" method="GET">
+		<button type="submit" class="redact-btn redact-new">
+			<i class="fas fa-asterisk"></i>
+		</button>
+	</form>Новая вакансия
+
+	</li>
 		</ul>		
 	</li>
 	
 @endforeach
+	<li>
+
+	<form action="job/create_firm" method="GET">
+		<button type="submit" class="redact-btn redact-new">
+			<i class="fas fa-asterisk"></i>
+		</button>
+	</form>Новая фирма
+
+	</li>
 </ul>
 
 

@@ -73,6 +73,22 @@ Route::group([//группа админки:
 		Route::resource('/job_talks','JobTalkController');
 
 
+
+
+
+		Route::get('create_firm', 'FirmController@createBy');//+1.6.21
+		Route::get('edit_firm/{id}', 'FirmController@editBy');//+1.6.21
+		Route::post('save_firm', 'FirmController@saveBy');//+1.6.21 add
+		Route::put('save_firm/{id}', 'FirmController@saveBy');//+1.6.21 edit
+
+
+		Route::get('create_vacancy/{firm_id}', 'VacancyController@createBy');//+1.6.21
+		Route::get('edit_vacancy/{id}', 'VacancyController@editBy');//+1.6.21
+		Route::post('save_vacancy', 'VacancyController@saveBy');//+1.6.21 add
+		Route::put('save_vacancy/{id}', 'VacancyController@saveBy');//+1.6.21 edit
+
+
+
 		Route::get('create_job_talk/{vacancy_id}/{firm_id}', 'JobTalkController@createBy');//+1.6.21
 		//'create_job_talk/{vacancy_id}/{firm_id}'
 		Route::get('edit_job_talk/{id}', 'JobTalkController@editBy');//+1.6.21
@@ -111,6 +127,30 @@ Route::group([//группа админки:
 
 });//что общее префикс,  группа маршрутов
 
+
+//+13.9.21
+Route::group([
+	'prefix'=>'service',
+	'namespace'=>'Srv',
+],function(){
+
+	Route::group([
+		'prefix'=>App\Http\Middleware\LocaleMiddleware::getLocale()
+	],function(){
+
+		Route::get('/','MainController@index');
+		Route::group(['prefix'=>'excel'],function(){
+			Route::get('/','ExcelController@index');
+			//excel:
+			Route::get('/open/{filename}','ExcelController@open');
+			Route::post('/set-value','ExcelController@setValue');//ajax
+		});
+
+
+	});
+
+
+});
 
 
 

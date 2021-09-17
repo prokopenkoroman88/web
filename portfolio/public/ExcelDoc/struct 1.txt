@@ -1,0 +1,414 @@
+﻿
+PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1400 ▼
+  -parent: PhpOffice\PhpSpreadsheet\Spreadsheet {#1310 ▼
+    -uniqueID: "614085b1acdbf7.94337882"
+    -properties: PhpOffice\PhpSpreadsheet\Document\Properties {#1328 ▼
+      -creator: "Unknown Creator"
+      -lastModifiedBy: "Unknown Creator"
+      -created: -11644473600
+      -modified: 1631618228
+      -title: "Untitled Spreadsheet"
+      -description: ""
+      -subject: ""
+      -keywords: ""
+      -category: ""
+      -manager: ""
+      -company: ""
+      -customProperties: []
+    }
+    -security: PhpOffice\PhpSpreadsheet\Document\Security {#1329 ▼
+      -lockRevision: false
+      -lockStructure: false
+      -lockWindows: false
+      -revisionsPassword: ""
+      -workbookPassword: ""
+    }
+    -workSheetCollection: array:1 [▼
+      0 => PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1400}
+    ]
+    -calculationEngine: PhpOffice\PhpSpreadsheet\Calculation\Calculation {#1311 ▶}
+    -activeSheetIndex: 0
+    -definedNames: []
+    -cellXfSupervisor: PhpOffice\PhpSpreadsheet\Style\Style {#1330 ▶}
+    -cellXfCollection: array:1 [▼
+      0 => PhpOffice\PhpSpreadsheet\Style\Style {#1360 ▼
+        #font: PhpOffice\PhpSpreadsheet\Style\Font {#1361 ▶}
+        #fill: PhpOffice\PhpSpreadsheet\Style\Fill {#1363 ▶}
+        #borders: PhpOffice\PhpSpreadsheet\Style\Borders {#1366 ▶}
+        #alignment: PhpOffice\PhpSpreadsheet\Style\Alignment {#1377 ▶}
+        #numberFormat: PhpOffice\PhpSpreadsheet\Style\NumberFormat {#1378 ▶}
+        #protection: PhpOffice\PhpSpreadsheet\Style\Protection {#1379 ▶}
+        #index: 0
+        #quotePrefix: false
+        #isSupervisor: false
+        #parent: null
+        #parentPropertyName: null
+      }
+    ]
+    -cellStyleXfCollection: array:1 [▼
+      0 => PhpOffice\PhpSpreadsheet\Style\Style {#1380 ▼
+        #font: PhpOffice\PhpSpreadsheet\Style\Font {#1381 ▼
+          #name: "Calibri"
+          #size: 11
+          #bold: false
+          #italic: false
+          #superscript: false
+          #subscript: false
+          #underline: "none"
+          #strikethrough: false
+          #color: PhpOffice\PhpSpreadsheet\Style\Color {#1382 ▶}
+          +colorIndex: null
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #fill: PhpOffice\PhpSpreadsheet\Style\Fill {#1383 ▼
+          +startcolorIndex: null
+          +endcolorIndex: null
+          #fillType: "none"
+          #rotation: 0
+          #startColor: PhpOffice\PhpSpreadsheet\Style\Color {#1384 ▶}
+          #endColor: PhpOffice\PhpSpreadsheet\Style\Color {#1385 ▶}
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #borders: PhpOffice\PhpSpreadsheet\Style\Borders {#1386 ▼
+          #left: PhpOffice\PhpSpreadsheet\Style\Border {#1387 ▼
+            #borderStyle: "none"
+            #color: PhpOffice\PhpSpreadsheet\Style\Color {#1388 ▼
+              #argb: "FF000000"
+              #isSupervisor: false
+              #parent: null
+              #parentPropertyName: null
+            }
+            +colorIndex: null
+            #isSupervisor: false
+            #parent: null
+            #parentPropertyName: null
+          }
+          #right: PhpOffice\PhpSpreadsheet\Style\Border {#1389 ▼
+            #borderStyle: "none"
+            #color: PhpOffice\PhpSpreadsheet\Style\Color {#1390 ▼
+              #argb: "FF000000"
+              #isSupervisor: false
+              #parent: null
+              #parentPropertyName: null
+            }
+            +colorIndex: null
+            #isSupervisor: false
+            #parent: null
+            #parentPropertyName: null
+          }
+          #top: PhpOffice\PhpSpreadsheet\Style\Border {#1391 ▼
+            #borderStyle: "none"
+            #color: PhpOffice\PhpSpreadsheet\Style\Color {#1392 ▼
+              #argb: "FF000000"
+              #isSupervisor: false
+              #parent: null
+              #parentPropertyName: null
+            }
+            +colorIndex: null
+            #isSupervisor: false
+            #parent: null
+            #parentPropertyName: null
+          }
+          #bottom: PhpOffice\PhpSpreadsheet\Style\Border {#1393 ▼
+            #borderStyle: "none"
+            #color: PhpOffice\PhpSpreadsheet\Style\Color {#1394 ▼
+              #argb: "FF000000"
+              #isSupervisor: false
+              #parent: null
+              #parentPropertyName: null
+            }
+            +colorIndex: null
+            #isSupervisor: false
+            #parent: null
+            #parentPropertyName: null
+          }
+          #diagonal: PhpOffice\PhpSpreadsheet\Style\Border {#1395 ▼
+            #borderStyle: "none"
+            #color: PhpOffice\PhpSpreadsheet\Style\Color {#1396 ▼
+              #argb: "FF000000"
+              #isSupervisor: false
+              #parent: null
+              #parentPropertyName: null
+            }
+            +colorIndex: null
+            #isSupervisor: false
+            #parent: null
+            #parentPropertyName: null
+          }
+          #diagonalDirection: 0
+          #allBorders: null
+          #outline: null
+          #inside: null
+          #vertical: null
+          #horizontal: null
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #alignment: PhpOffice\PhpSpreadsheet\Style\Alignment {#1397 ▼
+          #horizontal: "general"
+          #vertical: "bottom"
+          #textRotation: 0
+          #wrapText: false
+          #shrinkToFit: false
+          #indent: 0
+          #readOrder: 0
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #numberFormat: PhpOffice\PhpSpreadsheet\Style\NumberFormat {#1398 ▼
+          #formatCode: "General"
+          #builtInFormatCode: 0
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #protection: PhpOffice\PhpSpreadsheet\Style\Protection {#1399 ▼
+          #locked: "inherit"
+          #hidden: "inherit"
+          #isSupervisor: false
+          #parent: null
+          #parentPropertyName: null
+        }
+        #index: 0
+        #quotePrefix: false
+        #isSupervisor: false
+        #parent: null
+        #parentPropertyName: null
+      }
+    ]
+    -hasMacros: false
+    -macrosCode: null
+    -macrosCertificate: null
+    -ribbonXMLData: null
+    -ribbonBinObjects: null
+    -unparsedLoadedData: []
+    -showHorizontalScroll: true
+    -showVerticalScroll: true
+    -showSheetTabs: true
+    -minimized: false
+    -autoFilterDateGrouping: true
+    -firstSheetIndex: 0
+    -visibility: "visible"
+    -tabRatio: 600
+  }
+  -cellCollection: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418 ▼
+    -cache: PhpOffice\PhpSpreadsheet\Collection\Memory {#1317 ▼
+      -cache: array:9 [▼
+        "phpspreadsheet.614085b1b7bf91.62159538.A1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1410 ▼
+          -value: "Название"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.B1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1407 ▼
+          -value: "Цена"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.C1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1408 ▼
+          -value: "Категория"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.G1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1417 ▼
+          -value: "u"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.A2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1415 ▼
+          -value: "Name"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.B2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1406 ▼
+          -value: "Price"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.C2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1402 ▼
+          -value: "Cat"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.F2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1401 ▼
+          -value: "jghf"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+        "phpspreadsheet.614085b1b7bf91.62159538.E3" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1420 ▼
+          -value: "dfgg"
+          -calculatedValue: null
+          -dataType: "s"
+          -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1418}
+          -xfIndex: 0
+          -formulaAttributes: null
+        }
+      ]
+    }
+    -parent: PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1400}
+    -currentCell: PhpOffice\PhpSpreadsheet\Cell\Cell {#1420 ▶}
+    -currentCoordinate: "E3"
+    -currentCellIsDirty: false
+    -index: array:9 [▼
+      "A1" => true
+      "B1" => true
+      "C1" => true
+      "G1" => true
+      "A2" => true
+      "B2" => true
+      "C2" => true
+      "F2" => true
+      "E3" => true
+    ]
+    -cachePrefix: "phpspreadsheet.614085b1b7bf91.62159538."
+  }
+  -rowDimensions: []
+  -defaultRowDimension: PhpOffice\PhpSpreadsheet\Worksheet\RowDimension {#1411 ▼
+    -rowIndex: null
+    -height: 12.75
+    -zeroHeight: false
+    -visible: true
+    -outlineLevel: 0
+    -collapsed: false
+    -xfIndex: null
+  }
+  -columnDimensions: []
+  -defaultColumnDimension: PhpOffice\PhpSpreadsheet\Worksheet\ColumnDimension {#1412 ▼
+    -columnIndex: null
+    -width: -1
+    -autoSize: false
+    -visible: true
+    -outlineLevel: 0
+    -collapsed: false
+    -xfIndex: 0
+  }
+  -drawingCollection: ArrayObject {#1405 ▶}
+  -chartCollection: ArrayObject {#1413 ▶}
+  -title: "Worksheet"
+  -sheetState: "visible"
+  -pageSetup: PhpOffice\PhpSpreadsheet\Worksheet\PageSetup {#1419 ▼
+    -paperSize: 1
+    -orientation: "default"
+    -scale: 100
+    -fitToPage: false
+    -fitToHeight: 1
+    -fitToWidth: 1
+    -columnsToRepeatAtLeft: array:2 [▼
+      0 => ""
+      1 => ""
+    ]
+    -rowsToRepeatAtTop: array:2 [▼
+      0 => 0
+      1 => 0
+    ]
+    -horizontalCentered: false
+    -verticalCentered: false
+    -printArea: null
+    -firstPageNumber: null
+    -pageOrder: "downThenOver"
+  }
+  -pageMargins: PhpOffice\PhpSpreadsheet\Worksheet\PageMargins {#1404 ▼
+    -left: 0.7
+    -right: 0.7
+    -top: 0.75
+    -bottom: 0.75
+    -header: 0.3
+    -footer: 0.3
+  }
+  -headerFooter: PhpOffice\PhpSpreadsheet\Worksheet\HeaderFooter {#1416 ▼
+    -oddHeader: ""
+    -oddFooter: ""
+    -evenHeader: ""
+    -evenFooter: ""
+    -firstHeader: ""
+    -firstFooter: ""
+    -differentOddEven: false
+    -differentFirst: false
+    -scaleWithDocument: true
+    -alignWithMargins: true
+    -headerFooterImages: []
+  }
+  -sheetView: PhpOffice\PhpSpreadsheet\Worksheet\SheetView {#1403 ▼
+    -zoomScale: 100
+    -zoomScaleNormal: 100
+    -showZeros: true
+    -sheetviewType: "normal"
+  }
+  -protection: PhpOffice\PhpSpreadsheet\Worksheet\Protection {#1414 ▼
+    -sheet: false
+    -objects: false
+    -scenarios: false
+    -formatCells: false
+    -formatColumns: false
+    -formatRows: false
+    -insertColumns: false
+    -insertRows: false
+    -insertHyperlinks: false
+    -deleteColumns: false
+    -deleteRows: false
+    -selectLockedCells: false
+    -sort: false
+    -autoFilter: false
+    -pivotTables: false
+    -selectUnlockedCells: false
+    -password: ""
+    -algorithm: ""
+    -salt: ""
+    -spinCount: 10000
+  }
+  -styles: []
+  -conditionalStylesCollection: []
+  -cellCollectionIsSorted: false
+  -breaks: []
+  -mergeCells: []
+  -protectedCells: []
+  -autoFilter: PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter {#1409 ▶}
+  -freezePane: null
+  -topLeftCell: null
+  -showGridlines: true
+  -printGridlines: false
+  -showRowColHeaders: true
+  -showSummaryBelow: 1
+  -showSummaryRight: 1
+  -comments: []
+  -activeCell: "A1"
+  -selectedCells: "A1"
+  -cachedHighestColumn: 7
+  -cachedHighestRow: 3
+  -rightToLeft: false
+  -hyperlinkCollection: []
+  -dataValidationCollection: []
+  -tabColor: null
+  -dirty: false
+  -hash: "7209297b4aa6bc40ce6376cb8be1a711"
+  -codeName: "Worksheet"
+}

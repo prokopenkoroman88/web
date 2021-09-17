@@ -1,0 +1,48 @@
+table{
+	border:4px groove red;
+}
+
+.excel{
+/*D:\STEP\PHP\OSPanel\domains\portfolio\resources\views\srv\excel.blade.php*/
+
+}
+
+.excel .doc{
+	
+}
+
+.excel .doc h2{
+	background-color: #8af;
+	color:white;
+}
+
+.excel .doc .pages{
+	
+}
+
+.excel .doc .tabs{
+	
+}
+
+.excel .page{
+	
+}
+
+.excel .page td{
+	border:1px dotted gray;
+	width: 64px;
+	max-width: 64px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

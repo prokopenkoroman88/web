@@ -62,7 +62,7 @@
                 margin-bottom: 30px;
             }
             .map-menu ul{
-               display: none;
+/*               display: none;
                  /*visibility: hidden;*/
             }
             .map-menu li:hover>ul{
@@ -92,64 +92,11 @@
         <ul class="map-menu">
             <li><a href="/softtaxi">SoftTAXI</a></li>
             <li><a href="/gen">Генеалогия</a></li>
+            <li><a href="/map/karta">Карта</a></li>
             <li><a href="/shop">Магазин</a></li>
-            <li><a href="/job">Поиск работы</a>
-                <ul>
-                    <li><a href="https://freelance.ua/uk/users/verstka/?page=50">Freelance.ua  (((((((</a> {{--  prokopenkoroman88  fu6Bz9hEC68%Qv^ --}}
-                    </li>
-                    <li><a href="https://freelancepax.com">freelancepax.com ((((</a></li>
-                    <li><a href="https://free-lance.com.ua/">free-lance com ua 75 грн((((</a></li>
-                    <li><a href="https://freelancehunt.com/blog/chi-povinien-frilansier-platiti-podatki/">chi-povinien-frilansier-platiti-podatki</a></li>
-                    <li><a href="https://freelancehunt.com/blog/summary-chto-eto-i-zachiem-iegho-dobavliat-v-rieziumie/">summary-chto-eto-i-zachiem-iegho-dobavliat-v-rieziumie</a></li>
-                </ul>
-            </li>
+            <li><a href="/job">Поиск работы</a></li>
             <li><a href="/soc-net">Соц сеть</a></li>
-            <li>Сервисы:
-                <ul>
-                    <li><a href="https://squoosh.app/">png to webp</a></li>
-                    <li><a href="https://onlinepngtools.com/create-transparent-png">transparent-png</a></li>
-                    <li><a href="https://9elements.github.io/fancy-border-radius/#90.38.64.14--.">fancy-border-radius</a></li>
-                    <li><a href="https://lorempixel.com/200/200/">случ картинка 200 на 200</a></li>
-                    <li><a href="https://uk.reactjs.org/docs/create-a-new-react-app.html">uk.reactjs.org</a></li>
-                    <li><a href="https://css.in.ua/html/tag/iframe">css in ua</a></li>
-                    <li><a href="https://coderoad.ru/list">CodeRoad</a></li>
-                    <li><a href="https://dev.w3.org/html5/html-author/charref">Символы</a></li>
-					<li><a href="https://validator.w3.org/">Валидный ли код?</a></li>
-					<li>українське
-						<ul>
-							<li><a href="https://onlinecorrector.com.ua/uk/">OnlineCorrector</a></li>
-							<li><a href="https://slovnyk.me/dict/newsum/%D0%BF%D0%BE%D0%B7%D0%BE%D0%B2">Словник української мови у 20 томах</a></li>
-							<li><a href="/karta">Karta Ukrajiny</a></li>
-							<li><a href="https://zrada.org/hot/25-mova/503-jazyk-kievskoj-rusi.html">Язык Киевской Руси</a></li>
-							<li><a href="https://zrada.org/history/2-naukovij-pidhid/910-proishozhdenie-dvujazychija-v-ukraine-rusi-ot-anatolija-zheleznogo.html">2-Язык </a></li>
-							<li><a href="http://litopys.org.ua/pivtorak/pivt11.htm">Живуча помилка Ломоносова</a></li>
-							<li><a href="https://ridni.org/karta/%D0%BF%D1%80%D0%BE%D0%BA%D0%BE%D0%BF%D0%B5%D0%BD%D0%BA%D0%BE">Де живуть Прокопенки?</a></li>
-						</ul>
-					</li>
-					<li>кто звонил:
-                        <ul>
-                            <li><a href="https://www.telguarder.com/ua/number/0731519204">telguarder.com</a></li>
-                            <li><a href="https://www.telefonnyjdovidnyk.com.ua/nomer/0731519204">telefonnyjdovidnyk.com.ua</a></li>
-                        </ul>
-                    </li>
-                    <li>Отзывы:
-                        <ul>
-                            <li><a href="https://eto-razvod.ru/review/freelancehunt/#i-5">eto-razvod.ru</a></li>
-                            <li><a href="https://www.otzyvua.net/uk/freelancehuntcom">otzyvua.net</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>  
-            <li>Примеры других сайтов:
-                 <ul>
-                     <li><a href="https://jaya.digital/home">jaya landing</a></li>
-                     <li><a href="http://coffee2go.com.ua">Coffee To Go</a></li>
-					 <li><a href="https://www.wondershare.com/windows10/download-and-install-windows-10.html">SVG справа</a></li>
-                     <li><a href="https://glasses.ua/">glasses.ua (Павел Шульга)</a></li>
-                     <li><a href="https://koitechs.com/">подсветка фонариком</a></li>
-                     <li><a href=""></a></li>
-                 </ul>
-             </li> 
+            <li><a href="/service">Сервисы:</a></li>  
             <li><a href="/resources/views/softtaxi.blade.php">на мое SoftTAXI без роутов</a></li> 
             <li>Информация с JW:
                  <ul>
@@ -163,6 +110,7 @@
                  <ul>
                      <li><a href="https://www.the-scientist.com/tag/evolution">the scientist</a></li>
                      <li><a href="https://www.newscientist.com/">new scientist</a></li>
+                     <li><a href="https://www.popmech.ru/science/731813-neandertalcy-primaty-i-hudozhniki/">neandertalcy-primaty-i-hudozhniki</a></li>
                      <li><a href=""></a></li>
                  </ul>
              </li> 

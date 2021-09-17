@@ -1,0 +1,249 @@
+﻿PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1421 ▼
+  -parent: PhpOffice\PhpSpreadsheet\Spreadsheet {#1310 ▼
+    -uniqueID: "61408b05d6fd58.88096091"
+    -properties: PhpOffice\PhpSpreadsheet\Document\Properties {#1328 ▼
+      -creator: "Unknown Creator"
+      -lastModifiedBy: "Unknown Creator"
+      -created: -11644473600
+      -modified: 1631619832
+      -title: "Untitled Spreadsheet"
+      -description: ""
+      -subject: ""
+      -keywords: ""
+      -category: ""
+      -manager: ""
+      -company: ""
+      -customProperties: []
+    }
+    -security: PhpOffice\PhpSpreadsheet\Document\Security {#1329 ▶}
+    -workSheetCollection: array:2 [▼
+      0 => PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1400 ▼
+        -parent: PhpOffice\PhpSpreadsheet\Spreadsheet {#1310}
+        -cellCollection: PhpOffice\PhpSpreadsheet\Collection\Cells {#1401 ▼
+          -cache: PhpOffice\PhpSpreadsheet\Collection\Memory {#1317 ▼
+            -cache: array:13 [▼
+              "phpspreadsheet.61408b05e92f08.18882277.A1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1412 ▼
+                -value: "Название"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.B1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1413 ▼
+                -value: "Цена"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.C1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1414 ▼
+                -value: "Категория"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.G1" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1404 ▼
+                -value: "u"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.A2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1403 ▼
+                -value: "Name"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.B2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1416 ▼
+                -value: "Price"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.C2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1418 ▼
+                -value: "Cat"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05e92f08.18882277.F2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1419 ▼
+                -value: "jghf"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: null
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05ea1ce7.18891027.A2" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1433 ▼
+                -value: "A3=B3+C3"
+                -calculatedValue: null
+                -dataType: "s"
+                -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422 ▶}
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05ea1ce7.18891027.A3" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1434 ▼
+                -value: "=B3+C3"
+                -calculatedValue: 123456.0
+                -dataType: "f"
+                -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422 ▶}
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05ea1ce7.18891027.B3" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1435 ▼
+                -value: 123000
+                -calculatedValue: null
+                -dataType: "n"
+                -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422 ▶}
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05ea1ce7.18891027.C3" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1436 ▼
+                -value: 456
+                -calculatedValue: null
+                -dataType: "n"
+                -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422 ▶}
+                -xfIndex: 0
+                -formulaAttributes: null
+              }
+              "phpspreadsheet.61408b05ea1ce7.18891027.B5" => PhpOffice\PhpSpreadsheet\Cell\Cell {#1437 ▶}
+            ]
+          }
+          -parent: PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1400}
+          -currentCell: PhpOffice\PhpSpreadsheet\Cell\Cell {#1420 ▶}
+          -currentCoordinate: "E3"
+          -currentCellIsDirty: true
+          -index: array:9 [▶]
+          -cachePrefix: "phpspreadsheet.61408b05e92f08.18882277."
+        }
+        -rowDimensions: []
+        -defaultRowDimension: PhpOffice\PhpSpreadsheet\Worksheet\RowDimension {#1409 ▶}
+        -columnDimensions: []
+        -defaultColumnDimension: PhpOffice\PhpSpreadsheet\Worksheet\ColumnDimension {#1410 ▶}
+        -drawingCollection: ArrayObject {#1415 ▶}
+        -chartCollection: ArrayObject {#1407 ▶}
+        -title: "Первая страница"
+        -sheetState: "visible"
+        -pageSetup: PhpOffice\PhpSpreadsheet\Worksheet\PageSetup {#1402 ▶}
+        -pageMargins: PhpOffice\PhpSpreadsheet\Worksheet\PageMargins {#1406 ▶}
+        -headerFooter: PhpOffice\PhpSpreadsheet\Worksheet\HeaderFooter {#1405 ▶}
+        -sheetView: PhpOffice\PhpSpreadsheet\Worksheet\SheetView {#1417 ▶}
+        -protection: PhpOffice\PhpSpreadsheet\Worksheet\Protection {#1408 ▶}
+        -styles: []
+        -conditionalStylesCollection: []
+        -cellCollectionIsSorted: false
+        -breaks: []
+        -mergeCells: []
+        -protectedCells: []
+        -autoFilter: PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter {#1411 ▶}
+        -freezePane: null
+        -topLeftCell: null
+        -showGridlines: true
+        -printGridlines: false
+        -showRowColHeaders: true
+        -showSummaryBelow: 1
+        -showSummaryRight: 1
+        -comments: []
+        -activeCell: "A1"
+        -selectedCells: "A1"
+        -cachedHighestColumn: 7
+        -cachedHighestRow: 3
+        -rightToLeft: false
+        -hyperlinkCollection: []
+        -dataValidationCollection: []
+        -tabColor: null
+        -dirty: false
+        -hash: "d92726dbbaf282d299f7de0b86775070"
+        -codeName: "Worksheet"
+      }
+      1 => PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1421}
+    ]
+    -calculationEngine: PhpOffice\PhpSpreadsheet\Calculation\Calculation {#1311 ▶}
+    -activeSheetIndex: 1
+    -definedNames: []
+    -cellXfSupervisor: PhpOffice\PhpSpreadsheet\Style\Style {#1330 ▶}
+    -cellXfCollection: array:1 [▶]
+    -cellStyleXfCollection: array:1 [▶]
+    -hasMacros: false
+    -macrosCode: null
+    -macrosCertificate: null
+    -ribbonXMLData: null
+    -ribbonBinObjects: null
+    -unparsedLoadedData: []
+    -showHorizontalScroll: true
+    -showVerticalScroll: true
+    -showSheetTabs: true
+    -minimized: false
+    -autoFilterDateGrouping: true
+    -firstSheetIndex: 0
+    -visibility: "visible"
+    -tabRatio: 600
+  }
+  -cellCollection: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422 ▼
+    -cache: PhpOffice\PhpSpreadsheet\Collection\Memory {#1317}
+    -parent: PhpOffice\PhpSpreadsheet\Worksheet\Worksheet {#1421}
+    -currentCell: PhpOffice\PhpSpreadsheet\Cell\Cell {#1437 ▼
+      -value: "В ячейке B5"
+      -calculatedValue: null
+      -dataType: "s"
+      -parent: PhpOffice\PhpSpreadsheet\Collection\Cells {#1422}
+      -xfIndex: 0
+      -formulaAttributes: null
+    }
+    -currentCoordinate: "B5"
+    -currentCellIsDirty: false
+    -index: array:5 [▶]
+    -cachePrefix: "phpspreadsheet.61408b05ea1ce7.18891027."
+  }
+  -rowDimensions: []
+  -defaultRowDimension: PhpOffice\PhpSpreadsheet\Worksheet\RowDimension {#1430 ▶}
+  -columnDimensions: []
+  -defaultColumnDimension: PhpOffice\PhpSpreadsheet\Worksheet\ColumnDimension {#1431 ▶}
+  -drawingCollection: ArrayObject {#1427 ▶}
+  -chartCollection: ArrayObject {#1428 ▶}
+  -title: "Второй лист"
+  -sheetState: "visible"
+  -pageSetup: PhpOffice\PhpSpreadsheet\Worksheet\PageSetup {#1423 ▶}
+  -pageMargins: PhpOffice\PhpSpreadsheet\Worksheet\PageMargins {#1424 ▶}
+  -headerFooter: PhpOffice\PhpSpreadsheet\Worksheet\HeaderFooter {#1425 ▶}
+  -sheetView: PhpOffice\PhpSpreadsheet\Worksheet\SheetView {#1426 ▶}
+  -protection: PhpOffice\PhpSpreadsheet\Worksheet\Protection {#1429 ▶}
+  -styles: []
+  -conditionalStylesCollection: []
+  -cellCollectionIsSorted: false
+  -breaks: []
+  -mergeCells: []
+  -protectedCells: []
+  -autoFilter: PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter {#1432 ▶}
+  -freezePane: null
+  -topLeftCell: null
+  -showGridlines: true
+  -printGridlines: false
+  -showRowColHeaders: true
+  -showSummaryBelow: 1
+  -showSummaryRight: 1
+  -comments: []
+  -activeCell: "A1"
+  -selectedCells: "A1"
+  -cachedHighestColumn: 3
+  -cachedHighestRow: 5
+  -rightToLeft: false
+  -hyperlinkCollection: []
+  -dataValidationCollection: []
+  -tabColor: null
+  -dirty: false
+  -hash: "5154c0be6fcc7ac06323e0e1d2151365"
+  -codeName: "Worksheet_1"
+}

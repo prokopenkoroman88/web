@@ -11,7 +11,9 @@
     <title>@yield('title')</title>
 
     <!-- Scripts -->
+    @yield('jsbefore')
     <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link href="//fonts.gstatic.com" rel="dns-prefetch">
@@ -106,7 +108,8 @@
             @endsection
         </footer>
     </div>
-    @section('js')
-    @endsection
+    @yield('jsafter')
+    {{-- @section('js')
+    @endsection --}}
 </body>
 </html>
