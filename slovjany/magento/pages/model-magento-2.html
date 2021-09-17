@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Модель Magento 2</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+<h1 class="h1">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h1>
+
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+
+<h2 class="h2">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h2>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+-->
+
+<a href="https://magemastery.net/courses/magento-2-beginner/model-magento-2">Оригинал</a>
+<!--
+<h1 class="h1">
+	<div class="en">
+		A Module in Magento 2
+	</div>
+	<div class="ru">
+		Модули в Magento 2
+	</div>
+</h1>
+-->
+
+<div class=""><iframe class="video-module--video--2DLpO" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/UKRpXNld3Lc?enablejsapi=1&amp;origin=https%3A%2F%2Fmagemastery.net&amp;widgetid=5" id="widget6" data-gtm-yt-inspected-13306762_13="true" data-gtm-yt-inspected-13306762_14="true"></iframe></div>
+
+
+<div class="h1"><div class="en">Model in Magento 2</div><div class="ru">Модель в Magento 2</div></div>
+<div class="p"><div class="en">Model is one of the must have components for CRUD operations in Magento 2 framework. In this lesson, we are going to learn what is a model, what are the capabilities of the model and how to create a model and use it in your custom Magento 2 extension.</div><div class="ru">Модель является одним из обязательных компонентов для операций CRUD во фреймворке Magento 2. В этом уроке мы узнаем, что такое модель, каковы возможности модели и как создать модель и использовать ее в вашем собственном расширении Magento 2.</div></div>
+<div class="h2"><div class="en">Lesson Overview</div><div class="ru">Обзор урока</div></div>
+<div class="p"><div class="en">In this lesson we are going to learn the following:</div><div class="ru">В этом уроке мы узнаем следующее:</div></div>
+<div class="p"><div class="en">What is a Model?</div><div class="ru">Что такое модель?</div></div>
+<div class="p"><div class="en">Model Capabilities</div><div class="ru">Возможности модели</div></div>
+<div class="p"><div class="en">How to create a Model and use it in a Magento 2?</div><div class="ru">Как создать модель и использовать ее в Magento 2?</div></div>
+<div class="p"><div class="en">What is a Model in Magento 2?</div><div class="ru">Что такое модель в Magento 2?</div></div>
+<div class="p"><div class="en">A Model is a class that represents an entity or a record from a database. The model also provides access to entity data that is used across the Magento 2 application. The model term comes from a Model-View-Controller design pattern and is an important component to understand in Magento 2.</div><div class="ru">Модель - это класс, представляющий сущность или запись из базы данных. Модель также обеспечивает доступ к данным сущностей, которые используются в приложении Magento 2. Термин модель происходит от шаблона проектирования модель-представление-контроллер и является важным компонентом для понимания в Magento 2.</div></div>
+<br>
+<div class="p"><div class="en">In order to create a model, a PHP class should extend an AbstractModel class, that comes from a Magento 2 framework. The model class inherits methods and logic that the AbstractModel class provides.</div><div class="ru">Чтобы создать модель, класс PHP должен расширять класс AbstractModel, который происходит из фреймворка Magento 2. Класс модели наследует методы и логику, предоставляемые классом AbstractModel.</div></div>
+<div class="h2"><div class="en">Let’s have a look at the PHP class called User. The user class extends an AbstractModel class and can be called a model.</div><div class="ru">Давайте посмотрим на класс PHP под названием User. Пользовательский класс расширяет класс AbstractModel и может называться моделью.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Model<span class="token punctuation">\</span>AbstractModel</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractModel</span>
+<span class="token punctuation">{</span>    
+
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">In order to use the newly created User Model, we have to create a new instance of a User. A User Factory class creates a User instance, the setData method allows setting the value of “Max” to the key first name. The user object stores this data, and it can be accessed with the help of the getData method.</div><div class="ru">Чтобы использовать только что созданную модель пользователя, мы должны создать новый экземпляр пользователя. Класс User Factory создает экземпляр User, метод setData позволяет установить значение «Max» для имени ключа. Пользовательский объект хранит эти данные, и к ним можно получить доступ с помощью метода getData.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">class</span> Controller
+<span class="token punctuation">{</span>    
+    <span class="token comment">// ...</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+         <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">userFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span>‘first_name’<span class="token punctuation">,</span> ‘Max’<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+         <span class="token variable">$firstName</span> <span class="token operator">=</span> <span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span>‘first_name’<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">As you noticed, we don’t use “new” operator in order to create a User object. This is because every model has a dependency that is injected into a construct method, and with the help of an Inversion of Control implemented in Magento 2, we can inject dependencies automatically.</div><div class="ru">Как вы заметили, мы не используем оператор new для создания объекта User. Это связано с тем, что каждая модель имеет зависимость, которая вводится в метод конструкции, и с помощью инверсии управления, реализованной в Magento 2, мы можем автоматически вводить зависимости.</div></div>
+<div class="p"><div class="en">For user objects to be created, we can use a UserFactory class that is automatically generated by Magento 2 framework at the time we've requested it in a construct method.</div><div class="ru">Для создания пользовательских объектов мы можем использовать класс UserFactory, который автоматически генерируется фреймворком Magento 2 в то время, когда мы запросили его в методе конструкции.</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">use</span> <span class="token package">MageMastery<span class="token punctuation">\</span>ModelExample<span class="token punctuation">\</span>Model<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">MageMastery<span class="token punctuation">\</span>ModelExample<span class="token punctuation">\</span>Model<span class="token punctuation">\</span>UserFactory</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Controller</span> <span class="token punctuation">{</span>   
+    <span class="token keyword">private</span> <span class="token variable">$userFactory</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">UserFactory</span> <span class="token variable">$userFactory</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">userFactory</span> <span class="token operator">=</span> <span class="token variable">$userFactory</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">The User Factory class is also known as a Model Factory class with the single create method. The only responsibility of this auto-generated User Factory class is to create new instances of the User class.</div><div class="ru">Класс User Factory также известен как класс Model Factory с единственным методом создания. Единственная ответственность этого автоматически сгенерированного класса User Factory - создание новых экземпляров класса User.</div></div>
+
+
+
+<div class="img">
+	<img src="../images/model-magento-2/model-factory-class.png" alt="">
+</div>
+
+
+<div class="h2"><div class="en">Resource Model Relation</div><div class="ru">Связь с моделью ресурсов</div></div>
+<div class="p"><div class="en">A model usually represents a business entity that is stored in a database. For the model to properly work, the so-called Resource Model class relation has to be provided inside the _construct() method.</div><div class="ru">Модель обычно представляет собой бизнес-объект, который хранится в базе данных. Для правильной работы модели внутри метода _construct() должно быть предусмотрено так называемое отношение класса модели ресурсов.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Model<span class="token punctuation">\</span>AbstractModel</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractModel</span>
+<span class="token punctuation">{</span>    
+     <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">_construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+     <span class="token punctuation">{</span>
+          <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">_init</span><span class="token punctuation">(</span><span class="token class-name static-context">ResourceClassName</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">Don’t be confused with the public __construct() method. As this is a protected method with the single underscore. Inside this method, the _init method should be called with the name of the resource model class. We are going to talk about Resource Models in the next Mage Mastery lesson.</div><div class="ru">Не путайте с общедоступным методом __construct(). Поскольку это защищенный метод с одним подчеркиванием. Внутри этого метода должен вызываться метод _init с именем класса модели ресурсов. Мы поговорим о моделях ресурсов на следующем уроке Мастерства магов.</div></div>
+<div class="h2"><div class="en">Optional Model Interfaces</div><div class="ru">Дополнительные интерфейсы модели</div></div>
+<div class="p"><div class="en">A model can optionally implement interfaces for clarity and ease of use or to provide additional capabilities. The IdentityInterface interface can be added if the model needs to have a caching capability, let’s say, every time a model is saved or deleted, the cache for this model is cleared.</div><div class="ru">Модель может дополнительно реализовывать интерфейсы для ясности и простоты использования или для предоставления дополнительных возможностей. Интерфейс IdentityInterface можно добавить, если модель должна иметь возможность кэширования, скажем, каждый раз, когда модель сохраняется или удаляется, кэш для этой модели очищается.</div></div>
+
+
+<div class="img">
+	<img src="../images/model-magento-2/model-optional-interfaces.png" alt="">
+</div>
+
+<div class="p"><div class="en">Or, we can create a Data interface and provide public methods to be able to rely on interfaces rather than concrete implementations.</div><div class="ru">Или мы можем создать интерфейс данных и предоставить общедоступные методы, чтобы иметь возможность полагаться на интерфейсы, а не на конкретные реализации.</div></div>
+<div class="h2"><div class="en">Model Class Location</div><div class="ru">Расположение класса модели</div></div>
+<div class="p"><div class="en">Models are usually located inside the Model directory of a Magento 2 extension.</div><div class="ru">Модели обычно находятся в каталоге Model расширения Magento 2.</div></div>
+
+
+<div class="img">
+	<img src="../images/model-magento-2/model-location.png" alt="">
+</div>
+
+<div class="h2"><div class="en">Important</div><div class="ru">Важно</div></div>
+<div class="p"><div class="en">A model should be used when there is a need to retrieve data from a database and present it in the Magento 2 application. A model class represents a Domain Model of a Magento 2 extension.</div><div class="ru">Модель следует использовать, когда необходимо получить данные из базы данных и представить их в приложении Magento 2. Класс модели представляет доменную модель расширения Magento 2.</div></div>
+<div class="p"><div class="en">The AbstractModel class has deprecated CRUD and other methods. These methods shouldn’t be used.</div><div class="ru">Класс AbstractModel устарел CRUD и другие методы. Эти методы использовать нельзя.</div></div>
+
+
+<div class="img">
+	<img src="../images/model-magento-2/deprecated-methods.png" alt="">
+</div>
+
+
+<div class="p"><div class="en">Model is usually used in conjunction with a Resource Model class. This is the class that knows how to load and store data in a database. We will learn more about Resource Model in our next lesson.</div><div class="ru">Модель обычно используется вместе с классом модели ресурсов. Это класс, который знает, как загружать и хранить данные в базе данных. Мы узнаем больше о модели ресурсов в нашем следующем уроке.</div></div>
+
+
+
+
+
+<!--
+
+<div class="img">
+	<img src="../images/view-model-magento-2/view-model-rendering-result.png" alt="">
+</div>
+
+
+-->
+
+
+<a href=".\view-model-magento-2.html">PREV</a>
+<a href=".\resource-model-magento-2.html">NEXT</a>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

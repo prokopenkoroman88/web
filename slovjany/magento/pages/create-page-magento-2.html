@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Создание страницы</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+<h1 class="h1">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h1>
+
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+
+<h2 class="h2">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h2>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+-->
+
+<a href="https://magemastery.net/courses/magento-2-beginner/create-page-magento-2">Оригинал</a>
+
+
+<h1 class="h1"><div class="en">Create a Page in Magento 2</div><div class="ru">Создание страницы в Magento 2</div></h1><div class="p"><div class="en">Magento 2 provides a set of framework features that allow to easily create different entry points. One of the entry points we are going to learn in this lesson is a Page.</div><div class="ru">Magento 2 предоставляет набор функций фреймворка, которые позволяют легко создавать различные точки входа. Одна из точек входа, которую мы собираемся изучить в этом уроке, - это страница.</div></div><div class="p"><div class="en">A page in Magento 2 is a result of an Action Controller execution. Each controller either returns an HTML content or redirects to another controller for further processing. In this lesson, we are going to create a Page, that shows a JSON message in a browser when it has been accessed via a custom route.</div><div class="ru">Страница в Magento 2 является результатом выполнения Action Controller. Каждый контроллер либо возвращает содержимое HTML, либо перенаправляет другому контроллеру для дальнейшей обработки. В этом уроке мы собираемся создать страницу, которая показывает сообщение JSON в браузере, когда к нему обращаются через настраиваемый маршрут.</div></div><h2 class="h2"><div class="en">Lesson Overview</div><div class="ru">Обзор урока</div></h2><div class="p"><div class="en">In this lesson we are going to learn the following:</div><div class="ru">В этом уроке мы узнаем следующее:</div></div><h2 class="h2"><div class="en">How to create a page in Magento 2?</div><div class="ru">Как создать страницу в Magento 2?</div></h2><div class="p"><div class="en">How to create an Action Controller?</div><div class="ru">Как создать контроллер действий?</div></div><div class="p"><div class="en">How to register a new route?</div><div class="ru">Как зарегистрировать новый маршрут?</div></div><div class="p"><div class="en">How to return a JSON data from a Controller?</div><div class="ru">Как вернуть данные JSON из контроллера?</div></div><div class="p"><div class="en">Before we begin</div><div class="ru">Прежде чем мы начнем</div></div><div class="p"><div class="en">For this tutorial, I've created the MageMastery_FirstPagemodule with the registration.phpand module.xmlfiles. And the module has been successfully registered with the bin/magento setup:upgrade CLI command.</div><div class="ru">Для этого урока я создал модуль MageMaster_FirstPage с модулем registration.phpand.xmlfiles. И модуль был успешно зарегистрирован с помощью CLI команды bin/magento setup:upgrade.</div></div>
+
+
+<p>The <code class="language-text">registration.php</code> file:</p>
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>ComponentRegistrar</span><span class="token punctuation">;</span>
+
+<span class="token class-name static-context">ComponentRegistrar</span><span class="token operator">::</span><span class="token function">register</span><span class="token punctuation">(</span>
+    <span class="token class-name static-context">ComponentRegistrar</span><span class="token operator">::</span><span class="token constant">MODULE</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'MageMastery_FirstPage'</span><span class="token punctuation">,</span>
+    <span class="token constant">__DIR__</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></div>
+
+
+<p>The <code class="language-text">module.xml</code> file:</p>
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> 
+        <span class="token attr-name"><span class="token namespace">xsi:</span>noNamespaceSchemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urn:magento:framework:Module/etc/module.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MageMastery_FirstPage<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+<div class="p"><div class="en">For more information about the module creation and registration, please refer to the previous lesson A Module in Magento 2.</div><div class="ru">Для получения дополнительной информации о создании и регистрации модуля, пожалуйста, обратитесь к предыдущему уроку Модуль в Magento 2.</div></div>
+<div class="h2"><div class="en">Registering a new route</div><div class="ru">Регистрация нового маршрута</div></div><div class="p"><div class="en">In order to create a new page in Magento 2, which is accessible via a browser, there are two files that have to be created in a Magento 2 module. The first file is routes.xml. The file is responsible for providing information to Magento 2 where to look for a particular controller module's name and additional rules to match a URI.</div><div class="ru">Чтобы создать новую страницу в Magento 2, доступную через браузер, в модуле Magento 2 необходимо создать два файла. Первый файл - routes.xml. Файл отвечает за предоставление информации в Magento 2, где искать имя конкретного модуля контроллера и дополнительные правила для соответствия URI.</div></div><div class="p"><div class="en">The second file is a controller class, that should be executed and process the incoming request.</div><div class="ru">Второй файл - это класс контроллера, который должен выполняться и обрабатывать входящий запрос.</div></div><div class="p"><div class="en">Let's go ahead and create a new routes.xmlfile under the MageMastery/FirstPage/etc/ directory.</div><div class="ru">Давайте продолжим и создадим новый файл routes.xmlfile в каталоге MageMaster/FirstPage/etc/.</div></div>
+<div class="h2"><div class="en">Configuration in Magento 2</div><div class="ru">Конфигурация в Magento 2</div></div><div class="p"><div class="en">The configuration can be provided for the two different areas: frontend and adminhtml areas. There is also a default that is used to provide a configuration for both areas.</div><div class="ru">Конфигурация может быть предоставлена ​​для двух разных областей: области внешнего интерфейса (frontend) и области adminhtml. Также существует значение по умолчанию (default), которое используется для настройки обеих областей.</div></div>
+
+<div class="img">
+	<img src="../images/create-page-magento-2/1-configuration-areas-in-magento-2.png" alt="">
+</div>
+
+<div class="p"><div class="en">For the storefront configuration changes, we have to add a new frontenddirectory inside the MageMastery/FirstPage/etc/directory. We will talk more about the adminhtmldirectory in the upcoming lessons.</div><div class="ru">Для изменения конфигурации витрины мы должны добавить новый каталог внешнего интерфейса в каталог MageMaster/FirstPage/etc/. Мы поговорим больше о каталоге adminhtml directory в следующих уроках.</div></div><div class="h2"><div class="en">If you haven't created the etc/frontend directory this is the right time to do it.</div><div class="ru">Если вы еще не создали каталог etc/frontend, сейчас самое время это сделать.</div></div><div class="h2"><div class="en">The routes.xml file</div><div class="ru">Файл routes.xml</div></div><div class="p"><div class="en">Inside the etc/frontenddirectory let's create the routes.xmlconfiguration file. All routes configuration files from all Magento 2 registered modules including the MageMastery/FirstPagemodule will be merged and provided for the execution.</div><div class="ru">Внутри каталога etc/frontend создадим файл конфигурации routes.xml. Все файлы конфигурации маршрутов из всех зарегистрированных модулей Magento 2, включая MageMaster/FirstPagemodule, будут объединены и предоставлены для выполнения.</div></div><div class="h2"><div class="en">The routes.xml initial file state:</div><div class="ru">Начальное состояние файла routes.xml:</div></div>
+
+
+
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> 
+        <span class="token attr-name"><span class="token namespace">xsi:</span>noNamespaceSchemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urn:magento:framework:App/etc/routes.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+
+
+<div class="p">
+	<div class="en">
+		Magento 2 Open Source provides so-called routers, and each router has its own identifier. We are not going to go deeply into the router implementation just now. We are going to use the standard router that is identified as "standard". This is what you see in the code below:
+	</div>
+	<div class="ru">
+		Magento 2 с открытым исходным кодом предоставляет так называемые маршрутизаторы, и каждый маршрутизатор имеет свой собственный идентификатор. Мы не собираемся сейчас углубляться в реализацию роутера. Мы собираемся использовать стандартный маршрутизатор, обозначенный как «стандартный». Вот что вы видите в приведенном ниже коде:
+	</div>
+</div>
+
+
+
+
+
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> 
+        <span class="token attr-name"><span class="token namespace">xsi:</span>noNamespaceSchemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urn:magento:framework:App/etc/routes.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>standard<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+
+<div class="p">
+	<div class="en">
+		Inside the standard router node, we can add routes configuration. Each route is responsible for providing a front name that is used to match the route with a request URL. Also, the route should provide a module name, that includes an action controller class.
+	</div>
+	<div class="ru">
+		Внутри стандартного узла маршрутизатора мы можем добавить конфигурацию маршрутов. Каждый маршрут отвечает за предоставление внешнего имени, которое используется для сопоставления маршрута с URL-адресом запроса. Кроме того, в маршруте должно быть указано имя модуля, которое включает класс контроллера действий.
+	</div>
+</div>
+
+
+<div class="p">
+	<div class="en">
+		The route configuration for the MageMastery_FirstPage module and the magemastery front name looks as follow:
+	</div>
+	<div class="ru">
+		Конфигурация маршрута для модуля MageMaster_FirstPage и frontName "magemastery" выглядит следующим образом:
+	</div>
+</div>
+
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>route</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>magemastery_firstpage<span class="token punctuation">"</span></span> <span class="token attr-name">frontName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>magemastery<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MageMastery_FirstPage<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>route</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+<div class="p">
+	<div class="en">
+		Note the id argument of the route. It has to be unique across the Magento 2 application. The recommended naming convention for the route id is lower-case module name e.g. magemastery_firstpage to ensure the uniqueness.
+	</div>
+	<div class="ru">
+		Обратите внимание на аргумент id маршрута. Он должен быть уникальным во всем приложении Magento 2. Рекомендуемое соглашение об именах для идентификатора маршрута - это имя модуля в нижнем регистре, например: "magemaster_firstpage", чтобы гарантировать уникальность.
+	</div>
+</div>
+
+
+<div class="p">
+	<div class="en">
+		Let's see the final state of the routes.xml file:
+	</div>
+	<div class="ru">
+		Посмотрим на финальное состояние файла routes.xml
+	</div>
+</div>
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> 
+        <span class="token attr-name"><span class="token namespace">xsi:</span>noNamespaceSchemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urn:magento:framework:App/etc/routes.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>standard<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>route</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>magemastery_firstpage<span class="token punctuation">"</span></span> <span class="token attr-name">frontName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>magemastery<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MageMastery_FirstPage<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>route</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+
+
+
+<div class="p"><div class="en">Magento 2 standard router reads the route configuration that starts with the magemasteryrequest URI part, finds a module name with the name MageMastery_FirstPage, and will check for a controller, which can process the request.</div><div class="ru">Стандартный маршрутизатор Magento 2 считывает конфигурацию маршрута, которая начинается с URI-части magemasterrequest, находит имя модуля с именем MageMaster_FirstPage и проверяет наличие контроллера, который может обработать запрос.</div></div>
+<div class="p"><div class="en">A controller in a module is the second bit or file to be created in this lesson.</div><div class="ru">Контроллер в модуле - это второй бит или файл, который будет создан в этом уроке.</div></div>
+
+<div class="h2"><div class="en">Action Controller</div><div class="ru">Контроллер действий</div></div>
+<div class="p"><div class="en">All controllers of a module should be located in a directory called Controller. There is another directory level that should exist inside the Controller directory before the class can be located. For this lesson, we are going to create a Page directory in the Controller.</div><div class="ru">Все контроллеры модуля должны находиться в каталоге с именем Controller. Есть еще один уровень каталога, который должен существовать внутри каталога Controller до того, как класс можно будет найти. В этом уроке мы собираемся создать каталог Page в каталоге Controller.</div></div>
+<div class="p"><div class="en">Inside the Page directory, let's create the View.php file.</div><div class="ru">Внутри Page directory создадим файл View.php.</div></div>
+<div class="p"><div class="en">As a result, you should have the following module structure.</div><div class="ru">В результате у вас должна получиться следующая модульная структура.</div></div>
+
+<div class="h2"><div class="en">Module Structure</div><div class="ru">Структура модуля</div></div>
+<div class="img">
+	<img src="../images/create-page-magento-2/2-module-structure.png" alt="">
+</div>
+
+
+<div class="p"><div class="en">The View.php file is a MageMastery\FirstPage\Controller\Page\View class. The Viewclass should extend the Magento\Framework\App\Action\Action class.</div><div class="ru">Файл View.php - это класс MageMaster\FirstPage\Controller\Page\View. Класс View должен расширять класс Magento\Framework\App\Action\Action.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php">
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">declare</span><span class="token punctuation">(</span>strict_types<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token package">MageMastery<span class="token punctuation">\</span>FirstPage<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>Page</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Action<span class="token punctuation">\</span>Action</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">View</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre></div>
+
+
+<div class="p">
+	<div class="en">
+		The Action class requires to provide implementation of the execute() method. Once Magento 2 will resolve the route it will trigger the View::execute() method. The execute() method's logic should be added in order to render something on a front end. For this lesson, we are going to return a JSON response with the message.
+	</div>
+	<div class="ru">
+		Класс Action требует предоставить реализацию метода execute(). Как только Magento 2 разрешит маршрут, он вызовет метод View::execute(). Логика метода execute() должна быть добавлена, чтобы что-то рендерить что-то во внешнем интерфейсе. В этом уроке мы собираемся вернуть ответ JSON с сообщением.
+	</div>
+</div>
+
+<div class="p">
+	<div class="en">
+		In order to return anything from the execute() method, there is a resultFactory variable that is provided to us from the Action parent class. The create() method of the Magento\Framework\Controller\ResultFactory class creates an instance of a Magento\Framework\Controller\Result\Jsonclass. The Jsonclass then can be used to convert an array into a JSON and return back from the execute() method.
+	</div>
+	<div class="ru">
+		Чтобы вернуть что-либо из метода execute(), существует переменная resultFactory, которая предоставляется нам из родительского класса Action. Метод create() класса Magento\Framework\Controller\ResultFactory создает экземпляр класса Magento\Framework\Controller\Result\Jsonclass. Затем Jsonclass можно использовать для преобразования массива в JSON и возврата из метода execute().
+	</div>
+</div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$jsonResult</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+
+
+<div class="p">
+	<div class="en">
+		We can use the $jsonResult to set an array with the key message and the value to be My First Page.
+	</div>
+	<div class="ru">
+		Мы можем использовать $ jsonResult, чтобы установить массив с ключевым сообщением и значением My First Page.
+	</div>
+</div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$jsonResult</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'message'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'My First Page'</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+
+
+<div class="p">
+	<div class="en">
+		The resulting code of the View controller class looks as follow:
+	</div>
+	<div class="ru">
+		Результирующий код класса контроллера View выглядит следующим образом:
+	</div>
+</div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">declare</span><span class="token punctuation">(</span>strict_types<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token package">MageMastery<span class="token punctuation">\</span>FirstPage<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>Page</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>Result<span class="token punctuation">\</span>Json</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Action<span class="token punctuation">\</span>Action</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>ResultFactory</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">View</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">/** @var Json $jsonResult */</span>
+        <span class="token variable">$jsonResult</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$jsonResult</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+            <span class="token string single-quoted-string">'message'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'My First Page'</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$jsonResult</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre></div>
+
+
+
+
+<div class="p">
+	<div class="en">
+		In order to a result in a browser, the Magento 2 configuration cache has to be cleaned. The cache cleanup can be done with the Magento CLI command cache:clean. The command has to be executed from the Magento 2 project root directory.
+	</div>
+	<div class="ru">
+		Чтобы открыть браузер, необходимо очистить кеш конфигурации Magento 2. Очистку кеша можно выполнить с помощью команды Magento CLI cache: clean. Команда должна выполняться из корневого каталога проекта Magento 2.
+	</div>
+</div>
+
+
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">bin/magento cache:clean</code></pre></div>
+
+
+<div class="p">
+	<div class="en">
+		Navigate to the http://magento2ce.magemastery.net/magemastery/page/viewurl, where the magento2ce.magemastery.net domain name can be different one, depending on what domain name you provided during the Magento 2 installation.
+	</div>
+	<div class="ru">
+		Перейдите на http://magento2ce.magemastery.net/magemastery/page/viewurl, где доменное имя magento2ce.magemastery.net может быть другим, в зависимости от того, какое доменное имя вы указали во время установки Magento 2.
+	</div>
+</div>
+
+
+<div class="img">
+	<img src="../images/create-page-magento-2/3-magento-2-page.png" alt="">
+</div>
+
+
+<div class="p"><div class="en">Let's have a closer look at /magemastery/page/view path for the page. The first part is the magemastery, this is a front name that is configured in the routes.xml file. The pageis the name of a directory Pageinside which there is a View class. The View::execute() method returns the JSON object.</div><div class="ru">Давайте подробнее рассмотрим путь /magemaster/page/view для страницы. Первая часть - это "magemaster", это fromtName, которое настраивается в файле routes.xml. "page" - это имя каталога. Внутри страницы есть "View" class. Метод View::execute() возвращает объект JSON.</div></div>
+<div class="h2"><div class="en">Homework</div><div class="ru">Домашнее задание</div></div>
+<div class="p"><div class="en">The homework for this lesson. Create a custom controller with the custom JSON message which has to be rendered on a page with the route /magemastery/custom/page.</div><div class="ru">Домашнее задание для этого урока. Создайте настраиваемый контроллер с настраиваемым сообщением JSON, которое должно отображаться на странице с маршрутом/magemastery/custom/page.</div></div>
+
+
+
+
+<a href=".\module-in-magento-2.html">PREV</a>
+<a href=".\template-layout-rendering.html">NEXT</a>
+
+
+<div class="p"><div class="en">		</div><div class="ru"></div></div>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

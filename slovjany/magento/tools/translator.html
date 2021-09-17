@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		html, body{
+			height: 100%;
+			margin:0px;
+			padding: 0px;
+		}
+		.container{
+			margin:0px;
+			padding: 0px;
+			/*display: grid;
+			grid-row: 40%;*/
+			height: 70%;
+		}
+		.container>div{
+			display: inline-block;
+			margin:0px;
+			padding: 0px;
+			border: 1px solid red;
+			height: 100%;
+			width: calc(50% - 2px);
+		}
+
+		.container>div>div{
+			background-color: #555;
+			width: 99%;
+			height: 5%;
+		}
+		#code{
+			min-height: 30%;
+			width: 99%;
+		}		
+		#ta-res{
+			height: 30%;
+			width: 99%;
+		}
+
+	</style>
+</head>
+<body>
+	
+
+
+<div class="container">
+	<div>
+		<textarea name="" id="ta-en" cols="50" rows="20">
+A Module in Magento 2
+Magento 2 is widely known for its extensibility. One of the extensibility concepts which Magento 2 Open Source supports is called Modularity. In this lesson, we will learn what is a Magento 2 Module.
+
+Lesson Overview
+In this lesson we are going to learn the following:
+
+What is a Module in Magento 2?
+How does a module name looks like?
+Where a Magento 2 module can be located?
+How to create a Magento 2 Module?
+How to register a Module in a Magento 2?
+		</textarea>
+
+		<div id="code-en"></div>
+	</div><div>
+		<textarea name="" id="ta-ru" cols="50" rows="20"></textarea>
+
+		<div id="code-ru"></div>
+	</div>
+</div>
+<div id="code"></div>
+<textarea name="" id="ta-res" ></textarea>
+
+<script>
+let ta={},code={},rows={};
+ ta.en = document.querySelector('#ta-en');
+ code.en = document.querySelector('#code-en');
+ ta.ru = document.querySelector('#ta-ru');
+ code.ru = document.querySelector('#code-ru');
+ code.All = document.querySelector('#code');
+ ta.All = document.querySelector('#ta-res');
+
+
+
+
+
+
+function stringToXML(s1){
+
+	let s2='', ch='', iQuot=0, iAttr=-1, bAttrName=false;
+	for(let j=0; j<s1.length; j++){
+	//console.log(s[j]);
+
+
+	if(s1[j]=='<'){
+		iAttr=-1;
+		ch='&lt;';
+	}
+	else
+	if(s1[j]=='>'){
+
+		ch='&gt;';
+	}
+	else
+	if(s1[j]=='"'){
+		iQuot++;
+		if(iQuot % 2 == 0)
+			ch=s1[j]+'</span>'
+		else
+			ch='<span class="attr-value">'+s1[j];
+		//console.log('iQuot '+ch);
+
+	}
+	else
+	{
+		ch=s1[j];//simple
+	};
+
+
+	if(iAttr<0 && s1[j].match(/[A-Za-z0-9_]/) ){
+		ch='<span class="tag-name">'+s1[j];		
+		iAttr=0;
+	}
+	else
+	if(iAttr==0 && !s1[j].match(/[A-Za-z0-9_]/) ){
+		ch='</span>'+s1[j];		
+		iAttr++;
+	}
+	else
+	if(iAttr>0 && s1[j].match(/[A-Za-z0-9_\:]/) && s1[j-1]==' '){
+		ch='<span class="attr-name">'+s1[j];		
+		bAttrName=true;
+		//iAttr++;
+		//console.log('span class="attr-name"');
+	}
+	else
+	if(iAttr>0 && !s1[j].match(/[A-Za-z0-9_\:]/) && bAttrName){
+		ch='</span>'+s1[j];		
+		iAttr++;
+		bAttrName=false;
+	};
+
+
+
+	s2+=ch;
+
+	//if(s1[j]=='"')		console.log(s2);
+	};//j++
+
+	return s2;
+};
+
+
+function toArray(lang){
+	//console.log('change');
+
+rows[lang] = ta[lang].value.split("\n");
+console.log(rows[lang]);
+
+
+let aRows=rows[lang];
+
+console.log('code.All.innerHTML="'+code.All.innerHTML+'"');
+if(code.All.innerHTML==''){
+	console.log('empty code.All.innerHTML');
+	let j=-1;
+	let className='';
+	for(let i=0; i< aRows.length; i++){
+		let s=aRows[i];
+		j++;
+		if(i==0 && s!='')
+			className='h1'
+		else{
+			if(s==''){
+				className='';
+				j--;
+			}
+			else{
+				
+				if(aRows[i-1]=='')
+					className='h2'
+				else
+					className='p';
+			};
+		};
+
+		let tag;
+		switch (className) {
+			case 'h1':
+				// statements_1
+				tag=document.createElement('div');//h1
+				tag.classList.add('h1');
+				break;
+			case 'h2':
+				// statements_1
+				tag=document.createElement('div');//h2
+				tag.classList.add('h2');
+				break;
+			case 'p':
+				// statements_1
+				tag=document.createElement('div');
+				tag.classList.add('p');
+				break;
+
+
+
+			default:
+				// statements_def
+				break;
+		};//switch
+
+		if(tag){
+			let langTag;
+			langTag=document.createElement('div');
+			langTag.classList.add('en');
+			tag.append(langTag);
+			langTag=document.createElement('div');
+			langTag.classList.add('ru');
+			tag.append(langTag);
+
+			code.All.append(tag);
+			code.All.append('\n');
+		};
+
+
+	};//i++
+
+let aDivs = document.querySelectorAll('#code>div');
+for(let i=0; i<aDivs.length; i++){
+	aDivs[i].addEventListener('click', function(){
+		//
+		if( aDivs[i].classList.contains('h1') ){
+			aDivs[i].classList.remove('h1');
+			aDivs[i].classList.add('h2');
+		}
+		else
+		if( aDivs[i].classList.contains('h2') ){
+			aDivs[i].classList.remove('h2');
+			aDivs[i].classList.add('p');
+		}
+		else		
+		if( aDivs[i].classList.contains('p') ){
+			aDivs[i].classList.remove('p');
+			aDivs[i].classList.add('h1');
+		};
+				
+		
+	});
+
+};
+
+
+};//empty code.All
+
+
+	j=-1;
+	for(let i=0; i< aRows.length; i++){
+		let s=aRows[i];
+		j++;
+		if(i==0 && s!='')
+			className='h1'
+		else{
+			if(s==''){
+				className='';
+				j--;
+			}
+			else{
+				
+				if(aRows[i-1]=='')
+					className='h2'
+				else
+					className='p';
+			};
+		};
+
+		if(className){
+			console.log('i='+i+', j='+j+', cls='+className);
+			
+			
+			aRows[i]=aRows[i].replaceAll('<','&lt;');///\</
+			aRows[i]=aRows[i].replaceAll('>','&gt;');///\>/
+			
+			code.All.children[j].querySelector('.'+(lang)).innerHTML=aRows[i];
+		}
+	};//i++
+
+
+ta.All.value='';
+ta.All.value=code.All.innerHTML;
+
+//ta.All.value=  ta.All.value.replace('<','&lt;');
+//ta.All.value=  ta.All.value.replace('>','&gt;');
+
+
+};
+
+
+ta.en.addEventListener('change', function(){
+	toArray('en');
+});
+
+ta.ru.addEventListener('change', function(){
+	toArray('ru');
+});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Передача данных от контроллера к шаблону</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+<h1 class="h1">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h1>
+
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+
+<h2 class="h2">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h2>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+-->
+
+<a href="https://magemastery.net/courses/magento-2-beginner/passing-data-from-controller-to-template">Оригинал</a>
+<!--
+<h1 class="h1">
+	<div class="en">
+		A Module in Magento 2
+	</div>
+	<div class="ru">
+		Модули в Magento 2
+	</div>
+</h1>
+-->
+
+<div class=""><iframe class="video-module--video--2DLpO" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/Cm9uiFH_ttI?enablejsapi=1&amp;origin=https%3A%2F%2Fmagemastery.net&amp;widgetid=1" id="widget2" data-gtm-yt-inspected-13306762_13="true" data-gtm-yt-inspected-13306762_14="true"></iframe></div>
+
+<div class="h1"><div class="en">Passing Data From Controller to Template</div><div class="ru">Передача данных от контроллера к шаблону</div></div>
+<div class="p"><div class="en">From the Template and Layout Rendering lesson, we've learned how to create a new template and render it on a custom page with the help of a layout. As you've noticed, the template provides HTML markup with the static text.</div><div class="ru">Из урока «Визуализация шаблонов и макетов» мы узнали, как создать новый шаблон и отобразить его на настраиваемой странице с помощью макета. Как вы заметили, шаблон предоставляет разметку HTML со статическим текстом.</div></div>
+
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>My First Template<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>With Layout support<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+<div class="p"><div class="en">This might be enough for a static website, but not for Magento 2 website. In this lesson, we are going to learn how to pass data from the PHP side, specifically from an Action Controller to the template.</div><div class="ru">Этого может быть достаточно для статического веб-сайта, но не для веб-сайта Magento 2. В этом уроке мы узнаем, как передавать данные со стороны PHP, в частности, из Action Controller в шаблон.</div></div>
+<div class="p"><div class="en">By the end of this lesson, you will know one of the ways how dynamic content can be rendered on a page.</div><div class="ru">К концу этого урока вы узнаете один из способов отображения динамического контента на странице.</div></div>
+<div class="h2"><div class="en">Lesson Overview</div><div class="ru">Обзор урока</div></div>
+<div class="p"><div class="en">In this lesson we are going to learn the following:</div><div class="ru">В этом уроке мы узнаем следующее:</div></div>
+<div class="p"><div class="en">How to pass data from a controller class to a template?</div><div class="ru">Как передать данные из класса контроллера в шаблон?</div></div>
+<div class="p"><div class="en">How to get access to a block class from a controller?</div><div class="ru">Как получить доступ к классу блока из контроллера?</div></div>
+<div class="p"><div class="en">How to assign data to a block class?</div><div class="ru">Как присвоить данные классу блока?</div></div>
+<div class="p"><div class="en">How to render dynamic data in a template?</div><div class="ru">Как отображать динамические данные в шаблоне?</div></div>
+<div class="p"><div class="en">Before we begin</div><div class="ru">Прежде чем мы начнем</div></div>
+<div class="p"><div class="en">You will need to download the source code from the previous lesson in order to follow the lesson.</div><div class="ru">Вам нужно будет загрузить исходный код из предыдущего урока, чтобы продолжить его.</div></div>
+<div class="h2"><div class="en">Controller Logic</div><div class="ru">Логика контроллера</div></div>
+<div class="p"><div class="en">Let's have a closer look at the execute() method of the View Controller class.</div><div class="ru">Давайте подробнее рассмотрим метод execute() класса View Controller.</div></div>
+<div class="h2"><div class="en">The Controller/Page/View.php file:</div><div class="ru">Файл Controller/Page/View.php:</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_PAGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+<div class="p"><div class="en">As you can see, the resultFactoryis used to create a new instance of a Magento\Framework\View\Result\Page class. The Page class includes logic, which is used to render all blocks and templates on the page. The created instance of the Page class includes the path to the example.phtml template from the MageMastery_FirstLayout module.</div><div class="ru">Как видите, resultFactory используется для создания нового экземпляра класса Magento\Framework\View\Result\Page. Класс Page включает логику, которая используется для отображения всех блоков и шаблонов на странице. Созданный экземпляр класса Page включает путь к шаблону example.phtml из модуля MageMaster_FirstLayout.</div></div>
+<div class="p"><div class="en">Once the execute() method returns a Page object, it will trigger the Page::render()method and content is rendered on a page.</div><div class="ru">Как только метод execute() возвращает объект Page, он запускает метод Page::render(), и содержимое отображается на странице.</div></div>
+<div class="p"><div class="en">However, if we want to pass content from a Controller class into the example.phtml template, the logic of the execute() method should be modified.</div><div class="ru">Однако, если мы хотим передать контент из класса Controller в example.phtml template, следует изменить логику метода execute().</div></div>
+<div class="p"><div class="en">First of all, let's assign a result of the create() method into the $page variable.</div><div class="ru">Прежде всего, присвоим результат метода create() переменной $page.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/** @var Page $page */</span>
+    <span class="token variable">$page</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_PAGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$page</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">Now, we can access any Block class, that has been added in the page for further rendering. The Page class has a dependency on a Layout class that can be used to retrieve an instance of a block by calling the getBlock() method. The getBlock(string $name) method accepts the $name argument.</div><div class="ru">Теперь мы можем получить доступ к любому классу Block, который был добавлен на страницу для дальнейшего рендеринга. Класс Page имеет зависимость от класса Layout, который можно использовать для получения экземпляра блока путем вызова метода getBlock(). Метод getBlock (string $name) принимает аргумент $name.</div></div>
+
+
+<div class="p"><div class="en">In the previous lesson we've discussed that the name of the Block declaration added to the magemastery_firstlayout_page_view.xml layout file is magemastery.first.layout.example. We can retrieve an instance of a block by calling the getBlock()method and passing the block name.</div><div class="ru">В предыдущем уроке мы обсуждали, что имя объявления блока, добавленного в файл макета magemaster_firstlayout_page_view.xml, - magemaster.first.layout.example. Мы можем получить экземпляр блока, вызвав метод getBlock() и передав имя блока.</div></div>
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>block</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Magento\Framework\View\Element\Template<span class="token punctuation">"</span></span>
+       <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>magemastery.first.layout.example<span class="token punctuation">"</span></span>
+       <span class="token attr-name">template</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MageMastery_FirstLayout::example.phtml<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span></code></pre></div>
+
+<div class="p"><div class="en">The $block variable is now refer to a Template class instance.</div><div class="ru">Переменная $block теперь ссылается на экземпляр класса Template.</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$block</span> <span class="token operator">=</span> <span class="token variable">$page</span><span class="token operator">-&gt;</span><span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">getBlock</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'magemastery.first.layout.example'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+
+
+<div class="p"><div class="en">The Template class allows us to set additional data. For this, the setData() method has to be used. There are other methods available for setting data to a Template object, but for this lesson, we will only use the setData() method. The Template::setData(string $name, mixed $value = null) method accepts two arguments. First argument is the name of the key for which the value has to be set. Further more, the key has to be used to access the assigned value.</div><div class="ru">Класс Template позволяет нам устанавливать дополнительные данные. Для этого необходимо использовать метод setData(). Существуют и другие методы для установки данных в объект Template, но в этом уроке мы будем использовать только метод setData(). Метод Template::setData(string $name, mixed $value = null) принимает два аргумента. Первый аргумент - это имя ключа, для которого должно быть установлено значение. Более того, ключ должен использоваться для доступа к назначенному значению.</div></div>
+<div class="p"><div class="en">Let's assign a value to the key called custom_parameter.</div><div class="ru">Давайте присвоим значение ключу custom_parameter.</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'Data from the Controller'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+
+<div class="p"><div class="en">As a result, the block instance has new data assigned and it can be accessed via the getData() method.</div><div class="ru">В результате экземпляру блока назначены новые данные, и к ним можно получить доступ через метод getData ().</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$data</span> <span class="token operator">=</span> <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* Retult
+Array ( 
+    [type] =&gt; Magento\Framework\View\Element\Template 
+    [custom_parameter] =&gt; Data from the Controller 
+)
+*/</span></code></pre></div>
+
+<div class="p"><div class="en">Alternatively, we can pass the name of the key to the getData(string $key = null, int $index = null) method.</div><div class="ru">В качестве альтернативы мы можем передать имя ключа методу getData (string $ key = null, int $ index = null).</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$customParameter</span> <span class="token operator">=</span> <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$customParameter</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Result: Data from the Controller </span></code></pre></div>
+
+<div class="p"><div class="en">The result of the modified execute() method:</div><div class="ru">Результат модифицированного метода execute():</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/** @var Page $page */</span>
+    <span class="token variable">$page</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_PAGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/** @var Template $block */</span>
+    <span class="token variable">$block</span> <span class="token operator">=</span> <span class="token variable">$page</span><span class="token operator">-&gt;</span><span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">getBlock</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'magemastery.first.layout.example'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'Data from the Controller'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token variable">$page</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+<div class="p"><div class="en">The execute()method creates an instance of the Page class, returns an instance of a Template from the pool of declared blocks that has the magemastery.first.layout.exampleblock name. Then the custom value is assigned to the block. Lastly, the Page object is returned from the execute() method for rendering.</div><div class="ru">Метод execute() создает экземпляр класса Page, возвращает экземпляр Template из пула объявленных блоков с именем блока magemaster.first.layout.example. Затем блоку присваивается пользовательское значение. Наконец, объект Page возвращается из метода execute () для рендеринга.</div></div>
+<div class="h2"><div class="en">The app/code/MageMastery/FirstLayout/Controller/Page/View.php file:</div><div class="ru">Файл app/code/MageMaster/FirstLayout/Controller/Page/View.php:</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">declare</span><span class="token punctuation">(</span>strict_types<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token package">MageMastery<span class="token punctuation">\</span>FirstLayout<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>Page</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Action<span class="token punctuation">\</span>Action</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>ResultFactory</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Element<span class="token punctuation">\</span>Template</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Result<span class="token punctuation">\</span>Page</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">View</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">/** @var Page $page */</span>
+        <span class="token variable">$page</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resultFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name static-context">ResultFactory</span><span class="token operator">::</span><span class="token constant">TYPE_PAGE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/** @var Template $block */</span>
+        <span class="token variable">$block</span> <span class="token operator">=</span> <span class="token variable">$page</span><span class="token operator">-&gt;</span><span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">getBlock</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'magemastery.first.layout.example'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'Data from the Controller'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token variable">$page</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre></div>
+
+
+
+
+
+<div class="h2"><div class="en">Template Logic</div><div class="ru">Логика шаблона</div></div>
+<div class="p"><div class="en">Every PHTML template that is rendered by the Magento\Framework\View\Element\Template class has access to a $block variable inside the template. The $block variable is an instance of a current Template class or any subclass, that extends the Template class.</div><div class="ru">Каждый шаблон PHTML, отображаемый классом Magento\Framework\View\Element\Template, имеет доступ к переменной $block внутри шаблона. Переменная $block является экземпляром текущего класса Template или любого подкласса, который расширяет класс Template.</div></div>
+<div class="p"><div class="en">In order to get access to the custom_parameter inside the example.phtml template, we have to use the Template::getData() method.</div><div class="ru">Чтобы получить доступ к custom_parameter внутри шаблона example.phtml, мы должны использовать метод Template::getData().</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token php language-php"><span class="token delimiter important">&lt;?=</span> <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+<div class="p"><div class="en">It is also practical to add a doc-block with the name of the class, so the IDE, in my case PHPStorm will highlight all public methods. The final example.phtml template:</div><div class="ru">Также практично добавить документ-блок с именем класса, поэтому IDE, в моем случае PHPStorm, будет выделять все общедоступные методы. Последний шаблон example.phtml:</div></div>
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Element<span class="token punctuation">\</span>Template</span><span class="token punctuation">;</span>
+<span class="token comment">/** @var Template $block */</span>
+<span class="token delimiter important">?&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>My First Template<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>With Layout support<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token php language-php"><span class="token delimiter important">&lt;?=</span> <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'custom_parameter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+<div class="p"><div class="en">As a result, the page should render the custom parameter.</div><div class="ru">В результате на странице должен отображаться специальный параметр.</div></div>
+
+<div class="img">
+	<img src="../images/passing-data-from-controller-to-template/custom-dynamic-data.png" alt="">
+</div>
+
+
+<div class="h2"><div class="en">Important to Know</div><div class="ru">Важно знать</div></div>
+<div class="p"><div class="en">Even if you can use PHP inside a PHTML template, there shouldn't be any business or calculation logic located in the template. All business logic should be located in a so-called Service Layer or a PHP class that represents such business logic. We are going to talk more about the Service Layer in the upcoming lessons. PHTML templates should be as simple and tiny as possible, and only include data and simple PHP logic inside such as loops and conditions.</div><div class="ru">Даже если вы можете использовать PHP внутри шаблона PHTML, в шаблоне не должно быть никакой бизнес-логики или логики вычислений. Вся бизнес-логика должна быть расположена на так называемом уровне обслуживания или классе PHP, который представляет такую ​​бизнес-логику. Мы собираемся подробнее поговорить об уровне обслуживания в следующих уроках. Шаблоны PHTML должны быть как можно более простыми и миниатюрными и включать в себя только данные и простую логику PHP, такую ​​как циклы и условия.</div></div>
+<div class="h2"><div class="en">Other Methods for Passing Dynamic Data</div><div class="ru">Другие методы передачи динамических данных</div></div>
+<div class="p"><div class="en">This is not the only way to pass data from a PHP class to a PHTML template. This is only one of the ways that you should be aware of when building custom Magento 2 functionality. The preferred method of passing data to a PHTML template is a usage of a View Model class. The View Model class and its capabilities is the next lesson of the Magento 2 for Beginners course.</div><div class="ru">Это не единственный способ передать данные из класса PHP в шаблон PHTML. Это только один из способов, о которых вам следует знать при создании пользовательской функциональности Magento 2. Предпочтительный метод передачи данных в шаблон PHTML - это использование класса модели представления. Класс View Model и его возможности - это следующий урок курса Magento 2 для начинающих.</div></div>
+
+
+
+<a href=".\template-layout-rendering.html">PREV</a>
+<a href=".\view-model-magento-2.html">NEXT</a>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

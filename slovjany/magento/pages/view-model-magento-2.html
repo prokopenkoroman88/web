@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Просмотреть модель в Magento 2</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+<h1 class="h1">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h1>
+
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+
+<h2 class="h2">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h2>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+-->
+
+<a href="https://magemastery.net/courses/magento-2-beginner/view-model-magento-2">Оригинал</a>
+<!--
+<h1 class="h1">
+	<div class="en">
+		A Module in Magento 2
+	</div>
+	<div class="ru">
+		Модули в Magento 2
+	</div>
+</h1>
+-->
+
+<div class=""><iframe class="video-module--video--2DLpO" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/tjIcX4pbal4?enablejsapi=1&amp;origin=https%3A%2F%2Fmagemastery.net&amp;widgetid=3" id="widget4" data-gtm-yt-inspected-13306762_13="true" data-gtm-yt-inspected-13306762_14="true"></iframe></div>
+
+
+<div class="h1"><div class="en">View Model in Magento 2</div><div class="ru">Просмотреть модель в Magento 2</div></div>
+<div class="p"><div class="en">A view model is a class that allows you to pass data and additional functionality from a place that represents a business logic to a template. It also can provide data loaded from an entity, for example, a product. The view model allows developers to simplify templates and block classes by providing separate classes that are easier to test and maintain.</div><div class="ru">Модель представления - это класс, который позволяет передавать данные и дополнительные функции из места, представляющего бизнес-логику, в шаблон. Он также может предоставлять данные, загруженные из объекта, например продукта. Модель представления позволяет разработчикам упростить шаблоны и классы блоков, предоставляя отдельные классы, которые легче тестировать и поддерживать.</div></div>
+<div class="p"><div class="en">The View Model class can hold calculation logic, data lookups, object fetches and pass it directly to a template, so the template’s logic can be as simple as possible.</div><div class="ru">Класс View Model может содержать логику вычислений, поиск данных, выборку объектов и передавать их непосредственно в шаблон, поэтому логика шаблона может быть максимально простой.</div></div>
+<div class="p"><div class="en">View Models usually located in the module’s directory called ViewModel. The location of view model classes, however, is not limited to a ViewModel directory. You can create as many view models as needed in order to provide a required set of separate classes with its own logic.</div><div class="ru">Просмотр моделей обычно находится в каталоге модуля под названием ViewModel. Однако расположение классов модели представления не ограничивается каталогом ViewModel. Вы можете создать столько моделей представлений, сколько необходимо, чтобы предоставить необходимый набор отдельных классов со своей собственной логикой.</div></div>
+<div class="h2"><div class="en">Lesson Overview</div><div class="ru">Обзор урока</div></div>
+<div class="p"><div class="en">In this lesson we are going to learn the following:</div><div class="ru">В этом уроке мы узнаем следующее:</div></div>
+<div class="p"><div class="en">What is a View Model?</div><div class="ru">Что такое модель просмотра?</div></div>
+<div class="p"><div class="en">How to use View Model?</div><div class="ru">Как использовать модель просмотра?</div></div>
+<div class="p"><div class="en">When to use a View Model?</div><div class="ru">Когда использовать модель представления?</div></div>
+<div class="p"><div class="en">View Model Example</div><div class="ru">Посмотр примера модели</div></div>
+<div class="p"><div class="en">The concept of a view model is simple, and at the same time powerful. Let’s jump into the example to better understand the creation flow. In order to implement a view model, we have to create a PHP class in ViewModel directory.</div><div class="ru">Концепция модели представления проста и в то же время эффективна. Давайте рассмотрим этот пример, чтобы лучше понять процесс создания. Чтобы реализовать модель представления, мы должны создать класс PHP в каталоге ViewModel.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">class</span> ProductViewModel
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$resource</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Resource</span> <span class="token variable">$resource</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resource</span> <span class="token operator">=</span> <span class="token variable">$resource</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getProductBySku</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$sku</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">ProductInterface</span>
+    <span class="token punctuation">{</span>
+         <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resource</span><span class="token operator">-&gt;</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token variable">$sku</span><span class="token punctuation">,</span> ‘sku’<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">The only requirement is that the ProductViewModel class must implement Magento\Framework\View\Element\Block\ArgumentInterface. Let's add it.</div><div class="ru">Единственное требование - класс ProductViewModel должен реализовывать Magento\Framework\View\Element\Block\ArgumentInterface. Добавим.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Element<span class="token punctuation">\</span>Block<span class="token punctuation">\</span>ArgumentInterface</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductViewModel</span> <span class="token keyword">implements</span> <span class="token class-name">ArgumentInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></div>
+
+
+<div class="p"><div class="en">Once the view model class is created, we have to add it to a layout XML file. So that during layout rendering, it will find the view model class, instantiate it and add into the pool of a Block class dependencies.</div><div class="ru">После создания класса модели представления мы должны добавить его в XML-файл макета. Так что во время рендеринга макета он найдет класс модели представления, создаст его экземпляр и добавит в пул зависимостей класса блока.</div></div>
+<div class="p"><div class="en">A Layout XML file should be located in the view/frontend/layout directory of the module. In the Template and Layout rendering lesson, we’ve discussed different layout configuration areas. Make sure to check the lesson to better understand frontend and adminhtml directory locations for layout xml files.</div><div class="ru">XML-файл макета должен находиться в каталоге модуля view/frontend/layout. На уроке рендеринга шаблонов и макетов мы обсудили различные области конфигурации макета. Обязательно ознакомьтесь с уроком, чтобы лучше понять расположение каталогов frontend и adminhtml для макетов xml-файлов.</div></div>
+<div class="p"><div class="en">Inside the layout file, we have to add new node in the and. The two attributes should be added to the node, the name of the view model variable and its type, the type should be always set to an object since we pass a class name that has to be initiated as a view model.</div><div class="ru">Внутри файла макета мы должны добавить новый узел в файлы и. К узлу должны быть добавлены два атрибута: имя переменной модели представления и ее тип, тип всегда должен быть установлен для объекта, поскольку мы передаем имя класса, который должен быть инициирован как модель представления.</div></div>
+
+
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>page</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>referenceBlock</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>block.name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arguments</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> 
+                    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>view_model<span class="token punctuation">"</span></span> 
+                    <span class="token attr-name"><span class="token namespace">xsi:</span>type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>object<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>MageMastery\ViewModelExample\ViewModel\ProductViewModel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>argument</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>arguments</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>referenceBlock</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>page</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+
+<div class="p"><div class="en">From the example above, a "block.name" can be a name of a block, where we want to add a View Model class.</div><div class="ru">В приведенном выше примере «block.name» может быть именем блока, в который мы хотим добавить класс модели представления.</div></div>
+<div class="p"><div class="en">Inside the node we have to provide the full class name of the view model. Remember, all objects that are injected to block arguments as view models should implement ArgumentInterface interface.</div><div class="ru">Внутри узла мы должны указать полное имя класса модели представления. Помните, что все объекты, которые вводятся для блокировки аргументов в качестве моделей представления, должны реализовывать интерфейс ArgumentInterface.</div></div>
+<div class="p"><div class="en">Finally, the template of the block to which we’ve added the view model class can get access to the view model. The view model object is passed as an argument of the Template object. It can be accessed via the getData() method by providing the name of the argument we’ve provided in the layout XML file.</div><div class="ru">Наконец, шаблон блока, в который мы добавили класс модели представления, может получить доступ к модели представления. Объект модели представления передается как аргумент объекта Template. Доступ к нему можно получить с помощью метода getData(), указав имя аргумента, которое мы предоставили в XML-файле макета.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token comment">/** @var ProductData $productData */</span>
+<span class="token variable">$productData</span> <span class="token operator">=</span> <span class="token variable">$block</span><span class="token operator">-&gt;</span><span class="token function">getData</span><span class="token punctuation">(</span>“view_model”<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+
+
+<div class="p"><div class="en">After we’ve received an access to the view model, we can start using it in the template.</div><div class="ru">После того, как мы получили доступ к модели представления, мы можем начать использовать ее в шаблоне.</div></div>
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token php language-php"><span class="token delimiter important">&lt;?=</span> <span class="token variable">$productData</span><span class="token operator">-&gt;</span><span class="token function">getProductBySku</span><span class="token punctuation">(</span>‘sku’<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+<div class="p"><div class="en">And as a result, the data provided from the view model class is rendered by a template.</div><div class="ru">И в результате данные, предоставленные из класса модели представления, отображаются с помощью шаблона.</div></div>
+
+<div class="img">
+	<img src="../images/view-model-magento-2/view-model-rendering-result.png" alt="">
+</div>
+
+
+<div class="h2"><div class="en">View Model Checklist</div><div class="ru">Просмотреть контрольный список модели</div></div>
+<div class="p"><div class="en">Let’s recap what we need to create and use a view model.</div><div class="ru">Подведем итоги, что нам нужно для создания и использования модели представления.</div></div>
+<div class="h2"><div class="en">Create a PHP class</div><div class="ru">Создать класс PHP</div></div>
+<div class="p"><div class="en">Add an ArgumentInterface</div><div class="ru">Добавить ArgumentInterface</div></div>
+<div class="p"><div class="en">Add a PHP Class into a layout xml</div><div class="ru">Добавить класс PHP в макет xml</div></div>
+<div class="p"><div class="en">Retrieve a View Model in a template</div><div class="ru">Получить модель представления в шаблоне</div></div>
+<div class="p"><div class="en">Use View Model public methods</div><div class="ru">Использовать общедоступные методы модели просмотра</div></div>
+<div class="p"><div class="en">When to use a View Model?</div><div class="ru">Когда использовать модель представления?</div></div>
+<div class="p"><div class="en">A view model should be used every time you have to pass data from storage or the other object to a template for rendering. It includes calculation logic, data lookups, object fetches and so on.</div><div class="ru">Модель представления следует использовать каждый раз, когда вам нужно передать данные из хранилища или другого объекта в шаблон для визуализации. Он включает в себя логику вычислений, поиск данных, выборку объектов и так далее.</div></div>
+<div class="p"><div class="en">A view model has to be used instead of a block, so your code will be less dependent on block changes in the Magento 2 framework.</div><div class="ru">Вместо блока должна использоваться модель представления, поэтому ваш код будет меньше зависеть от изменений блоков в фреймворке Magento 2.</div></div>
+<div class="h2"><div class="en">##Conclusion A view model in Magento 2 is a powerful mechanism that allows us to represent and provide data ready for rendering in a template. It provides a simple tool that is recommended to use every time a UI customization should be added.</div><div class="ru">## Заключение Модель представления в Magento 2 - это мощный механизм, который позволяет нам представлять и предоставлять данные, готовые для рендеринга, в шаблоне. Он предоставляет простой инструмент, который рекомендуется использовать каждый раз, когда необходимо добавить настройку пользовательского интерфейса.</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href=".\passing-data-from-controller-to-template.html">PREV</a>
+<a href=".\model-magento-2.html">NEXT</a>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

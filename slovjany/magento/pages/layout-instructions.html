@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Layout instructions Инструкции по макету</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+
+<a href="https://devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html">Оригинал</a>
+
+
+
+<div class="h1"><div class="en">Layout instructions</div><div class="ru">Инструкции по макету</div></div>
+<div class="p"><div class="en">What’s in this topic</div><div class="ru">Что в этой теме</div></div>
+<div class="p"><div class="en">There are two possible ways to customize page layout in Magento:</div><div class="ru">Есть два возможных способа настроить макет страницы в Magento:</div></div>
+<div class="h2"><div class="en">Changing layout files.</div><div class="ru">Изменение файлов макета.</div></div>
+<div class="p"><div class="en">Altering templates.</div><div class="ru">Изменение шаблонов.</div></div>
+<div class="p"><div class="en">To change the page wireframe, modify the page layout files; all other customizations are performed in the page configuration or generic layout files.</div><div class="ru">Чтобы изменить каркас страницы, измените файлы макета страницы; все остальные настройки выполняются в файлах конфигурации страницы или общего макета.</div></div>
+<div class="h2"><div class="en">Manage layouts</div><div class="ru">Управлять макетами</div></div>
+<div class="p"><div class="en">To make layout changes available on every page, modify the default.xml file. For example, layout changes added to app/code/Vendor/Module/view/frontend/layout/default.xml are loaded on all pages. To add layout changes to a specific page, use a layout file that corresponds to the page’s path. For example, changes to the app/code/Vendor/Module/view/frontend/layout/catalog_product_view.xml page are loaded on the product details page.</div><div class="ru">Чтобы изменения макета были доступны на каждой странице, измените файл default.xml. Например, изменения макета, добавленные в app / code / Vendor / Module / view / frontend / layout / default.xml, загружаются на все страницы. Чтобы добавить изменения макета на определенную страницу, используйте файл макета, соответствующий пути к странице. Например, изменения на странице app / code / Vendor / Module / view / frontend / layout / catalog_product_view.xml загружаются на страницу сведений о продукте.</div></div>
+<div class="h2"><div class="en">Use these layout instructions to:</div><div class="ru">Используйте эти инструкции по макету, чтобы:</div></div>
+<div class="p"><div class="en">Move a page element to another parent element.</div><div class="ru">Переместите элемент страницы в другой родительский элемент.</div></div>
+<div class="p"><div class="en">Add content.</div><div class="ru">Добавить содержимое.</div></div>
+<div class="p"><div class="en">Remove a page element.</div><div class="ru">Удалить элемент страницы.</div></div>
+<div class="p"><div class="en">Arrange the element position.</div><div class="ru">Расставьте позицию элемента.</div></div>
+<div class="p"><div class="en">The basic set of instructions is the same for all types of layout files. This topic describes these basic instructions. For details about how they are used in a particular layout file type, please refer to the Layout file types topic.</div><div class="ru">Базовый набор инструкций одинаков для всех типов файлов макета. В этом разделе описаны эти основные инструкции. Дополнительные сведения о том, как они используются в конкретном типе файла макета, см. В разделе «Типы файлов макета».</div></div>
+<div class="h2"><div class="en">Common layout instructions</div><div class="ru">Общие инструкции по макету</div></div>
+<div class="p"><div class="en">Use the following layout instructions to customize your layout:</div><div class="ru">Используйте следующие инструкции по макету, чтобы настроить макет:</div></div>
+
+<ul>
+  <li><a href="#fedg_layout_xml-instruc_ex_block"><code class="language-plaintext highlighter-rouge">&lt;block&gt;</code></a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_cont"><code class="language-plaintext highlighter-rouge">&lt;container&gt;</code></a></li>
+  <li><a href="#fedg_xml-instrux_before-after"><code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> attributes</a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_act"><code class="language-plaintext highlighter-rouge">&lt;action&gt;</code></a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_ref"><code class="language-plaintext highlighter-rouge">&lt;referenceBlock&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;referenceContainer&gt;</code></a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_mv"><code class="language-plaintext highlighter-rouge">&lt;move&gt;</code></a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_rmv"><code class="language-plaintext highlighter-rouge">&lt;remove&gt;</code></a></li>
+  <li><a href="#fedg_layout_xml-instruc_ex_upd"><code class="language-plaintext highlighter-rouge">&lt;update&gt;</code></a></li>
+  <li><a href="#argument"><code class="language-plaintext highlighter-rouge">&lt;argument&gt;</code></a></li>
+  <li><a href="#block_vs_container"><code class="language-plaintext highlighter-rouge">&lt;block&gt; vs &lt;container&gt;</code></a></li>
+</ul>
+
+
+<div class="h2" id="fedg_layout_xml-instruc_ex_block"><div class="en">block</div><div class="ru">блок</div></div>
+<div class="p"><div class="en">Defines a block.</div><div class="ru">Определяет блок.</div></div>
+<div class="p"><div class="en">Details: A block is a unit of page output that renders some distinctive content (anything visually tangible for the end-user), such as a piece of information or a user interface element.</div><div class="ru">Подробности: блок - это единица вывода страницы, которая отображает некоторый отличительный контент (что-либо визуально осязаемое для конечного пользователя), например, часть информации или элемент пользовательского интерфейса.</div></div>
+<div class="p"><div class="en">Blocks are a foundational building unit for layouts in Magento. They are the link between a PHP block class (which contains logic) and a template (which renders content). Blocks can have children and grandchildren (and so on). Information can be passed from layout XML files to blocks using the <arguments> child node.</arguments></div><div class="ru">Блоки - это фундаментальная единица построения макетов в Magento. Они являются связующим звеном между классом блока PHP (который содержит логику) и шаблоном (который отображает контент). У блоков могут быть дети и внуки (и так далее). Информация может передаваться из XML-файлов макета в блоки с помощью дочернего узла <arguments>.</arguments></div></div>
+<div class="p"><div class="en">Blocks employ templates to generate HTML. Examples of blocks include a category list, a mini cart, product tags, and product listing.</div><div class="ru">Блоки используют шаблоны для генерации HTML. Примеры блоков включают список категорий, мини-корзину, теги продуктов и список продуктов.</div></div>
+<div class="p"><div class="en">We recommend always adding a name to blocks. Otherwise, it is given a random name.</div><div class="ru">Мы рекомендуем всегда добавлять имя к блокам. В противном случае ему дается случайное имя.</div></div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Values</th>
+      <th style="text-align: left">Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">class</code></td>
+      <td style="text-align: left">Name of a class that implements rendering of a particular block. An object of this class is responsible for actual rendering of block output.</td>
+      <td style="text-align: left">A fully-qualified class name, such as <code class="language-plaintext highlighter-rouge">Vendor\Module\Block\Class</code>. Defaults to <code class="language-plaintext highlighter-rouge">Magento\Framework\View\Element\Template</code>.</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">display</code></td>
+      <td style="text-align: left">Prevents a block from displaying (the associated PHP classes are still loaded).</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code>. Defaults to <code class="language-plaintext highlighter-rouge">true</code>.</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td style="text-align: left">Name that can be used to address the block to which this attribute is assigned. The name must be unique per generated page. If not specified, an automatic name will be assigned in the format <code>ANONYMOUS_<em>n</em></code></td>
+      <td style="text-align: left">0-9, A-Z, a-z, underscore (_), period (.), dash (-). Should start with a letter. Case-sensitive.</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">before</code></td>
+      <td style="text-align: left">Used to position the block before an element under the same parent. The element name or alias name is specified in the value. Use dash (-) to position the block before all other elements of its level of nesting. See <a href="#fedg_xml-instrux_before-after">before and after attributes</a> for details.</td>
+      <td style="text-align: left">Element name or dash (-)</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code></td>
+      <td style="text-align: left">Used to position the block after an element under the same parent. The element name or alias name is specified in the value. Use dash (-) to position the block after all other elements of its level of nesting. See <a href="#fedg_xml-instrux_before-after">before and after attributes</a> for details.</td>
+      <td style="text-align: left">Element name or dash (-)</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">template</code></td>
+      <td style="text-align: left">A template that represents the functionality of the block to which this attribute is assigned. If the attribute is omitted, the block will not render any output unless the block class (or a parent class) has the <code class="language-plaintext highlighter-rouge">$_template</code> property defined correctly.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Vendor_Module::path/to/template.phtml</code> (Scope is already in the <code class="language-plaintext highlighter-rouge">templates</code> directory of the module)</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">as</code></td>
+      <td style="text-align: left">An alias name that serves as identifier in the scope of the parent element.</td>
+      <td style="text-align: left">0-9, A-Z, a-z, underscore (_), period (.), dash (-). Case-sensitive.</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">cacheable</code></td>
+      <td style="text-align: left">Defines whether a block element is cacheable. This can be used for development purposes and to make needed elements of the page dynamic.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code>. Defaults to <code class="language-plaintext highlighter-rouge">true</code>.</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ifconfig</code></td>
+      <td style="text-align: left">Makes the block’s visibility dependent on a system configuration field.</td>
+      <td style="text-align: left">XPath to the system configuration field. E.g. <code class="language-plaintext highlighter-rouge">contact/contact/enabled</code></td>
+      <td style="text-align: left">no</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class=p"><div class="en">To pass parameters use the <a href="#argument"><code class="language-plaintext highlighter-rouge">&lt;argument&gt;&lt;/argument&gt;</code></a> instruction.</div><div class="ru">Для передачи параметров используйте инструкцию <a href="#argument"><code class="language-plaintext highlighter-rouge">&lt;argument&gt;&lt;/argument&gt;</code></a></div></div>
+
+
+<div class="p"><div class="en">Sample of usage in the product listing page layout:</div><div class="ru">Пример использования в макете страницы со списком товаров:</div></div>
+
+<h3 id="fedg_layout_xml-instruc_ex_cont"><a class="anchor" href="//devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex_cont"></a>container</h3>
+
+
+
+
+<div class="p"><div class="en">A structure without content that holds other layout elements such as blocks and containers.</div><div class="ru">Структура без содержимого, содержащая другие элементы макета, такие как блоки и контейнеры.</div></div>
+<div class="p"><div class="en">Details: A container renders child elements during view output generation. It can be empty or it can contain an arbitrary set of &lt;container&gt; and &lt;block&gt; elements. If the &lt;container&gt; is empty, and there is no child &lt;block&gt; available, it will not be displayed in the frontend source code.</div><div class="ru">Подробности: контейнер отображает дочерние элементы во время генерации вывода представления. Он может быть пустым или содержать произвольный набор элементов &lt;container> и &lt;block>. Если &lt;container&gt; пуст и нет доступного дочернего &lt;block&gt;, он не будет отображаться в исходном коде внешнего интерфейса.</div></div>
+<div class="p"><div class="en">We recommend always adding a name to containers. Otherwise, it is given a random name.</div><div class="ru">Мы рекомендуем всегда добавлять имя к контейнерам. В противном случае ему дается случайное имя.</div></div>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Values</th>
+      <th style="text-align: left">Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td style="text-align: left">A name that can be used to address the container in which this attribute is assigned. The name must be unique per generated page. If not specified, it will be auto-generated.</td>
+      <td style="text-align: left">A-Z, a-z, 0-9, underscore (_), period (.), dash (-). Should start with a letter. Case-sensitive.</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">label</code></td>
+      <td style="text-align: left">Describes the purpose of the container.</td>
+      <td style="text-align: left">Any</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">before</code></td>
+      <td style="text-align: left">Used to position the container before an element under the same parent. The element name or alias name is specified in the value. Use dash (-) to position the block before all other elements of its level of nesting. See <a href="#fedg_xml-instrux_before-after">before and after attributes</a> for details.</td>
+      <td style="text-align: left">Element name or dash (<code class="language-plaintext highlighter-rouge">-</code>)</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code></td>
+      <td style="text-align: left">Used to position the container after an element under the same parent. The element name or alias name is specified in the value. Use dash (-) to position the block after all other elements of its level of nesting. See <a href="#fedg_xml-instrux_before-after">before and after attributes</a> for details.</td>
+      <td style="text-align: left">Element name or dash (-).</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">as</code></td>
+      <td style="text-align: left">An alias name that serves as identifier in the scope of the parent element.</td>
+      <td style="text-align: left">0-9, A-Z, a-z, underscore (_), period (.), dash (-). Case-sensitive.</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">output</code></td>
+      <td style="text-align: left">Defines whether to output the root element. If specified, the element will be added to output list. (If not specified, the parent element is responsible for rendering its children.)</td>
+      <td style="text-align: left">Any value except the obsolete <code class="language-plaintext highlighter-rouge">toHtml</code>. Recommended value is <code class="language-plaintext highlighter-rouge">1</code>.</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">htmlTag</code></td>
+      <td style="text-align: left">Output parameter. If specified, the output is wrapped into specified HTML tag.</td>
+      <td style="text-align: left">Any of the following: <code class="language-plaintext highlighter-rouge">aside</code>, <code class="language-plaintext highlighter-rouge">dd</code>, <code class="language-plaintext highlighter-rouge">div</code>, <code class="language-plaintext highlighter-rouge">dl</code>, <code class="language-plaintext highlighter-rouge">fieldset</code>, <code class="language-plaintext highlighter-rouge">main</code>, <code class="language-plaintext highlighter-rouge">nav</code>, <code class="language-plaintext highlighter-rouge">header</code>, <code class="language-plaintext highlighter-rouge">footer</code>, <code class="language-plaintext highlighter-rouge">ol</code>, <code class="language-plaintext highlighter-rouge">p</code>, <code class="language-plaintext highlighter-rouge">section</code>, <code class="language-plaintext highlighter-rouge">table</code>, <code class="language-plaintext highlighter-rouge">tfoot</code>, <code class="language-plaintext highlighter-rouge">ul</code></td>
+      <td style="text-align: left">No, Yes - if <code class="language-plaintext highlighter-rouge">htmlClass</code> or <code class="language-plaintext highlighter-rouge">htmlId</code> is specified</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">htmlId</code></td>
+      <td style="text-align: left">Output parameter. If specified, the value is added to the wrapper element. If there is no wrapper element, this attribute has no effect.</td>
+      <td style="text-align: left">Any valid HTML 5 <code class="language-plaintext highlighter-rouge">id</code> value.</td>
+      <td style="text-align: left">No</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">htmlClass</code></td>
+      <td style="text-align: left">Output parameter. If specified, the value is added to the wrapper element. If there is no wrapper element, this attribute has no effect.</td>
+      <td style="text-align: left">Any valid HTML 5 <code class="language-plaintext highlighter-rouge">class</code> value.</td>
+      <td style="text-align: left">No</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="p"><div class="en">Sample of usage in layout:</div><div class="ru">Пример использования в макете:</div></div>
+
+
+
+<code class="code-xml">
+<container name="div.sidebar.additional" htmlTag="div" htmlClass="sidebar sidebar-additional" after="div.sidebar.main">
+    <container name="sidebar.additional" as="sidebar_additional" label="Sidebar Additional"/>
+</container>
+</code>
+
+
+<div class="p"><div class="en">This would add a new column to the page layout.</div><div class="ru">Это добавит новый столбец в макет страницы.</div></div>
+<div class="p"><div class="en">Controlling children visibility</div><div class="ru">Контроль над видимостью детей</div></div>
+<div class="p"><div class="en">The output attribute controls the visibility of the container’s children elements. Set this value to 1 to render children content or 0 to disable the output of the entire container.</div><div class="ru">Атрибут output управляет видимостью дочерних элементов контейнера. Установите для этого значения 1, чтобы отображать дочерний контент, или 0, чтобы отключить вывод всего контейнера.</div></div>
+<div class="h2"><div class="en">Use this feature to make temporary changes to a store, such as disabling a section of the page for a sales event and re-enabling it after the event ends.</div><div class="ru">Используйте эту функцию, чтобы внести временные изменения в магазин, например отключить раздел страницы для события продаж и повторно включить его после завершения мероприятия.</div></div>
+
+<h3 id="block_vs_container"><a class="anchor" href="//devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#block_vs_container"></a>block vs. container</h3>
+
+<div class="p"><div class="en">Blocks represents the end of the chain in rendering HTML for Magento.</div><div class="ru">Блоки представляют собой конец цепочки рендеринга HTML для Magento.</div></div>
+<div class="p"><div class="en">Containers contain blocks and can wrap them in an HTML tag.</div><div class="ru">Контейнеры содержат блоки и могут заключать их в теги HTML.</div></div>
+<div class="p"><div class="en">Containers do not render any output if there are no children assigned to them.</div><div class="ru">Контейнеры не отображают никаких выходных данных, если им не назначены дочерние элементы.</div></div>
+
+<h3 id="fedg_xml-instrux_before-after"><a class="anchor" href="//devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#fedg_xml-instrux_before-after"></a>before and after attributes</h3>
+
+
+<div class="p"><div class="en">To help you to position elements in a specific order suitable for design, SEO, usability, or other requirements, Magento software provides the before and after layout attributes. These optional attributes can be used in layout XML files to control the order of elements in their common parent.</div><div class="ru">Чтобы помочь вам расположить элементы в определенном порядке, подходящем для дизайна, SEO, удобства использования или других требований, программное обеспечение Magento предоставляет атрибуты макета до и после. Эти необязательные атрибуты можно использовать в XML-файлах макета для управления порядком элементов в их общем родительском элементе.</div></div>
+<div class="h2"><div class="en">The following tables give a detailed description of the results you can get using the before and after attributes. The first table uses a block a as positioned element.</div><div class="ru">В следующих таблицах дается подробное описание результатов, которые можно получить с помощью атрибутов до и после. В первой таблице в качестве позиционированного элемента используется блок a.</div></div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Value</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">before</code></td>
+      <td style="text-align: left">Dash (-)</td>
+      <td style="text-align: left">The block displays before all other elements in its parent node.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">before</code></td>
+      <td style="text-align: left">[element name]</td>
+      <td style="text-align: left">The block displays before the named element.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">before</code></td>
+      <td style="text-align: left">Empty value or [element name] is absent</td>
+      <td style="text-align: left">Use the value of <code class="language-plaintext highlighter-rouge">after</code>. If that value is empty or absent as well, the element is considered as non-positioned.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code></td>
+      <td style="text-align: left">Dash (-)</td>
+      <td style="text-align: left">The block displays after all other elements in its parent node.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code></td>
+      <td style="text-align: left">[element name]</td>
+      <td style="text-align: left">The block displays after the named element.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code></td>
+      <td style="text-align: left">Empty value or [element name] is absent</td>
+      <td style="text-align: left">Use the value of <code class="language-plaintext highlighter-rouge">before</code>. If that value is empty or absent as well, the block is considered as non-positioned.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="examples">Examples</h4>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Situation</th>
+      <th style="text-align: left">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Both <code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> attributes are present</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">after</code> takes precedence.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Both <code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> attributes are absent or empty</td>
+      <td style="text-align: left">The element is considered as non-positioned. All other elements are positioned at their specified locations. The non-positioned element displays at a random position that doesn’t violate requirements for the positioned elements.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Several elements have <code class="language-plaintext highlighter-rouge">before</code> or <code class="language-plaintext highlighter-rouge">after</code> set to dash (-)</td>
+      <td style="text-align: left">All elements display at the top (or bottom, in case of the after attribute), but the ordering of group of these elements is undefined.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">The <code class="language-plaintext highlighter-rouge">before</code> or <code class="language-plaintext highlighter-rouge">after</code> attribute’s value refers to an element that is not located in the parent node of the element being defined.</td>
+      <td style="text-align: left">The element displays at a random location that doesn’t violate requirements for the correctly positioned elements.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sample usage in a layout:</p>
+
+<code class="code-xml">
+<referenceContainer name="page.wrapper">
+    <container name="header.container" as="header_container" label="Page Header Container" htmlTag="header" htmlClass="page-header" before="main.content"/>
+    <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+    <container name="footer-container" as="footer" after="-" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>
+</referenceContainer>
+</code>
+
+<h3 id="fedg_layout_xml-instruc_ex_act"><a class="anchor" href="//devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex_act"></a>action</h3>
+
+
+<div class="p"><div class="en">The &lt;action&gt; instruction is deprecated. If the method implementation allows, use the &lt;argument&gt; for &lt;block&gt; or &lt;referenceBlock&gt; to access the block public API.</div><div class="ru">Тег &lt;action&gt; инструкция устарела. Если реализация метода позволяет, используйте &lt;argument&gt; для &lt;block&gt; или &lt;referenceBlock&gt; для доступа к публичному API блока.</div></div>
+<div class="p"><div class="en">Calls public methods on the block API.</div><div class="ru">Вызывает общедоступные методы в API блока.</div></div>
+<div class="h2"><div class="en">Details: Used to set up the execution of a certain method of the block during block generation; the &lt;action&gt; node must be located in the scope of the &lt;block&gt; node.</div><div class="ru">Подробности: используется для настройки выполнения определенного метода блока при генерации блока; тег &lt;action&gt; узел должен находиться в области действия &lt;block&gt; узел.</div></div>
+
+<code class="code-xml">
+<block class="Magento\Module\Block\Class" name="block">
+    <action method="setText">
+        <argument name="text" translate="true" xsi:type="string">Text</argument>
+    </action>
+    <action method="setEnabled">
+        <argument name="enabled" xsi:type="boolean">true</argument>
+    </action>
+</block>
+</code>
+
+<div class="p"><div class="en">"action" child nodes are translated into block method arguments. Child nodes names are arbitrary. If there are two or more nodes with the same name under "action", they are passed as one array.</div><div class="ru">Дочерние узлы "action" преобразуются в аргументы блочного метода. Имена дочерних узлов произвольны. Если в "action" есть два или более узлов с одинаковым именем, они передаются как один массив.</div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Values</th>
+      <th style="text-align: left">Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">method</code></td>
+      <td style="text-align: left">The public method that is called during block generation.</td>
+      <td style="text-align: left">The method name in the block</td>
+      <td style="text-align: left">yes</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="p"><div class="en">To pass parameters, use the (argument)(/argument) instruction.</div><div class="ru">Для передачи параметров используйте инструкцию (аргумент) (/ аргумент).</div></div>
+
+<h3 id="fedg_layout_xml-instruc_ex_ref"><a class="anchor" href="//devdocs.magento.com/guides/v2.4/frontend-dev-guide/layouts/xml-instructions.html#fedg_layout_xml-instruc_ex_ref"></a>referenceBlock and referenceContainer</h3>
+<div class="p"><div class="en">Updates in (referenceBlock) and (referenceContainer) are applied to the corresponding (block) or (container).</div><div class="ru">Обновления в (referenceBlock) и (referenceContainer) применяются к соответствующему (блоку) или (контейнеру).</div></div>
+<div class="p"><div class="en">For example, if you make a reference by (referenceBlock name="right"), you are targeting the block (block name="right").</div><div class="ru">Например, если вы делаете ссылку с помощью (referenceBlock name = "right"), вы нацеливаетесь на блок (block name = "right").</div></div>
+<div class="p"><div class="en">To pass parameters to a block use the (argument)(/argument) instruction.</div><div class="ru">Чтобы передать параметры блоку, используйте инструкцию (аргумент) (/ аргумент).</div></div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Attribute</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Values</th>
+      <th style="text-align: left">Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">remove</code></td>
+      <td style="text-align: left">Allows to remove or cancel the removal of the element. When a container is removed, its child elements are removed as well.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">display</code></td>
+      <td style="text-align: left">Allows you to disable rendering of specific block or container with all its children (both set directly and by reference). The PHP objects of the block or container and its children are still generated and available for manipulation.</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td style="text-align: left">no</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<hr>
+
+<!--
+
+<code class="code-php">
+
+</code>
+
+-->
+
+
+<!--
+<code class="code-php">
+
+
+</code>
+-->
+
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

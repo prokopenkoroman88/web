@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Модули</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!--
+<h1 class="h1">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h1>
+
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+
+<h2 class="h2">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</h2>
+
+<div class="p">
+	<div class="en">
+		
+	</div>
+	<div class="ru">
+		
+	</div>
+</div>
+
+
+-->
+
+<a href="https://magemastery.net/courses/magento-2-beginner/module-in-magento-2">Оригинал</a>
+<!--
+<h1 class="h1">
+	<div class="en">
+		A Module in Magento 2
+	</div>
+	<div class="ru">
+		Модули в Magento 2
+	</div>
+</h1>
+-->
+
+
+
+<h1 class="h1">
+	<div class="en">A Module in Magento 2</div>
+	<div class="ru">Модуль в Magento 2</div>
+</h1>
+<div class="p">
+	<div class="en">Magento 2 is widely known for its extensibility. One of the extensibility concepts which Magento 2 Open Source supports is called Modularity. In this lesson, we will learn what is a Magento 2 Module.</div>
+	<div class="ru">Magento 2 широко известен своей расширяемостью. Одна из концепций расширяемости, которую поддерживает Magento 2 с открытым исходным кодом, называется модульностью. В этом уроке мы узнаем, что такое модуль Magento 2.</div></div><h2 class="h2"><div class="en">Lesson Overview</div><div class="ru">Обзор урока</div></h2><div class="p"><div class="en">In this lesson we are going to learn the following:</div><div class="ru">В этом уроке мы узнаем следующее:</div></div><h2 class="h2"><div class="en">What is a Module in Magento 2?</div><div class="ru">Что такое модуль в Magento 2?</div></h2><div class="p"><div class="en">How does a module name looks like?</div><div class="ru">Как выглядит название модуля?</div></div><div class="p"><div class="en">Where a Magento 2 module can be located?</div><div class="ru">Где можно разместить модуль Magento 2?</div></div><div class="p"><div class="en">How to create a Magento 2 Module?</div><div class="ru">Как создать модуль Magento 2?</div></div><div class="p"><div class="en">How to register a Module in a Magento 2?</div><div class="ru">Как зарегистрировать модуль в Magento 2?</div></div>
+
+
+
+
+<h2 class="h1"><div class="en">What is a Magento 2 Module?</div><div class="ru">Что такое модуль Magento 2?</div></h2><div class="p"><div class="en">A Module in Magento 2 is an independent component or a set of components that provide business logic and features. Magento 2 Open Source is a modular application and it supports modularity. It means that all functionality is implemented and delivered in components that are known as Modules. A Component is also known and called an Extension. A module and an extension is basically the same thing.</div><div class="ru">Модуль в Magento 2 - это независимый компонент или набор компонентов, которые предоставляют бизнес-логику и функции. Magento 2 Open Source - это модульное приложение, поддерживающее модульность. Это означает, что все функциональные возможности реализованы и поставляются в компонентах, известных как модули. Компонент также известен и называется расширением. Модуль и расширение - это в основном одно и то же.</div></div><h2 class="h2"><div class="en">Magento 2 Modules</div><div class="ru">Модули Magento 2</div></h2><h2 class="h2"><div class="en">Each extension or module in Magento 2 provides a set of capabilities that support the business and functional logic of a module. It allows bringing additional features for the e-commerce store which is based on Magento 2.</div><div class="ru">Каждое расширение или модуль в Magento 2 предоставляет набор возможностей, которые поддерживают бизнес-логику и функциональную логику модуля. Это позволяет добавить дополнительные функции для магазина электронной коммерции, основанного на Magento 2.</div></h2><h2 class="h2"><div class="en">Example</div><div class="ru">Пример</div></h2><div class="p"><div class="en">Let's take a Catalog module for example. The Catalog module provides a different set of features which include Category Management, Product Management, Product Types support for Simple and Virtual products, Catalog browsing capability and so on.</div><div class="ru">Возьмем, к примеру, модуль Каталога. Модуль «Каталог» предоставляет другой набор функций, включая управление категориями, управление продуктами, поддержку типов продуктов для простых и виртуальных продуктов, возможность просмотра каталога и т. Д.</div></div><h2 class="h2"><div class="en">Also, the module provides extensibility points for other modules which allow to extend the Catalog module with additional functionality. An example of such an additional module is a Downloadable Product module.</div><div class="ru">Кроме того, модуль предоставляет точки расширения для других модулей, которые позволяют расширить модуль Каталога дополнительными функциями. Примером такого дополнительного модуля является модуль Загружаемый продукт.</div></h2><h2 class="h2"><div class="en">A module in Magento 2 could bring a complex set of features from one side and from the other side it could be a tiny feature that adds an icon to a Product page for example.</div><div class="ru">Модуль в Magento 2 может иметь сложный набор функций с одной стороны, а с другой стороны это может быть крошечная функция, которая, например, добавляет значок на страницу продукта.</div></h2><h2 class="h2"><div class="en">A Module Name</div><div class="ru">Имя модуля</div></h2><div class="p"><div class="en">Each module's name consists of two parts. A vendor name and the name of a module. These two parts are concatenated with a _(underscore) or a \(backslash). As a result, the module name should follow the pattern VendorName_ModuleName. For example, a Catalog module name is going to be the name of a Magentovendor name and a Catalogmodule name, which is a Magento_Catalogor Magento\Catalog.</div><div class="ru">Название каждого модуля состоит из двух частей. Имя поставщика и имя модуля. Эти две части объединяются знаком _ (подчеркивание) или \ (обратная косая черта). В результате имя модуля должно соответствовать шаблону VendorName_ModuleName. Например, имя модуля Каталога будет именем имени Magentovendor и именем модуля Каталога, которым является Magento_Catalogor Magento \ Catalog.</div></div><h2 class="h2"><div class="en">Where should a Module be located in Magento 2?</div><div class="ru">Где должен быть расположен модуль в Magento 2?</div></h2><div class="p"><div class="en">That's a very interesting question. There are two locations where a module can be located in a Magento 2 application.</div><div class="ru">Это очень интересный вопрос. Есть два места, где модуль может быть расположен в приложении Magento 2.</div></div><h2 class="h2"><div class="en">Magento 2 Modules</div><div class="ru">Magento 2 Modules</div></h2><h2 class="h2"><div class="en">The first location is an app/codedirectory. This directory is used to add all custom and 3rd-party Magento 2 modules. This location is usually used by development agencies, internal or in-house developers in order to simplify a development process.</div><div class="ru">Первое место - это каталог app / codedirectory. Этот каталог используется для добавления всех пользовательских и сторонних модулей Magento 2. Это местоположение обычно используется агентствами по развитию, внутренними или внутренними разработчиками, чтобы упростить процесс разработки.</div></h2><h2 class="h2"><div class="en">The second location is a vendordirectory. This directory is used during the composer package management installation. A module installation in Magento 2 with a composer package manager is the recommended way of installing a Magento 2 module.</div><div class="ru">Второе место - это каталог поставщиков. Этот каталог используется во время установки управления пакетами композитора. Установка модуля в Magento 2 с помощью диспетчера пакетов композитора - это рекомендуемый способ установки модуля Magento 2.</div></h2><h2 class="h2"><div class="en">Learn more about Magento 2 Open Source directory structure in the Project Structure Overview lesson.</div><div class="ru">Узнайте больше о структуре каталогов Magento 2 с открытым исходным кодом в уроке «Обзор структуры проекта».</div></h2><h2 class="h2"><div class="en">How to create a Module?</div><div class="ru">Как создать модуль?</div></h2><div class="p"><div class="en">The first thing we have to do in order to create a module is to create a module directory. Usually, all modules are located under the app/codedirectory. If you follow the previous lesson, the codedirectory should be missing under the appdirectory of a Magento 2 project.</div><div class="ru">Первое, что нам нужно сделать, чтобы создать модуль, - это создать каталог модуля. Обычно все модули находятся в каталоге app / codedirectory. Если вы следуете предыдущему уроку, каталог codedirectory должен отсутствовать в appdirectory проекта Magento 2.</div></div><h2 class="h2"><div class="en">Inside the appdirectory, let's create the codedirectory. This is a directory where all modules should be located. Every Magento 2 module should be located under the app/code/VendorName/ModuleNamedirectory location.</div><div class="ru">Внутри appdirectory давайте создадим codedirectory. Это каталог, в котором должны находиться все модули. Каждый модуль Magento 2 должен находиться в папке app / code / VendorName / ModuleNamedirectory.</div></h2><h2 class="h2"><div class="en">Let's create a vendor directory. In this lesson, the vendor is a MageMastery. Inside the app/code/MageMasterydirectory, let's create a module directory. For the module name, this is going to be a FirstModuledirectory name.</div><div class="ru">Создадим каталог поставщиков. В этом уроке продавец - MageMaster. Внутри каталога app / code / MageMasterydirectory создадим каталог модуля. Для имени модуля это будет имя FirstModuledirectory.</div></h2><h2 class="h2"><div class="en">There are two required files that have to be created in each Magento 2 module. These files are used to notify to Magento 2 about a module. The registration.phpand module.xmlfiles.</div><div class="ru">В каждом модуле Magento 2 необходимо создать два обязательных файла. Эти файлы используются для уведомления Magento 2 о модуле. Модуль registration.phpand.xmlfiles.</div></h2><h2 class="h2"><div class="en">Module Required Files</div><div class="ru">Необходимые файлы для модуля</div></h2><h2 class="h2"><div class="en">The registration.php file</div><div class="ru">Файл registration.php</div></h2><div class="p"><div class="en">The registration.phpfile is used to notify to Magento 2 application about a module in a file system. It also used to provide a location to a Magento 2 module. Place the new registration.phpfile inside the app/code/MageMastery/FirstModuledirectory.</div><div class="ru">Файл registration.php используется для уведомления приложения Magento 2 о модуле в файловой системе. Он также используется для указания местоположения модуля Magento 2. Поместите новый файл registration.php в папку app / code / MageMaster / FirstModuledirectory.</div></div><h2 class="h2"><div class="en">The content of the file is as follows:</div><div class="ru">Содержимое файла выглядит следующим образом:</div></h2>
+
+
+
+<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Magento<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>ComponentRegistrar</span><span class="token punctuation">;</span>
+
+<span class="token class-name static-context">ComponentRegistrar</span><span class="token operator">::</span><span class="token function">register</span><span class="token punctuation">(</span>
+    <span class="token class-name static-context">ComponentRegistrar</span><span class="token operator">::</span><span class="token constant">MODULE</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&#x27;MageMastery_FirstModule&#x27;</span><span class="token punctuation">,</span>
+    <span class="token constant">__DIR__</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre></div>
+
+
+
+<div class="p"><div class="en">The Magento\Framework\Component\ComponentRegistrarclass is used to register a new module in a Magento 2 application.</div><div class="ru">Класс Magento \ Framework \ Component \ ComponentRegistrar используется для регистрации нового модуля в приложении Magento 2.</div></div><h2 class="h2"><div class="en">The static register()method accepts three arguments. The $componentTypeargument accepts a type of a component, which in case of a module is ComponentRegistrar::MODULE. The ComponentRegistrar::MODULEis a constant of the Magento\Framework\Component\ComponentRegistrarclass and it is recommended to use this constant for the module registration.</div><div class="ru">Статический метод register () принимает три аргумента. Параметр $ componentTypeargument принимает тип компонента, которым в случае модуля является ComponentRegistrar :: MODULE. ComponentRegistrar :: MODULE - это константа класса Magento \ Framework \ Component \ ComponentRegistrar, и рекомендуется использовать эту константу для регистрации модуля.</div></h2><h2 class="h2"><div class="en">The second argument of the register()method is the name of the module. As you can see the name is a VendorName_ModuleName. In the above code sample, the name is MageMastery_FirstModule.</div><div class="ru">Второй аргумент метода register () - это имя модуля. Как видите, имя - VendorName_ModuleName. В приведенном выше примере кода имя MageMaster_FirstModule.</div></h2><h2 class="h2"><div class="en">The final argument is a PHP __DIR__constant. It provides an actual location of the module and is interpreted into an /var/www/magento/app/code/MageMastery/FirstModulein case a Magento 2 application is installed in the /var/www/magentodirectory.</div><div class="ru">Последний аргумент - это PHP __DIR__constant. Он предоставляет фактическое местоположение модуля и интерпретируется в / var / www / magento / app / code / MageMaster / FirstModule в случае, если приложение Magento 2 установлено в каталоге / var / www / magentodirectory.</div></h2><h2 class="h2"><div class="en">How does this work?</div><div class="ru">Как это работает?</div></h2><h2 class="h2"><div class="en">One of the allowed locations of the registration.phpfile is app/code/VendorName/ModuleNamedirectory (in case of the current lesson the location is app/code/MageMastery/FirstModule/). The registration.phpfile is scanned and executed during the Magento 2 Open Source application start. The method register()of the ComponentRegistrarclass adds the module name and its location into the global pool of all module's locations. Once added, Magento 2 Open Source then goes through all registered modules paths and reads the configuration of the module.xmlfile.</div><div class="ru">Одно из разрешенных мест для файла registration.php - app / code / VendorName / ModuleNamedirectory (в случае текущего урока это app / code / MageMaster / FirstModule /). Файл registration.php сканируется и запускается при запуске приложения Magento 2 с открытым исходным кодом. Метод register () класса ComponentRegistrar добавляет имя модуля и его расположение в глобальный пул всех расположений модуля. После добавления Magento 2 с открытым исходным кодом проходит по всем зарегистрированным путям модулей и считывает конфигурацию файла module.xmlfile.</div></h2><h2 class="h2"><div class="en">That is why it is important to have both files to successfully register a Module in Magento 2.</div><div class="ru">Вот почему важно иметь оба файла для успешной регистрации модуля в Magento 2.</div></h2><h2 class="h2"><div class="en">The module.xml file</div><div class="ru">Файл module.xml</div></h2><div class="p"><div class="en">The module.xmlfile is used to declare and provide information about the module name and any dependencies to other 3rd-party or out-of-box Magento 2 modules.</div><div class="ru">Файл module.xmlfile используется для объявления и предоставления информации об имени модуля и любых зависимостях от других сторонних или готовых модулей Magento 2.</div></div><h2 class="h2"><div class="en">The module.xmlfile is a main module's configuration file. It is required to place this file into the module's etcdirectory. Let's create the directory inside the app/code/MageMastery/FirstModuledirectory module.</div><div class="ru">Module.xmlfile - это главный файл конфигурации модуля. Этот файл необходимо поместить в каталог модуля etc. Создадим каталог внутри модуля app / code / MageMaster / FirstModuledirectory.</div></h2><h2 class="h2"><div class="en">An example of the XML configuration file is as follow:</div><div class="ru">Пример файла конфигурации XML выглядит следующим образом:</div></h2>
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+<div class="p"><div class="en">This is a basic file content that is used across almost all Magento 2 configuration files. We are going to learn more about XML configuration files in the next lessons.</div><div class="ru">Это базовое содержимое файла, которое используется почти во всех файлах конфигурации Magento 2. В следующих уроках мы узнаем больше о файлах конфигурации XML.</div></div><h2 class="h2"><div class="en">Additionally, all XML files in Magento 2 contain 2 attributes in the <config>node. The xmlnsattribute provides a location to the XMLSchema instance and the xsi:noNamespaceSchemaLocationattribute provides a path to an XSD (XML Schema Definition) file of a Magento 2 framework. The last one is used to provide XML validation and syntax highlighting capability to a configuration file.</config></div><div class="ru">Кроме того, все файлы XML в Magento 2 содержат 2 атрибута в узле <config>. Атрибут xmlnsattribute обеспечивает расположение экземпляра XMLSchema, а атрибут xsi: noNamespaceSchemaLocation предоставляет путь к файлу XSD (определение схемы XML) фреймворка Magento 2. Последний используется для обеспечения возможности проверки XML и выделения синтаксиса для файла конфигурации.</config></div></h2><h2 class="h2"><div class="en">These attributes are not required, however, it is recommended to follow the standard Magento practices and include it into XML files.</div><div class="ru">Эти атрибуты не требуются, однако рекомендуется следовать стандартным методам Magento и включать их в файлы XML.</div></h2><h2 class="h2"><div class="en">As a result, the final module.xmlfile should look like follow:</div><div class="ru">В результате финальный файл module.xmlfile должен выглядеть следующим образом:</div></h2>
+
+
+<div class="gatsby-highlight" data-language="xml"><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>config</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> 
+        <span class="token attr-name"><span class="token namespace">xsi:</span>noNamespaceSchemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urn:magento:framework:Module/etc/module.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MageMastery_FirstModule<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>config</span><span class="token punctuation">&gt;</span></span></code></pre></div>
+
+
+<div class="p"><div class="en">The only required XML node which has to be added is a &lt;module&gt;one. The nameattribute should include the name of the current module, which is MageMastery_FirstModule.</div><div class="ru">Единственный требуемый узел XML, который нужно добавить, - это узел &lt;module&gt;. Атрибут name должен включать имя текущего модуля, которым является MageMaster_FirstModule.</div></div><h2 class="h2"><div class="en">How to register a Module?</div><div class="ru">Как зарегистрировать модуль?</div></h2><div class="p"><div class="en">The last step is to run the command which will enable and install the MageMastery_Firstmodule.</div><div class="ru">Последний шаг - запустить команду, которая включит и установит модуль MageMaster_Firstmodule.</div></div>
+
+
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">bin/magento setup:upgrade</code></pre></div>
+
+<div class="p"><div class="en">You may notice a new module added to the list of modules.</div><div class="ru">Вы можете заметить, что в список модулей добавлен новый модуль.</div></div><h2 class="h2"><div class="en">In order to check if the module has been added and enabled in a Magento 2 application. Here I use a grepcommand to check a string in an app/etc/config.phpfile.</div><div class="ru">Чтобы проверить, был ли модуль добавлен и включен в приложении Magento 2. Здесь я использую команду grep для проверки строки в файле app / etc / config.phpfile.</div></h2>
+
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">grep</span> MageMastery_FirstModule app/etc/config.php</code></pre></div>
+
+<div class="p"><div class="en">As a result, a terminal screen should show a</div><div class="ru">В результате на экране терминала должен отображаться</div></div>
+
+<h2 class="h2"><div class="en">The value 1 means that the module is enabled, and 0 means that the module is disabled. As we can see from the output, the MageMastery_FirstModuleis set to 1, which means that the module has been successfully registered in a Magento 2 Open Source application.</div><div class="ru">Значение 1 означает, что модуль включен, а значение 0 означает, что модуль отключен. Как видно из выходных данных, для MageMaster_FirstModule установлено значение 1, что означает, что модуль успешно зарегистрирован в приложении Magento 2 с открытым исходным кодом.</div></h2>
+
+
+<a href=".\project-structure-overview.html">PREV</a>
+<a href=".\create-page-magento-2.html">NEXT</a>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
