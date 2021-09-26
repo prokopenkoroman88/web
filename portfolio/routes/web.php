@@ -143,6 +143,8 @@ Route::group([
 			Route::get('/','ExcelController@index');
 			//excel:
 			Route::get('/open/{filename}','ExcelController@open');
+			Route::post('/open-file','ExcelController@openFile');//ajax
+			Route::post('/choice-sheet','ExcelController@choiceSheet');//ajax
 			Route::post('/set-value','ExcelController@setValue');//ajax
 		});
 

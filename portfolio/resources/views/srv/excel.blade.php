@@ -40,7 +40,7 @@ print_r($dataArray);
 //@foreach($doc->spreadsheet->workSheetCollection as $SheetIndex => $sheet)
 
 
-$docName = $doc ? $doc->fileName : 'Новая таблица';
+$docName = isset($doc) ? $doc->fileName : 'Новая таблица';
 ?>
 
 
@@ -49,6 +49,10 @@ $docName = $doc ? $doc->fileName : 'Новая таблица';
 
 
 <div class="excel">
+	<div class="btns">
+		<button class="btn-open-file">Open file</button>
+		<input type="file" class="file-name"/>
+	</div>
 	<div class="doc">
 		<h2>{{$docName}}</h2>
 		<div class="pages">

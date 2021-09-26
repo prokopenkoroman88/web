@@ -59,6 +59,32 @@ class ExcelController extends Controller
     	//return "my service/excel/open($name)";
     }
 
+	//ajax:
+	public function openFile(Request $request){//+17.9.21
+
+		$doc = new ExcelDoc($request->fileName);
+		Session::put('excelDoc',$doc);
+		//return view('srv.excel', compact('doc'));
+		return ['doc', $doc];
+	}
+	//ajax:
+	public function choiceSheet(Request $request){//+17.9.21
+
+		$doc = Session::get('excelDoc');
+		//$this->doc->spreadsheet->setActiveSheetIndexByName($pValue)
+		$doc->spreadsheet->setActiveSheetIndex($request->sheetIndex);
+		$doc->sheet = $doc->spreadsheet->getActiveSheet();
+		$sheetCells = $doc->sheet->toArray();//двумерный числовой по-строчно со всей страницы
+
+		//Session::put('excelDoc',$doc);
+		//return view('srv.excel', compact('doc'));
+		return ['sheetCells', $sheetCells];
+    }
+
+
+
+
+
 
     //ajax:
     public function setValue(Request $request){

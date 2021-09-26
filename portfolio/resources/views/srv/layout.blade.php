@@ -5,5 +5,5 @@
 @endsection
 
 @section('jsafter')
-	<script src="{{ asset('js/srv-script.js') }}"></script>
+	<script src="{{ asset('js/srv-script.js') }}" type="module"></script>
 @endsection
