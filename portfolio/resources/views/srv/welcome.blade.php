@@ -20,14 +20,20 @@ if($lang)$lang.='\\';
 		<li><a href="">third</a></li>
  --}}
 		<li>Мои:
-			<li><a href="\service\{{$lang}}excel">Excel</a></li>
-			<li><a href="">second</a></li>
+			<li><a href="\service\{{$lang}}excel"><i class="far fa-file-excel"></i> Excel</a></li>
+			<li><a href="\service\{{$lang}}word"><i class="far fa-file-word"></i> Word/PHP</a></li>
 			<li><a href="">third</a></li> 			
 		</li>
 		<li>Другие:
 			<ul>
-
-
+					<li><a href="https://github.com/prokopenkoroman88/web"><i class="fab fa-github"></i>GitHub</a></li>
+					<li><a href="https://gitlab.com"><i class="fab fa-react"></i>React dots</a></li>
+					<li><i class="fab fa-vuejs"></i> <i class="fab fa-wordpress"></i> <i class="fab fa-node"></i>    </li>
+					<li><a href="https://fontawesome.com/v5.15/icons?d=gallery&m=free"><i class="fab fa-fort-awesome"></i>FontAwesome</a></li>
+					<li><a href=""><i class="fab fa-magento"></i>Magento 2</a></li>
+					<li><a href="https://www.php.net/"><i class="fab fa-php"></i>PHP</a></li>
+					<li><a href="https://laravel.com/docs/7.x"><i class="fab fa-laravel"></i>7.x</a></li>
+					<li><a href="https://laravel.ru/"><i class="fab fa-laravel"></i></a></li>
                     <li><a href="https://www.online-convert.com/ru">online-convert</a></li>
                     <li><a href="https://squoosh.app/">png to webp</a></li>
                     <li><a href="https://onlinepngtools.com/create-transparent-png">transparent-png</a></li>
@@ -89,6 +95,7 @@ if($lang)$lang.='\\';
 					 <li><a href="https://axels.com.ua/">от курсора разлетаются пылинки!!!</a></li>
                      <li><a href="https://resume.io/?gclid=CjwKCAjw7fuJBhBdEiwA2lLMYajpqzJ-hfAUply8Ekjj-ZbTmVkrIpUix1GvVavLI2C4J0wRkd-jRRoChdAQAvD_BwE">transform-style: preserve-3d</a></li>
                      <li><a href="https://jobs.ua/resume_sample/resume_advice/81">Поворот пункта меню</a></li>
+                     <li><a href="https://devonstank.com/">сайт-визитка разработчика</a></li>
                      <li><a href=""></a></li>
                  </ul>
              </li> 
@@ -371,6 +378,32 @@ privat24 cart:
 	</g>
 </svg>
 
+
+
+
+========================
+
+https://devonstank.com/
+<link rel="canonical" href="https://devonstank.com"/>
+<meta property="og:site_name" content="DS"/>
+<meta property="og:title" content="Squarespace Developer &amp; Harrisburg Web Design"/>
+<meta property="og:url" content="https://devonstank.com"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="Squarespace Development &amp; Harrisburg Web Design. My experience as a Squarespace Developer &amp; Designer sets me apart from others in the central Pennsylvania area."/>
+<meta property="og:image" content="http://static1.squarespace.com/static/5f2983f35c36512f35fee7a6/t/60f98d683e1092304974bb91/1626967400297/Squarespace-Developer-Devon-Stank.jpg?format=1500w"/>
+<meta property="og:image:width" content="1500"/>
+<meta property="og:image:height" content="999"/>
+<meta itemprop="name" content="Squarespace Developer &amp; Harrisburg Web Design"/>
+<meta itemprop="url" content="https://devonstank.com"/>
+<meta itemprop="description" content="Squarespace Development &amp; Harrisburg Web Design. My experience as a Squarespace Developer &amp; Designer sets me apart from others in the central Pennsylvania area."/>
+<meta itemprop="thumbnailUrl" content="http://static1.squarespace.com/static/5f2983f35c36512f35fee7a6/t/60f98d683e1092304974bb91/1626967400297/Squarespace-Developer-Devon-Stank.jpg?format=1500w"/>
+<link rel="image_src" href="http://static1.squarespace.com/static/5f2983f35c36512f35fee7a6/t/60f98d683e1092304974bb91/1626967400297/Squarespace-Developer-Devon-Stank.jpg?format=1500w" />
+<meta itemprop="image" content="http://static1.squarespace.com/static/5f2983f35c36512f35fee7a6/t/60f98d683e1092304974bb91/1626967400297/Squarespace-Developer-Devon-Stank.jpg?format=1500w"/>
+<meta name="twitter:title" content="Squarespace Developer &amp; Harrisburg Web Design"/>
+<meta name="twitter:image" content="http://static1.squarespace.com/static/5f2983f35c36512f35fee7a6/t/60f98d683e1092304974bb91/1626967400297/Squarespace-Developer-Devon-Stank.jpg?format=1500w"/>
+<meta name="twitter:url" content="https://devonstank.com"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Squarespace Development &amp; Harrisburg Web Design. My experience as a Squarespace Developer &amp; Designer sets me apart from others in the central Pennsylvania area."/>
 
 
 

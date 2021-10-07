@@ -14,7 +14,9 @@
 //================= srv ===========
 //console.log('srv-script!!!');
 import ExcelDoc from './classes/excel-doc.js';
+import WordDoc from './classes/word-doc.js';
 let excel = null;
+let word = null;
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -41,18 +43,31 @@ document.addEventListener('DOMContentLoaded', function(){
 		return ['sheetCells', $sheetCells];
     }
 */
-excel = new ExcelDoc(document.querySelector('.excel'));
-//excel.initIn();
-let btnOpenFile = document.querySelector('.excel .btn-open-file');
-let inpFileName = document.querySelector('.excel .file-name');
-btnOpenFile.addEventListener('click', function(){ openFile(inpFileName.value); });
-
-
+if(document.querySelector('.excel')){
+	excel = new ExcelDoc(document.querySelector('.excel'));
+	initExcel();
+};
+if(document.querySelector('.word')){
+	word = new WordDoc(document.querySelector('.word'));
+	initWord();
+};
 
 
 });
 
-function openFile(fileName){
+
+function initExcel(){
+//excel.initIn();
+let btnOpenFile = document.querySelector('.excel .btn-open-file');
+let inpFileName = document.querySelector('.excel .file-name');
+btnOpenFile.addEventListener('click', function(){ openExcelFile(inpFileName.value); });
+
+
+
+
+};
+
+function openExcelFile(fileName){
 	const data = 
 	{
 		fileName:fileName,
@@ -106,6 +121,96 @@ response
 
 
 };
+
+
+
+
+
+function initWord(){
+//excel.initIn();
+let btnCreateFile = document.querySelector('.word .btn-create-file');
+let btnAddText = document.querySelector('.word .btn-add-text');
+let btnSaveFile = document.querySelector('.word .btn-save-file');
+let inpText = document.querySelector('.word .text');
+let inpFileName = document.querySelector('.word .file-name');
+btnCreateFile.addEventListener('click', function(){ createWordFile(inpFileName.value); });
+btnSaveFile.addEventListener('click', function(){ saveWordFile(inpFileName.value); });
+
+btnAddText.addEventListener('click', function(){ addTextToWord(inpText.value); });
+
+
+};
+
+function createWordFile(fileName=''){
+	const data = 
+	{
+		fileName:fileName,
+	};
+
+window.axios.post('/service/word/create-file', data)
+  .then(function (response) {
+
+	console.log('response=');
+	console.log(response);
+    console.log(response.data);
+    
+  })
+  .catch(function (error) {
+    console.log('error=');
+    console.log(error.response.data);
+    console.log(error);
+  });
+
+};
+
+function addTextToWord(text){
+	const data = 
+	{
+		text:text,
+	};
+
+window.axios.post('/service/word/add-text', data)
+  .then(function (response) {
+
+	console.log('response=');
+	console.log(response);
+    console.log(response.data);
+    
+  })
+  .catch(function (error) {
+    console.log('error=');
+    console.log(error.response.data);
+    console.log(error);
+  });
+
+};
+
+function saveWordFile(fileName=''){
+	if(!fileName)
+		fileName='myFirstPDF_File.pdf';
+
+	const data = 
+	{
+		fileName:fileName,
+	};
+
+window.axios.post('/service/word/save-file', data)
+  .then(function (response) {
+
+	console.log('response=');
+	console.log(response);
+    console.log(response.data);
+    
+  })
+  .catch(function (error) {
+    console.log('error=');
+    console.log(error.response.data);
+    console.log(error);
+  });
+
+};
+
+
 
 
 function doAjax(){

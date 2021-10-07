@@ -147,6 +147,13 @@ Route::group([
 			Route::post('/choice-sheet','ExcelController@choiceSheet');//ajax
 			Route::post('/set-value','ExcelController@setValue');//ajax
 		});
+		Route::group(['prefix'=>'word'],function(){
+			Route::get('/','WordController@index');
+			//word:
+			Route::post('/create-file','WordController@createFile');//ajax
+			Route::post('/save-file','WordController@saveFile');//ajax
+			Route::post('/add-text','WordController@addText');//ajax
+		});
 
 
 	});
