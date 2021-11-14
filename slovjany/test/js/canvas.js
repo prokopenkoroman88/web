@@ -1,6 +1,9 @@
+import ColorMap from './Pic.js';
+
+
 //*
-//class Canvas extend ColorMap{
-class Canvas {
+export class Canvas extends ColorMap{
+//class Canvas {
 
 	constructor(selector){
 		this.init(selector);
@@ -67,7 +70,7 @@ class Canvas {
 
 
 
-};//class Canvas
+}//class Canvas
 //*/
 
 

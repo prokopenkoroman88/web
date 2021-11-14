@@ -1,3 +1,5 @@
+//import ColorMap from './Pic.js';
+import Canvas from './canvas.js';
 
 
 let gameField=document.querySelector('#game-field');

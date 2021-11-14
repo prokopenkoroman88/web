@@ -1,4 +1,4 @@
-class ColorMap {
+export class ColorMap {
 
 	constructor(height,width,bRes=true){
 		this.height=height;
@@ -49,4 +49,4 @@ class ColorMap {
 
 
 
-};//class ColorMap
+}//class ColorMap

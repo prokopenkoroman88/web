@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +25,19 @@
 .App-link {
   color: rgb(112, 76, 182);
 }
+
+.game-canvas{
+  border:1px solid red;
+  position: relative;
+  
+}
+
+.game-unit{
+  border:1px solid lime;
+  position: absolute;
+  
+}
+
 
 @keyframes App-logo-float {
   0% {
