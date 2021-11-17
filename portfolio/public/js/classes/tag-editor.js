@@ -128,18 +128,20 @@ export default class Tag {
 		return this.tag('td',css);
 	}
 
+	//use: .table('').dn().trtd(
 	trtd(cssTR, cssTD,  data){//Array
 		if(!this.isTag('table'))error();
 
 		//this.currHTMLTag = <table>
 		let currTable = this;
-		if(isArray(data))
+		if(Array.isArray(data))
 		for(let i=0; i<data.length; i++){
 			let newTR = currTable.tr(cssTR).dn();
-			if(isArray(data[i]))
+			if(Array.isArray(data[i]))
 			for(let j=0; j<data[i].length; j++){
-				let newTD = newTR.td(cssTD).dn();
-				newTD.inner(data[i][j])
+				//let newTD = newTR.td(cssTD).dn();
+				//newTD.up().inner(data[i][j])
+				newTR.td(cssTD).inner(data[i][j]);//alternative
 			};//j++
 		};//i++
 

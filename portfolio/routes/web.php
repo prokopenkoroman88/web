@@ -95,6 +95,7 @@ Route::group([//группа админки:
 		Route::post('save_job_talk', 'JobTalkController@saveBy');//+1.6.21 add
 		Route::put('save_job_talk/{id}', 'JobTalkController@saveBy');//+1.6.21 edit
 
+		Route::get('resume', 'ResumeController@index');//+7.10.21
 	});//Locale
 
 });//что общее префикс,  группа маршрутов
@@ -153,6 +154,7 @@ Route::group([
 			Route::post('/create-file','WordController@createFile');//ajax
 			Route::post('/save-file','WordController@saveFile');//ajax
 			Route::post('/add-text','WordController@addText');//ajax
+			Route::post('/save-all','WordController@saveAll');//ajax
 		});
 
 

@@ -34,6 +34,7 @@ class WordDoc{
 	*/
 	public $section=null;
 
+	public $paragraph=null;
 
 	public $fileName='';
 
@@ -127,7 +128,21 @@ setKeywords() – ключевые слова документа.
 
     }
 
+    public function addParagraph($parStyle=[]){
+    	if(!$this->section)
+    		$this->addSection();
+		$this->paragraph = $this->section->addTextRun($parStyle);
+    }
 
+    public function addParText($text, $fontStyle=[]){
+		$this->paragraph->addText(htmlspecialchars($text), $fontStyle);
+    }
+
+    public function addParLink($src, $text='', $fontStyle=[]){
+    	if(!$text)
+    		$text=$src;
+		$this->paragraph->addLink($src, htmlspecialchars($text), $fontStyle);
+    }
 
 
 	public function addList($list, $fontStyle=[], $listStyle=[]){
@@ -223,12 +238,12 @@ setKeywords() – ключевые слова документа.
 			$this->fileName.='RichedText_1.rtf';
 
 
-
-			$fontStyle = array('name'=>'Arial', 'size'=>10, 'color'=>'800000', 'bold'=>TRUE, 'italic'=>TRUE, 'underlined'=>true);
+/*
+			$fontStyle = array('name'=>'Arial', 'size'=>10, 'color'=>'008000', 'bold'=>TRUE, 'italic'=>TRUE, 'underlined'=>true);
 			$parStyle = array('align'=>'right','spaceBefore'=>10);
 
 			$this->word->getSection(0)->addText(htmlspecialchars($s), $fontStyle,$parStyle);
-
+*/
 		};
 
 		$this->word->save($this->fileName, $format , $download);

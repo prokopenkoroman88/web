@@ -14,9 +14,9 @@
 //================= srv ===========
 //console.log('srv-script!!!');
 import ExcelDoc from './classes/excel-doc.js';
-import WordDoc from './classes/word-doc.js';
+import {WordDoc,} from './classes/word-doc.js';
 let excel = null;
-let word = null;
+//let word = null;// word as word1
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -48,8 +48,9 @@ if(document.querySelector('.excel')){
 	initExcel();
 };
 if(document.querySelector('.word')){
-	word = new WordDoc(document.querySelector('.word'));
-	initWord();
+	WordDoc.self = new WordDoc(document.querySelector('.word'));
+	//initWord();
+	//word1=word;//?
 };
 
 

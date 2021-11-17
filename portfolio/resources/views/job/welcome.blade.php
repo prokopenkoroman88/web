@@ -19,7 +19,7 @@ if($lang)$lang.='\\';
 		<li><a href="\job\{{$lang}}vacancies">vacancies</a></li>
 		<li><a href="\job\{{$lang}}job_talks">job_talks</a></li>
 
-		<li><a href="">second</a></li>
+		<li><a href="\job\{{$lang}}resume">Resume</a></li>
 		<li><a href="">third</a></li>
 	</ul>
 	<div class="mobile-bar">

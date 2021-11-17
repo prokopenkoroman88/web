@@ -72,16 +72,16 @@ class WordController extends Controller
 		//return ['SESSION[excelDoc]=', Session::get('excelDoc') ];
 
 
-    	$this->doc = Session::get('wordDoc');
+    	$doc = Session::get('wordDoc');
 
-		$this->doc->save($request->fileName);
-		return ['ok!', ];
+		$doc->save($request->fileName);
+		return ['ok!', $doc];
     }
 
 
     //ajax:
     public function addText(Request $request){
-    	$this->doc = Session::get('wordDoc');
+    	$doc = Session::get('wordDoc');
 
 
 
@@ -97,7 +97,7 @@ class WordController extends Controller
 		 'borderBottomColor'=>'C010C0'
 		 
 		 );
-		$section = $this->doc->word->addSection($sectionStyle); 
+		$section = $doc->word->addSection($sectionStyle); 
 
 
 
@@ -114,86 +114,102 @@ class WordController extends Controller
 		$text = "PHPWord is a library written in pure PHP that provides a set of classes to write to and read from different document file formats.";
     	$section->addText(htmlspecialchars($text), $fontStyle,$parStyle);
 
-    	$this->doc->addImage('images/roman-prokopenko.jpg');
+    	$doc->addImage('images/roman-prokopenko.jpg');
 
-	}
-
-
-
-
-
-
-
-
-
-	public function open($filename=''){
-
-		$this->doc = new ExcelDoc($filename);
-		self::$fileName = $filename;
-
-		$doc = $this->doc;
-		//$_SESSION['excelDoc']=$this->doc;
-		Session::put('excelDoc',$this->doc);
-		return view('srv.word', compact('doc'));
-    	//return "my service/excel/open($name)";
-    }
-
-	//ajax:
-	public function openFile(Request $request){//+17.9.21
-
-		$doc = new ExcelDoc($request->fileName);
-		Session::put('excelDoc',$doc);
-		//return view('srv.word', compact('doc'));
 		return ['doc', $doc];
 	}
-	//ajax:
-	public function choiceSheet(Request $request){//+17.9.21
 
-		$doc = Session::get('excelDoc');
-		//$this->doc->spreadsheet->setActiveSheetIndexByName($pValue)
-		$doc->spreadsheet->setActiveSheetIndex($request->sheetIndex);
-		$doc->sheet = $doc->spreadsheet->getActiveSheet();
-		$sheetCells = $doc->sheet->toArray();//двумерный числовой по-строчно со всей страницы
 
-		//Session::put('excelDoc',$doc);
+//ajax:
+	public function saveAll(Request $request){
+
+		$doc = new WordDoc($request->fileName);
+		Session::put('wordDoc',$doc);
+		//$doc = Session::get('wordDoc');
+
+		$list = $request->list;
+		//dd($list);
+
+		foreach ($list as $i => $prgr) {
+			$doc->addParagraph( $prgr['parStyle'] );
+			
+
+			foreach ($prgr['parText'] as $j => $txt) {
+				if(isset($txt['src']))
+					$doc->addParLink($txt['src'],$txt['text'], $txt['fontStyle']);
+				else{
+
+
+					$fontStyle = $txt['fontStyle'];
+					$fontStyle2 = array('name'=>'Arial', 'size'=>20, 'color'=>'800000', 'bold'=>TRUE, 'italic'=>TRUE, 'underlined'=>true);
+
+					//$doc->addParText($txt['text'], $fontStyle2);
+					$doc->addParText($txt['text'], array('color'=>'800000'));
+
+					//$doc->addParText(' FONT1='.print_r($fontStyle ,true),);
+					//$doc->addParText(' FONT2='.print_r($fontStyle2,true),);
+					$doc->addParText(' FONT1='.var_dump($fontStyle ),);
+					$doc->addParText(' FONT2='.var_dump($fontStyle2),);
+
+				};
+			};
+		};
+
+
+		$doc->save($request->fileName);
+		return ['ok!', $doc];
 		//return view('srv.word', compact('doc'));
-		return ['sheetCells', $sheetCells];
+	}
+/*
+
+			let list = [
+				{
+					parStyle:{
+						'borderLeftColor':'f0e080',
+						'borderLeftSize':100,
+					},
+					parText:[
+						{
+							text:'first text', 
+							fontStyle:{
+								'color':'f080e0',
+								'bold':true,
+							}
+						},
+						{
+							text:'second text', 
+							fontStyle:{
+								'color':'80f080',
+								'italic':true,
+							}
+						},
+					]
+				},
+
+			];
+
+
+
+
+    public function addParagraph($parStyle=[]){
+		$this->paragraph = $this->section->addTextRun($parStyle);
     }
 
-
-
-
-
-
-    //ajax:
-    public function setValue(Request $request){
-
-//		$request->page;
-//		$request->cell;
-//		$request->value;
-
-
-
-//	 	if(!$this->doc)
-//			$this->doc = new ExcelDoc($this->fileName);
-
-		//!!!!!!!!!// return ['my doc', $this->doc];
-		//return ['filename=',self::$fileName]; null
-		//?//return ['SESSION[excelDoc]=', $_SESSION['excelDoc'] ];
-		//return ['SESSION[excelDoc]=', Session::get('excelDoc') ];
-
-
-    	$this->doc = Session::get('excelDoc');
-
-		//$this->doc->spreadsheet->setActiveSheetIndexByName($pValue)
-		$this->doc->spreadsheet->setActiveSheetIndex($request->page);
-		$this->sheet = $this->doc->spreadsheet->getActiveSheet();
-
-
-		$this->doc->setCell($request->cell, $request->value);
-		$this->doc->save();
-		return ['ok!', ];
+    public function addParText($text, $fontStyle=[]){
+		$this->paragraph->addText(htmlspecialchars($text), $fontStyle);
     }
+
+    public function addParLink($src, $text='', $fontStyle=[]){
+    	if(!$text)
+    		$text=$src;
+		$this->paragraph->addLink($src, htmlspecialchars($text), $fontStyle);
+    }
+*/
+
+
+
+
+
 
 
 
