@@ -1,0 +1,235 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+$op : 0.2;
+$bgBtn : #f0eee0;
+$bgBtnH: #fff0e0;
+
+
+
+
+//=======nav==========
+/*
+.nav-item{
+	background-color:red;
+}
+
+.nav-item:hover{
+	background-color:$bgBtn;
+}
+*/
+//==========form==========
+
+
+form{
+	display:inline-block;
+}
+
+
+
+tr .redact-panel{
+
+	opacity:0.0;
+	transition:0.5s;	
+}
+
+tr:hover .redact-panel{
+	opacity:0.5;
+}
+tr .redact-panel:hover{
+	opacity:1.0;
+}
+
+.redact-btn{
+	position:relative;
+	background-color: transparent;
+	border:1px outset $bgBtn;
+	border-radius:5px;
+	padding:2px;
+	display:inline-block;
+	width:30px;
+	text-align:center;
+	transition:1.25s;
+}
+
+.redact-btn:after{
+	transition:2.0s;
+}
+
+.redact-new{
+	color:lime;
+}
+
+.redact-edit{
+	color:green;
+}
+
+.redact-del{
+	color:red;
+}
+
+.redact-show{
+	color:blue;
+}
+
+
+.redact-btn:hover {
+	text-decoration:none;
+}
+
+//.some-class:hover:after,
+.redact-btn:hover:after
+{
+	transition:2s;
+	color:black;
+	background-color: white;
+	opacity:0.6;
+	border-radius:5px;
+	padding:2px 3px;
+	position:absolute;
+	bottom:-20px;
+	left:25px;
+}
+
+.redact-new:hover {
+	background-color: rgba(0,255,0,$op);
+}
+.redact-edit:hover {
+	background-color: rgba(0,128,0,$op);
+}
+.redact-del:hover {
+	background-color: rgba(255,0,0,$op);
+}
+.redact-show:hover {
+	background-color: rgba(0,0,255,$op);
+}
+//--------
+.redact-new:hover:after {
+	content:'создать';
+}
+.redact-edit:hover:after {
+	content:'редактировать';
+}
+.redact-del:hover:after {
+	content:'удалить';
+}
+.redact-show:hover:after {
+	content:'показать';
+}
+
+//=======table=========
+
+$bgRow0: #ee0000;//#fff0f0;
+$bgRow1: #eeeeee;//#fffff0;
+$bgRow2: #ffe0e0;//#f0ffff;
+
+
+tr{
+	
+}
+
+.admin-table tr:nth-child(even){
+	background-color:$bgRow1;
+}
+
+.admin-table tr:nth-child(odd){
+	background-color:$bgRow2;
+}
+
+.admin-table tr:first-child{
+	background-color:$bgRow0;
+	color:white;
+}
+
+
+/* ------------ */
+
+
+
+
+/*===================*/
+
+/*
+.pagination .page-link{
+	background-color: white;
+	color: red;
+}
+
+.page-item
+{
+
+}
+
+.pagination .active .page-link{
+	background-color: red;
+	border-color: black;
+	color: white;
+}
+*/
+/*
+.page-link{
+	background-color: white;
+	color: red;
+}
+
+.page-link:hover{
+	color: red;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: red;
+    border-color: red;
+}
+
+
+.page-link:focus {
+    outline: -webkit-focus-ring-color red 1px;
+    border-color:red;
+}
+
+
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto red;// -webkit-focus-ring-color;
+}
+*/
+//=================
+
+
+.fa-layers {
+    display: inline-block;
+    height: 1em;
+    position: relative;
+    text-align: center;
+    vertical-align: -.125em;
+    width: 1em;
+	font-size:1em;    
+}
+
+.fa-layers i{
+	position:absolute;
+	text-align:center;
+	font-size:1.0em;
+}
+
+.fa-layers i.f-top{
+	top:0px;
+
+}
+
+.fa-inverse {
+    color: #fff;
+}
+
+
+

@@ -1,0 +1,1090 @@
+			<form action="{{$path}}/{{$item->id}}/edit" method="GET">
+				<!--input type="submit" value="Edit"-->
+				<button type="submit">
+					Edit<i class="far fa-edit"></i>
+				</button>
+
+			</form>
+			<form action="{{$path}}/{{$item->id}}" method="POST">
+				{{ csrf_field() }}
+				<input type="hidden" name="_method" value="DELETE">
+				<button type="submit">
+					Del<i class="far fa-trash-alt"></i>
+				</button>
+
+				<!--input type="submit" value="Del"-->
+				{{--  plugolab   icon-trash  иконка корзинки --}}
+			</form>
+			<a href="{{$path}}/{{$item->id}}/">Show</a>
+
+			solid:
+			<i class="fas fa-edit"></i>
+			<i class="fas fa-trash-alt"></i>
+			<i class="fas fa-eye"></i>
+			regul:
+			<i class="far fa-edit"></i>
+			<i class="far fa-trash-alt"></i>
+			<i class="far fa-eye"></i>
+
+{{--
+ 			<i class="fas fa-cat  fa-10x fa-spin"></i> 
+--}}
+
+
+
+
+
+/*
+.redact-btn:hover{
+	background-color: $bgBtnH;
+}
+*/
+
+
+
+
+.fa-edit{
+	color:green;
+}
+
+
+.fa-trash-alt{
+	color:red;
+}
+
+.fa-eye{
+	color:blue;
+}
+
+
+====================================
+
+
+  product.show:
+<?
+	$release = new App\Release();
+	//$release->allApps();//
+	//second:
+	$releases = App\Release::all('id','name')->pluck('name','id')->all();
+	//all();
+	//all('id','name')->pluck('name','id')->all();
+	$applications = App\Application::all('id','name')->pluck('name','id')->all();
+?>
+
+
+=============
+
+  release.form:
+
+<input type="hidden" name="product_id" value="{{ $product->id ?? 0 }}">
+
+
+<div class="form-group">
+	{!! Form::label('name', 'Product name:', ['class' => 'awesome'])  !!}
+	{!! Form::text('name', null, ['class'=>'form-control']) !!}
+	<input type="text" name="slug" value="{{$release->slug}}" readonly>
+
+	@if($errors->has('name'))
+		<div class="text-danger">{{ $errors->first('name')}}</div>
+	@endif
+
+</div>
+<?
+	//echo '<br>firstD='.$release->date;
+	if(!$release->date)
+		$release->date=date('Y-m-d');
+	//'2020-04-03'
+	//getdate()[0];
+	//date('d.m.Y');
+
+	//echo '<br>secondD='.$release->date;	
+?>
+<div class="form-group">
+	{!! Form::label('date', 'Release date:', ['class' => 'awesome'])  !!}
+	{!! Form::date('date', null, ['class'=>'form-control']) !!}
+
+	@if($errors->has('date'))
+		<div class="text-danger">{{ $errors->first('date')}}</div>
+	@endif
+
+</div>
+
+
+
+<div class="form-group">
+	{!! Form::label('included_id', 'Включено в', ['class' => 'awesome'])  !!}
+	{!! Form::select('included_id', 
+		$releases,//['L' => 'Large', 'S' => 'Small'], 
+		null, //выделенный элемент
+		['placeholder' => 'Select included', 'class'=>'form-control select'] //доп парам
+	) 
+	!!}
+</div> 
+
+
+<div class="form-group">
+	{!! Form::label('last_id', 'Ставить на', ['class' => 'awesome'])  !!}
+	{!! Form::select('last_id', 
+		$releases,//['L' => 'Large', 'S' => 'Small'], 
+		null, //выделенный элемент
+		['placeholder' => 'Select last', 'class'=>'form-control select'] //доп парам
+	) 
+	!!}
+</div> 
+
+<div class="form-group">
+	{!! Form::label('applications[]', 'Product apps:', ['class' => 'awesome'])  !!}
+	{!! Form::select('applications[]', 
+		$applications,//['L' => 'Large', 'S' => 'Small'], 
+		null, //выделенный элемент
+		['placeholder' => 'Select parent apps', 'multiple'=>'multiple', 'class'=>'form-control select'] //доп парам
+	) 
+	!!}
+</div> 
+{{-- --}}
+
+<div class="form-group">
+	{!! Form::label('price', 'Product price:', ['class' => 'awesome'])  !!}
+	{!! Form::number('price', null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('describe', 'Product describe:', ['class' => 'awesome'])  !!}
+	{!! Form::textarea('describe', null, ['class'=>'form-control', 'id'=>'describe']) !!}
+</div>
+ 
+<div class="form-group">
+	{!! Form::label('version', 'Release version:', ['class' => 'awesome'])  !!}
+	{!! Form::text('version', null, ['class'=>'form-control']) !!}
+
+	{!! Form::label('server_version', 'Server version:', ['class' => 'awesome'])  !!}
+	{!! Form::text('server_version', null, ['class'=>'form-control']) !!}
+
+	{!! Form::label('client_version', 'Client version:', ['class' => 'awesome'])  !!}
+	{!! Form::text('client_version', null, ['class'=>'form-control']) !!}
+
+
+</div>
+{{--
+<div class="form-group">
+	{!! Form::checkbox('mark', 1, null) !!}
+	<!--   'on'     name='favorite' value=1  =null  огромен['class'=>'form-control']  -->
+	{!! Form::label('mark', 'Product mark:', ['class' => 'awesome'])  !!}	
+</div>
+ --}}
+
+{{-- IMG --}}
+
+ <div class="input-group">
+   <span class="input-group-btn">
+     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+       <i class="fa fa-picture-o"></i> Choose
+     </a>
+   </span>
+   <input id="thumbnail" class="form-control" type="text" name="img">
+ </div>
+
+ <div id="holder">
+ 	
+ </div>
+
+{!!
+ Form::submit('Save', ['class'=>'form-control btn btn-primary d-inline-block']);
+!!}
+
+
+============================
+
+
+
+<div class="form-group">
+	{!! Form::label('name', 'Product name:', ['class' => 'awesome'])  !!}
+	{!! Form::text('name', null, ['class'=>'form-control']) !!}
+	<input type="text" name="slug" value="{{$application->slug}}" readonly>
+
+	@if($errors->has('name'))
+		<div class="text-danger">{{ $errors->first('name')}}</div>
+	@endif
+
+</div>
+
+
+
+
+<div class="form-group">
+	{!! Form::label('applications[]', 'Product Category:', ['class' => 'awesome'])  !!}
+	{!! Form::select('applications[]', 
+		$applications,//['L' => 'Large', 'S' => 'Small'], 
+		null, //выделенный элемент
+		['placeholder' => 'Select parent category', 'multiple'=>'multiple', 'class'=>'form-control select'] //доп парам
+	) 
+	!!}
+</div> 
+{{-- --}}
+
+<div class="form-group">
+	{!! Form::label('describe', 'Product describe:', ['class' => 'awesome'])  !!}
+	{!! Form::textarea('describe', null, ['class'=>'form-control', 'id'=>'describe']) !!}
+</div>
+ 
+{{--
+<div class="form-group">
+	{!! Form::checkbox('mark', 1, null) !!}
+	<!--   'on'     name='favorite' value=1  =null  огромен['class'=>'form-control']  -->
+	{!! Form::label('mark', 'Product mark:', ['class' => 'awesome'])  !!}	
+</div>
+ --}}
+
+
+
+{{--
+<div class="form-group">
+	{!! Form::checkbox('mark', 1, null) !!}
+	<!--   'on'     name='favorite' value=1  =null  огромен['class'=>'form-control']  -->
+	{!! Form::label('mark', 'Product mark:', ['class' => 'awesome'])  !!}	
+</div>
+ --}}
+
+{{-- IMG --}}
+
+ <div class="input-group">
+   <span class="input-group-btn">
+     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+       <i class="fa fa-picture-o"></i> Choose
+     </a>
+   </span>
+   <input id="thumbnail" class="form-control" type="text" name="img">
+ </div>
+
+ <div id="holder">
+ 	
+ </div>
+
+{!!
+ Form::submit('Save', ['class'=>'form-control btn btn-primary d-inline-block']);
+!!}
+
+
+
+=====================================================
+
+
+
+@section('content')
+
+<h1 class="text-center">{{$category->name}}</h1>
+
+
+
+	<article class="container news-snippet">
+		<h2>{{$item->name}} / {{ $item->categoryName }}</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{$item->img}}" alt="{{$item->title}}" class="news-image">
+			</div>
+			<div class="col-md-8">
+				<div>
+				<p>  {{$item->name}}</p>
+				<p>  {{$item->price}}</p>
+
+				</div>
+				<span class="news-time">{{$item->created_at}}</span>
+
+
+				<form action="/news/{{$item->id}}" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit" class="news-del-btn">КУПИТЬ</button>
+				</form>		
+			</div>
+		</div>
+	</article>
+
+{{--
+@foreach($products as $item)
+	<article class="container news-snippet">
+		<h2>{{$item->title}} / {{ $item->category ? $item->category->name : '<без категории>' }}</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{$item->img}}" alt="{{$item->title}}" class="news-image">
+			</div>
+			<div class="col-md-8">
+				<div>  {!!$item->short_content!!}  {!!$item->shortContent(50)!!}</div>
+				<span class="news-time">{{$item->created_at}}</span>
+
+				<a href="/news/{{$item->id}}/edit" class="news-edit-btn">
+					<i class="far fa-edit "></i>
+				</a>
+
+				<form action="/news/{{$item->id}}" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit" class="news-del-btn"><i class="far fa-trash-alt   "></i></button>
+				</form>		
+			</div>
+		</div>
+	</article>
+
+@endforeach
+--}}
+	{{-- пагинация  http://blog/?page=2     --}}
+	{{-- $products->links() --}}   {{-- в контроллере д.б. News::paginate(2)   --}}
+	
+@endsection
+
+
+============================================================
+
+
+ release.form
+
+
+
+
+
+ 
+{{--
+
+<div style="background-color: red;">
+<textarea name="" id="describe1" cols="30" rows="10"></textarea>
+<p id="describe10" style="height:100px; width:400px; border:1px solid black; "
+>abc<b>de<i>fg</b>hijk<s>lmn<u>opq</u>rs</i>tu</s>vwxyz</p>
+</div>
+
+>abcd<b>efghijk</b>lmnop<i>qrstuv</i>wxyz</p>
+edit:371 |-[0]1:null P
+edit:371 ||-[0]3:abcd #text
+edit:371 ||-[1]1:null B
+edit:371 |||-[0]3:efghijk #text
+edit:371 ||-[2]3:lmnop #text
+edit:371 ||-[3]1:null I
+edit:371 |||-[0]3:qrstuv #text
+edit:371 ||-[4]3:wxyz #text
+
+
+>abcd<b>efghi<i>jklmnop</b>qrstuv</i>wxyz</p>
+edit:371 |-[0]1:null P
+edit:371 ||-[0]3:abcd #text
+edit:371 ||-[1]1:null B
+edit:371 |||-[0]3:efghi #text
+edit:371 |||-[1]1:null I
+edit:371 ||||-[0]3:jklmnop #text
+edit:371 ||-[2]1:null I
+edit:371 |||-[0]3:qrstuv #text
+edit:371 ||-[3]3:wxyz #text
+
+
+
+
+>abc<i>d<b>efg</b>hijk<s>lmn<u>opq</u>rst</s>uv</i>wxyz</p>
+edit:371 |-[0]1:null P
+edit:371 ||-[0]3:abc #text
+edit:371 ||-[1]1:null I
+edit:371 |||-[0]3:d #text
+edit:371 |||-[1]1:null B
+edit:371 ||||-[0]3:efg #text
+edit:371 |||-[2]3:hijk #text
+edit:371 |||-[3]1:null S
+edit:371 ||||-[0]3:lmn #text
+edit:371 ||||-[1]1:null U
+edit:371 |||||-[0]3:opq #text
+edit:371 ||||-[2]3:rst #text
+edit:371 |||-[4]3:uv #text
+edit:371 ||-[2]3:wxyz #text
+
+
+>abc<b>de<i>fg</b>hijk<s>lmn<u>opq</u>rs</i>tu</s>vwxyz</p>
+edit:371 |-[0]1:null P			p
+edit:371 ||-[0]3:abc #text 		p #
+edit:371 ||-[1]1:null B			p b
+edit:371 |||-[0]3:de #text 		p b #
+edit:371 |||-[1]1:null I		p b i
+edit:371 ||||-[0]3:fg #text 	p b i #
+edit:371 ||-[2]1:null I			p i
+edit:371 |||-[0]3:hijk #text 	p i #
+edit:371 |||-[1]1:null S		p i s
+edit:371 ||||-[0]3:lmn #text 	p i s #
+edit:371 ||||-[1]1:null U		p i s u
+edit:371 |||||-[0]3:opq #text 	p i s u #
+edit:371 ||||-[2]3:rs #text 	p i s #
+edit:371 ||-[3]1:null S			p s
+edit:371 |||-[0]3:tu #text 		p s #
+edit:371 ||-[4]3:vwxyz #text 	p #
+
+
+
+	<p>abcd<b>efghijk</b>lmnop<i>qrstuv</i>wxyz</p>
+
+	<p>pervichnyie <b>zhyrnoye <s>slovo</b> zarabotnaya</s> plata</p>
+
+
+ --}}
+
+
+
+{{-- 
+
+<span class="cke_toolgroup" role="presentation">
+	<a id="cke_35" class="cke_button cke_button__bold cke_button_off" href="javascript:void('Полужирный')" title="Полужирный (Ctrl+B)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_35_label" aria-describedby="cke_35_description" aria-haspopup="false"
+	 onkeydown="return CKEDITOR.tools.callFunction(53,event);"
+	 onfocus="return CKEDITOR.tools.callFunction(54,event);" 
+	 onclick="CKEDITOR.tools.callFunction(55,this);return false;">
+	 <span class="cke_button_icon cke_button__bold_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_35_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Полужирный</span>
+	 <span id="cke_35_description" class="cke_button_label" aria-hidden="false">Комбинация клавиш Ctrl+B</span>
+	</a>
+	<a id="cke_36" class="cke_button cke_button__italic cke_button_off" href="javascript:void('Курсив')" title="Курсив (Ctrl+I)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_36_label" aria-describedby="cke_36_description" aria-haspopup="false"
+	  onkeydown="return CKEDITOR.tools.callFunction(56,event);" 
+	  onfocus="return CKEDITOR.tools.callFunction(57,event);" 
+	  onclick="CKEDITOR.tools.callFunction(58,this);return false;">
+	  <span class="cke_button_icon cke_button__italic_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_36_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Курсив</span>
+	  <span id="cke_36_description" class="cke_button_label" aria-hidden="false">Комбинация клавиш Ctrl+I</span>
+	</a>
+	<a id="cke_37" class="cke_button cke_button__strike cke_button_off" href="javascript:void('Зачеркнутый')" title="Зачеркнутый" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_37_label" aria-describedby="cke_37_description" aria-haspopup="false"
+	 onkeydown="return CKEDITOR.tools.callFunction(59,event);" 
+	 onfocus="return CKEDITOR.tools.callFunction(60,event);" 
+	 onclick="CKEDITOR.tools.callFunction(61,this);return false;">
+	 <span class="cke_button_icon cke_button__strike_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -72px;background-size:auto;">&nbsp;</span>
+	 <span id="cke_37_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Зачеркнутый</span>
+	 <span id="cke_37_description" class="cke_button_label" aria-hidden="false"></span>
+	</a>
+	<span class="cke_toolbar_separator" role="separator"></span>
+	<a id="cke_38" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void('Убрать форматирование')" title="Убрать форматирование" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_38_label" aria-describedby="cke_38_description" aria-haspopup="false"
+	 onkeydown="return CKEDITOR.tools.callFunction(62,event);" 
+	 onfocus="return CKEDITOR.tools.callFunction(63,event);" 
+	 onclick="CKEDITOR.tools.callFunction(64,this);return false;">
+	 <span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -792px;background-size:auto;">&nbsp;</span>
+		<span id="cke_38_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Убрать форматирование</span>
+		<span id="cke_38_description" class="cke_button_label" aria-hidden="false"></span>
+	</a>
+</span>
+ --}}
+
+
+@section('js')
+	@parent
+<script>
+let selApps=document.getElementById('select-applications');
+let describe=document.getElementById('describe1');
+
+let opts=document.querySelectorAll('#select-applications option');
+for(let i=0;i<opts.length;i++){
+	opts[i].addEventListener('click', function(e){
+		//this.innerHTML
+		console.log(e);
+		let s=e.toElement.text;
+
+		if(e.toElement.selected){
+		describe.innerHTML += '<b>+'+s+'</b>';
+
+		}
+		else{
+		describe.innerHTML += '<b>-'+s+'</b>';
+
+		};
+
+
+	});//f
+		
+};//i++
+
+selApps.addEventListener('click', function(){
+	return;
+	//describe.innerHTML += '<b>'+selApps.id+'</b>';
+	console.log(selApps.selected);
+
+
+	//let selApps2=document.getElementById('select-applications');
+	//console.log(selApps2);
+
+
+	let i=selApps.options.selectedIndex;
+	let item=selApps.options[i];
+
+	if(item.selected)
+		describe.innerHTML += '<b>+'+item.text+'</b>';
+	else
+		describe.innerHTML += '<b>-'+item.text+'</b>';
+
+	//describe.innerHTML += '<b>'+selApps.options+'</b>';
+
+});
+
+
+
+</script>
+
+@endsection
+
+
+=================
+
+ALTER TABLE `releases` ADD `descr` TEXT NULL DEFAULT NULL AFTER `price`;
+
+
+========================================
+
+
+==============================================
+
+function keyDown(event){ //?????????????????????????????????????
+let ta=//document.forms[0].elements.descr;
+document.getElementById('descr');
+
+//console.log(document.getElementById('version'));
+//let sVer=document.getElementById('version').value;
+
+//ta.innerHTML=ta.innerHTML+sVer;
+
+return CKEDITOR.tools.callFunction(53,event);
+//void('Полужирный');
+
+//ta.innerHTML=document.forms[0].elements.version.value+' '+document.forms[0].elements.serverVersion.value;
+			
+};
+
+
+<span class="cke_toolgroup" role="presentation"><a id="cke_35" class="cke_button cke_button__bold cke_button_off" href="javascript:void('Полужирный')" title="Полужирный (Ctrl+B)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_35_label" aria-describedby="cke_35_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(53,event);" onfocus="return CKEDITOR.tools.callFunction(54,event);" onclick="CKEDITOR.tools.callFunction(55,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_35_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Полужирный</span><span id="cke_35_description" class="cke_button_label" aria-hidden="false">Комбинация клавиш Ctrl+B</span></a><a id="cke_36" class="cke_button cke_button__italic cke_button_off" href="javascript:void('Курсив')" title="Курсив (Ctrl+I)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_36_label" aria-describedby="cke_36_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(56,event);" onfocus="return CKEDITOR.tools.callFunction(57,event);" onclick="CKEDITOR.tools.callFunction(58,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_36_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Курсив</span><span id="cke_36_description" class="cke_button_label" aria-hidden="false">Комбинация клавиш Ctrl+I</span></a><a id="cke_37" class="cke_button cke_button__strike cke_button_off" href="javascript:void('Зачеркнутый')" title="Зачеркнутый" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_37_label" aria-describedby="cke_37_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(59,event);" onfocus="return CKEDITOR.tools.callFunction(60,event);" onclick="CKEDITOR.tools.callFunction(61,this);return false;"><span class="cke_button_icon cke_button__strike_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -72px;background-size:auto;">&nbsp;</span><span id="cke_37_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Зачеркнутый</span><span id="cke_37_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_38" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void('Убрать форматирование')" title="Убрать форматирование" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_38_label" aria-describedby="cke_38_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(62,event);" onfocus="return CKEDITOR.tools.callFunction(63,event);" onclick="CKEDITOR.tools.callFunction(64,this);return false;"><span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url('http://cdn.ckeditor.com/4.6.2/standard/plugins/icons.png?t=H0CG');background-position:0 -792px;background-size:auto;">&nbsp;</span><span id="cke_38_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Убрать форматирование</span><span id="cke_38_description" class="cke_button_label" aria-hidden="false"></span></a></span>
+
+
+
+/*
+spanTmp.addEventListener('keydown',function(event){
+	return CKEDITOR.tools.callFunction(53,event);
+});
+
+spanTmp.addEventListener('focus',function(event){
+	return CKEDITOR.tools.callFunction(54,event);
+});
+
+spanTmp.addEventListener('click',function(event){
+	CKEDITOR.tools.callFunction(55,this);return false;
+});
+
+*/ 
+
+
+spanTmp.addEventListener('keydown',function(event){
+	//return CKEDITOR.tools.callFunction(8,event);
+});
+
+spanTmp.addEventListener('focus',function(event){
+	//return CKEDITOR.tools.callFunction(9,event);
+});
+
+spanTmp.addEventListener('click',function(event){
+	//CKEDITOR.tools.callFunction(10,this);return false;
+});
+
+
+
+===
+!!!!!!!!!!!!!!!!!!! добавить в их фрейм наш раджовский шаблон !!!!!!!!!!!!!!!!!!!
+spanTmp.addEventListener('click',function(event){
+
+
+	let fr=document.querySelector('iframe');
+	let cd=fr.contentDocument || fr.contentWindow.document;//
+	console.log(cd);
+	let bd=cd.querySelector('body');
+	console.log(bd.childNodes);
+
+	let sVer=document.getElementById('version').value;
+	let sVer2=document.getElementById('server_version').value;
+	let sVer3=document.getElementById('client_version').value;
+
+
+	bd.innerHTML += ('<b> <i>'+sVer+'</i> '+sVer2+'</b> '+sVer3);
+
+	//CKEDITOR.tools.callFunction(10,this);return false;
+});
+
+
+====
+
+
+setTimeout(afterload, 500);
+
+/*
+document.addEventListener('DOMContentLoaded',//'readystatechange'
+//window.onload=
+afterload()
+);
+*/
+function afterload(){
+console.log('A');
+	//sleep(1000);//!!
+var spanTmp = document.getElementById('span_template');
+//*
+console.log('B');
+var fr=document.querySelector('iframe');
+console.log('C');
+var frcd=fr.contentDocument || fr.contentWindow.document;//
+console.log('D');
+var bd=frcd.querySelector('body');
+console.log('E');
+//*/
+spanTmp.addEventListener('click',function(event){
+/*
+	var fr=document.querySelector('iframe');
+	var frcd=fr.contentDocument || fr.contentWindow.document;//
+	var bd=frcd.querySelector('body');
+*/
+	console.log(bd.childNodes);
+
+	let sVer=document.getElementById('version').value;
+	let sVer2=document.getElementById('server_version').value;
+	let sVer3=document.getElementById('client_version').value;
+
+	bd.innerHTML += ('<b> <i>'+sVer+'</i> '+sVer2+'</b> '+sVer3);
+
+});
+
+};
+
+==========================
+
+
+
+
+var selApps=document.getElementById('select-applications');
+var opts=document.querySelectorAll('#select-applications option');
+for(let i=0;i<opts.length;i++){
+	opts[i].addEventListener('click', function(e){
+		//this.innerHTML
+		console.log(e);
+		let s=e.toElement.text;
+
+		if(e.toElement.selected){
+			//bd.innerHTML += '<b>+'+s+'</b>';
+			let node = frcd.createElement('article');
+			//node.id='a'+e.toElement.value;
+			node.style.background = 'pink';
+			let cap = frcd.createElement('h4');
+			cap.innerHTML=s;
+			let ul = frcd.createElement('ul');
+			ul.innerHTML='<li></li>';
+			node.append(cap);
+			node.append(ul);
+			bd.append(node);
+		}
+		else{
+			//let node = frcd.getElementById('a'+e.toElement.value);
+			//if(node) node.remove();
+
+			let nodes=frcd.querySelectorAll('article');
+			for(let i=0;i<nodes.length;i++){
+				if(nodes[i].querySelector('h4').innerHTML == s)
+					nodes[i].remove();//удалит найдя по названию заголовка
+			};
+
+			
+			//bd.innerHTML += '<b>-'+s+'</b>';
+
+		};
+
+
+	});//f
+		
+};//i++
+
+================================================================================
+
+
+
+
+<div class="form-group container">
+	<div class="row">
+		<div class="col-12">
+			<div class="input-group">
+			   	<span class="input-group-btn">
+			    	<a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+			    		<i class="fa fa-picture-o"></i> Choose
+			    	</a>
+				</span>
+				<input id="thumbnail" class="form-control" type="text" name="img">
+			</div>
+		</div>
+	</div> 
+
+	<div class="row">
+		<div class="col-12">
+			<div id="holder"></div>
+		</div>
+	</div> 
+
+</div>
+
+
+==================================================
+
+ products.show
+
+
+
+
+				<form action="/news/{{$product->id}}" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit" class="news-del-btn">КУПИТЬ</button>
+				</form>	
+
+
+{{--
+@foreach($products as $item)
+	<article class="container news-snippet">
+		<h2>{{$item->title}} / {{ $item->category ? $item->category->name : '<без категории>' }}</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{$item->img}}" alt="{{$item->title}}" class="news-image">
+			</div>
+			<div class="col-md-8">
+				<div>  {!!$item->short_content!!}  {!!$item->shortContent(50)!!}</div>
+				<span class="news-time">{{$item->created_at}}</span>
+
+				<a href="/news/{{$item->id}}/edit" class="news-edit-btn">
+					<i class="far fa-edit "></i>
+				</a>
+
+				<form action="/news/{{$item->id}}" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="_method" value="DELETE">
+					<button type="submit" class="news-del-btn"><i class="far fa-trash-alt   "></i></button>
+				</form>		
+			</div>
+		</div>
+	</article>
+
+@endforeach
+--}}
+	{{-- пагинация  http://blog/?page=2     --}}
+	{{-- $products->links() --}}   {{-- в контроллере д.б. News::paginate(2)   --}}
+
+
+
+
+
+
+<style>
+#preview{
+	background-image: url('{{$product->img}}');
+}
+</style>
+
+			<div class="col-md-4" id="preview">
+{{-- 
+				<img src="{{$product->img}}" alt="{{$product->name}}" class="news-image"> 
+--}}
+			</div>
+
+
+==================================================
+
+class Application extends Model
+{
+    //
+     protected $fillable =['name','slug','descr','img','product_id'];
+
+    public function setSlugAttribute($value)
+    {//$value = form.slug м.б. пустой или заполн
+    	//в латиницу без пробелов  дефисами
+
+
+		//dd($this->attributes['name']);
+    	//dd($this->attributes['product_id']);
+    	//dd($this->product_id->id);
+    	//$p=Product::find($this->product_id);//->id !!!!!!!!!
+    	//dd($p->slug); //attributes['slug']
+
+/*
+    	if($this->product)
+    		$product_slug=$this->product->slug;
+    	else
+    		$product_slug=Product::find($this->product_id)->slug;
+
+*/
+		$product_slug=$this->product->slug;
+
+
+    	//Str::slug('строка', 'вместо пробела') 
+    	$this->attributes['slug'] = \Str::slug( $value ? $value : $product_slug.'-'.$this->attributes['name'], '-');
+    }
+
+    public function product(){//+10.4.20
+        return $this->belongsTo('App\Product','product_id');
+    }
+
+
+}
+
+
+
+==========================================================
+
+   applications.form slug
+
+<div class="form-group container">
+
+	<div class="row">
+		<div class="col-md-3">
+			{!! Form::label('name', 'Приложение:', ['class' => 'awesome'])  !!}
+		</div>
+		<div class="col-md-4">
+			{!! Form::text('name', null, ['class'=>'form-control']) !!}
+		</div>
+		<div class="col-md-5">
+			<input type="text" name="slug" value="{{$application->slug}}" readonly>
+		</div>	
+
+	</div>
+	<div class="row">
+		@if($errors->has('name'))
+			<div class="text-danger">{{ $errors->first('name')}}</div>
+		@endif
+	</div>
+
+
+
+
+    products.form    slug
+
+<div class="form-group container">
+	
+	<div class="row">
+		<div class="col-md-3">
+			{!! Form::label('name', 'Название', ['class' => 'awesome'])  !!}
+		</div>
+		<div class="col-md-4">
+			{!! Form::text('name', null, ['class'=>'form-control']) !!}
+		</div>
+		<div class="col-md-5">
+			<input type="text" name="slug" value="{{$product->slug}}" readonly>
+		</div>	
+
+	</div>
+	<div class="row">
+		@if($errors->has('name'))
+			<div class="text-danger">{{ $errors->first('name')}}</div>
+		@endif
+	</div>
+
+
+=====================================
+
+
+{{-- 
+{{$release->last()->version}}
+
+<a href="/download/{{$release->slug}}.exe">{{$release->name}}</a>
+<a href="/whatsnew/{{$release->slug}}">Прочитать</a>
+ --}}
+
+
+========================================================
+
+
+			<p class="star-mark">
+				«««««
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+				<i class="fas fa-star"></i>
+			</p>
+{{-- 
+
+	<span></span>
+{{$comment->mark}}
+ --}}
+
+
+
+css
+
+.star-mark{
+/*
+	background-color: gray;
+*/
+
+	color:transparent;/*  убрали цвет текста */
+
+	background: -webkit-linear-gradient(left ,gold 15%, black 15%, black 85% );
+	-webkit-background-clip: text; /*  градиент только буквам */
+	font-family: 'wingdings';
+
+}
+
+.star-mark .fa-star{
+	font-size: 1em;
+/*
+	background-color: gray;
+*/
+
+	background: -webkit-linear-gradient(left ,transparent, transparent );
+
+	-webkit-background-clip: text; /*  градиент только буквам */
+
+
+	color:rgba(250,0,250,0.1);
+	position: relative;
+	z-index: 1;
+	text-shadow: 2px red inset;
+
+/*	*/
+}
+
+.star-mark:before{
+	background-color: yellow;
+	position: absolute;
+	z-index: -1;
+	left:60px;
+	display: inline-block;
+	width: 60px;
+	height: 1em;
+	content:'';
+}
+
+
+/*
+.star-mark span{
+	background-color: yellow;
+	position: absolute;
+	z-index: 0;
+	display: inline-block;
+	width: 60px;
+	height: 1em;
+}
+*/
+
+
+=================
+
+
+
+<? 
+//Funcs\
+//use App\Stat;
+
+	//Stat::the_starmark($release->mark);
+	//$st = new Stat();
+	 
+	$release->get_starmark();
+
+?>
+<?
+	$gold=$release->mark*(100/5);
+	$gray=100-$gold;
+?>
+<p>средняя оценка: {{ round($release->mark,1)}}
+
+<span class="star-mark " style="
+	background: -webkit-linear-gradient(left ,gold {{$gold}}%, lightgray {{$gold}}%, lightgray {{$gray}}% );
+	-webkit-background-clip: text; 
+" ></span>
+</p>
+
+
+
+
+			<p>{{$comment->get_starmark() }}</p>
+			<p><span class=" star-mark star-mark-{{$comment->mark}}"
+				></span></p>
+
+
+=======================================
+
+
+
+	public static function the_filesize($file,$format='КБ')
+	{
+		$file='D:\STEP\PHP\OSPanel\domains\diplom\public'.$file;
+		$fs=0;
+		$s='111';
+try{
+		if($file)
+			//if($file!='/update/rajah/dz_статьи.png' && $file!='/update/rajah/WordPress.bmp')
+			$fs=filesize($file);
+
+}
+catch
+(
+sssss $s
+){
+
+}
+
+		switch ($format) {
+			case 'Б':
+				# code...
+				break;
+			case 'КБ':
+				$fs=round(($fs/1024),1);# code...
+				break;
+			case 'МБ':
+				$fs=round(($fs/1024/1024),1);# code...
+				break;
+			case 'ГБ':
+				$fs=round(($fs/1024/1024/1024),1);# code...
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+		echo $fs.' '.$format;
+	}
+
+
+
+====================================
+
+кнопочки и м.б. список комментариев
+<td>{{ view('layouts.redact',compact('path','item')) }}</td>
+
+
+
+
+==========================================================
+
+========================
+
+<i class="fas fa-folder"></i>
+<i class="fas fa-folder-open"></i>
+
+<i class="far fa-folder"></i>
+<i class="far fa-folder-open"></i>
+
+<i class="fas fa-folder-plus"></i>
+<i class="fas fa-folder-minus"></i>
+
+
+<i class="fas fa-file"></i>
+<i class="far fa-file"></i>
+
+<i class="fas fa-file-alt"></i>
+<i class="far fa-file-alt"></i>
+
+
+
+<i class="fas fa-filter"></i>
+<i class="far fa-filter"></i>
+
+sort-numeric-up-alt
+<i class="fas fa-sort-numeric-up-alt"></i>
+
+
+sort-alpha-up-alt
+sort-alpha-down
+
+
+<i class="fas fa-file-word"></i>
+<i class="far fa-file-word"></i>
+
+<i class="fas fa-file-download"></i>
+
+
+
+
+
+=
+
