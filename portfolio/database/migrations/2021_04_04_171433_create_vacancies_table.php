@@ -28,12 +28,14 @@ class CreateVacanciesTable extends Migration
             $table->text('offers');
             $table->string('hr_name',30)->nullable();
 
+            $table->string('socnet',50)->nullable();
+            $table->string('url',255)->nullable();
+            $table->string('salary',20)->nullable();
+            $table->date('refreshed')->nullable();
 
 
 
 
-            $table->bigInteger('mother')->nullable();
-            $table->date('birthday')->nullable();
 
 
 

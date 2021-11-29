@@ -54,30 +54,6 @@ class HumanController extends CustomResourceController
 */
 
 
-    public function write(Request $request, $id){//+
-        //store(Request $request)
-        //update(Request $request, $id)
-
-        $request->validate([
-            'name' => 'required|min:3',
-            //'slug' => 'required|min:3', 
-            //'content' => 'required|min:20|max:150',
-            //'price' => 'required|min:0.01',
-//            'sku' => 'required|min:3',
-            //'category_id' => 'required|exists:categories,id',
-        ]);
-
-
-        if(!$id)
-            $product = Human::create($request->all());//new +id
-        else{
-            $product = Human::find($id);//старое
-            $product->update($request->all());
-        };
-
-
-        return redirect($this->path);// '/admin/products'
-    }
 
 
 

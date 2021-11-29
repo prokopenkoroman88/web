@@ -18,6 +18,7 @@ if($lang)$lang.='\\';
 		<li><a href="\job\{{$lang}}firms">firms</a></li>
 		<li><a href="\job\{{$lang}}vacancies">vacancies</a></li>
 		<li><a href="\job\{{$lang}}job_talks">job_talks</a></li>
+		<li><a href="\job\{{$lang}}skills">skills</a></li>
 
 		<li><a href="\job\{{$lang}}resume">Resume</a></li>
 		<li><a href="">third</a></li>
@@ -57,7 +58,12 @@ $vacancies = App\Vacancy::where('firm_id','=',$firm->id)->get();
 
 ?>
 @foreach($vacancies as $vacancy)
-	<li>{{ $vacancy->name }}
+	<li>{{ $vacancy->name }} 
+		<span class="mark-list">
+		@foreach($vacancy->skills as $skill)
+		<span class="mark">{{$skill->name}}</span>
+		@endforeach
+		</span>
 		<ul>
 
 <?php

@@ -49,6 +49,11 @@ $id = $item->vacancy_id;
         <input type="text" name="by" value="{{$item->by}}">
     </label>
 
+    <label >
+        <span>@lang('table.resume')</span>
+        <input type="text" name="resume_filename" value="{{$item->resume_filename}}">
+    </label>
+
 <textarea name="descr">{{$item->descr}}</textarea>
 
 

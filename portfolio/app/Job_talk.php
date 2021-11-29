@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job_talk extends Model
 {
     //
-    protected $fillable = ['firm_id','vacancy_id','when','by','descr'];
+    protected $fillable = ['firm_id','vacancy_id','when','by','platform_id','resume_filename','descr'];
 
 
     public static $fields=[

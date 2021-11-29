@@ -71,6 +71,7 @@ Route::group([//группа админки:
 		Route::resource('/firms','FirmController');
 		Route::resource('/vacancies','VacancyController');
 		Route::resource('/job_talks','JobTalkController');
+		Route::resource('/skills','SkillController');
 
 
 

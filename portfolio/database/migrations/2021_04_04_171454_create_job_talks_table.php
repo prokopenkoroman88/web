@@ -20,6 +20,8 @@ class CreateJobTalksTable extends Migration
             $table->bigInteger('vacancy_id');
             $table->dateTime('when');
             $table->string('by',100);
+            $table->bigInteger('platform_id')->nullable();
+            $table->string('resume_filename',255)->nullable();
 
             $table->text('descr')->nullable();
 

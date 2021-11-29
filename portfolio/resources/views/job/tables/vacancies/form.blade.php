@@ -9,6 +9,9 @@ $place_kind_model= \App\Place_kind::class;
 $place_kinds = $place_kind_model::all();
 ?>
  --}}
+@section('css')
+    <link href="{{ asset('css/job-style.css') }}" rel="stylesheet">
+@endsection
 
 <?php
 $firms = App\Firm::all();
@@ -21,7 +24,7 @@ $place_kinds = $place_kind_model::all();
 
 
 <fieldset>
-    <legend>@lang('table.firm')</legend>
+    <legend>@lang('table.vacancy')</legend>
 
 
     <label >
@@ -39,7 +42,7 @@ $id = $item->firm_id;
 
 
 
-    </label><br/>
+    </label>
     <label >
         <span>@lang('table.name')</span>
         <input type="text" name="name" value="{{$item->name}}">
@@ -47,21 +50,78 @@ $id = $item->firm_id;
     <label >
         <span>@lang('table.email')</span>
         <input type="email" name="email" value="{{$item->email}}">
-    </label><br/>
+    </label>
+    <label >
+        <span>@lang('table.socnet')</span>
+        <input type="text" name="socnet" value="{{$item->socnet}}">
+    </label>
     <label >
         <span>@lang('table.phone')</span>
         <input type="tel" name="phone" value="{{$item->phone}}">
-    </label><br/>
+    </label>
     <label >
         <span>HR</span>
         <input type="text" name="hr_name" value="{{$item->hr_name}}">
     </label><br/>
 
+    <label >
+        <span>@lang('table.url')</span>
+        <input type="text" name="url" value="{{$item->url}}">
+    </label><br/>
+
+
+<?php
+
+// select id from skills where kind_id=(select id from skill_kinds where side=1)
+//'(select `id` from `skill_kinds` where `skill_kinds`.`side`=1)'
+
+$skillKinds = App\Skill_kind::where('side','=',1)->pluck('id')->all();
+
+$skills = App\Skill::whereIn('kind_id',$skillKinds)->orderBy('kind_id')->orderBy('name')->get();
+//$skills = App\Skill::whereIn('kind_id2',$skillKinds)->pluck('id','name')->all();
+//dd($skills);
+
+$savedSkills = $item->skills->pluck('id')->all();
+//dd($savedSkills); //array:[]
+
+$kind=0;
+?>
+<div class="skill-tree">
+
+<ul>
+@foreach($skills as $skill)
+    @if($kind!=$skill->kind_id)
+        @if($kind!=0)
+            </ul></li>
+        @endif
+        <li><h5>{{$skill->kindName}}</h5>
+        <ul>
+        <?php
+        $kind=$skill->kind_id;
+        ?>
+    @endif
+    <li>
+    <label class="mark">
+        <input type="checkbox" name="vacancy_skill[]" value="{{$skill->id}}"
+            @if(in_array($skill->id, $savedSkills))checked @endif 
+            >
+        <span>{{$skill->name}}</span>
+    </label>
+    </li>
+@endforeach
+</ul></li>
+</ul>
+</div>
+
 <h4>Требования:</h4>
-<textarea name="requirements">{{$item->requirements}}</textarea>
+<textarea name="requirements" rows="20" cols="100">{{$item->requirements}}</textarea>
 
 <h4>Предложения:</h4>
-<textarea name="offers">{{$item->offers}}</textarea>
+    <label >
+        <span>ЗП</span>
+        <input type="text" name="salary" value="{{$item->salary}}">
+    </label><br/>
+<textarea name="offers" rows="10" cols="100">{{$item->offers}}</textarea>
 
 
 </fieldset>
