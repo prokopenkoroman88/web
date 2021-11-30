@@ -86,7 +86,7 @@
                                     @foreach(App\Http\Middleware\LocaleMiddleware::$languages as $lang=>$info)
                                     <a class="dropdown-item" href="{{ route('setlocale',['lang'=>$lang]) }}"
                                        >
-                                       {!! $info[0] !!} {{ $info[1] }}
+                                       <img src="https://flagcdn.com/{{$info[0]}}.svg" width="30" alt="{{ $info[1] }}"> {{ $info[1] }}
                                     </a>
                                     @endforeach
 

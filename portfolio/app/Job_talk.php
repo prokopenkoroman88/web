@@ -36,6 +36,14 @@ class Job_talk extends Model
          return $this->firm->attributes['name'] ?? '[???]';
     }
 
+    public function getWhenDateAttribute(){
+        $when = $this->when ?? ' ';
+        return explode(' ', $when)[0];
+    }
+    public function getWhenTimeAttribute(){
+        $when = $this->when ?? ' ';
+        return explode(' ', $when)[1];
+    }
 
     public function vacancy(){
         return $this->belongsTo('App\Vacancy','vacancy_id');

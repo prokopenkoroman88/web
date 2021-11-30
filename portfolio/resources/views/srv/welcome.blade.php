@@ -48,6 +48,7 @@ if($lang)$lang.='\\';
 					<li><a href="https://plusone.com.ua/research/">останнє дослідження української аудиторії Facebook та Instagram</a></li>
 					<li><a href="https://decomments.com/">Найпотужніший та супергнучкий плагін для WordPress-коментарів</a></li>
 					<li><a href="http://mistape.com/">Плагін для WordPress, що дозволяє відвідувачам повідомляти вас про помилки</a></li>
+					<li><a href="https://habr.com/ru/post/535732/">Cordova.js - Quick start</a></li>
 					<li><a href="https://www.dmosk.ru/polezno.php?review=driver-power-state-failure">BSoD dmosk</a></li>
 					<li>українське
 						<ul>
@@ -96,6 +97,7 @@ if($lang)$lang.='\\';
                      <li><a href="https://resume.io/?gclid=CjwKCAjw7fuJBhBdEiwA2lLMYajpqzJ-hfAUply8Ekjj-ZbTmVkrIpUix1GvVavLI2C4J0wRkd-jRRoChdAQAvD_BwE">transform-style: preserve-3d</a></li>
                      <li><a href="https://jobs.ua/resume_sample/resume_advice/81">Поворот пункта меню</a></li>
                      <li><a href="https://devonstank.com/">сайт-визитка разработчика</a></li>
+                     <li><a href="https://it-decision.dev/">Эйлер-Венн, градиентный текст в подвале</a></li>
                      <li><a href=""></a></li>
                  </ul>
              </li> 
