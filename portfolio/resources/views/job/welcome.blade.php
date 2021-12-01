@@ -50,7 +50,15 @@ $firms = App\Firm::all();
 <p>Firms</p>
 <ul>
 @foreach($firms as $firm)
-	<li>{{ $firm->name }}
+	<li>
+<nobr>
+	<form action="job/edit_firm/{{$firm->id}}" method="GET">
+		<button type="submit" class="redact-btn redact-edit">
+			<i class="fas fa-edit"></i>
+		</button>
+	</form>
+</nobr>
+		{{ $firm->name }}
 		<ul>
 <?php
 
@@ -58,7 +66,19 @@ $vacancies = App\Vacancy::where('firm_id','=',$firm->id)->get();
 
 ?>
 @foreach($vacancies as $vacancy)
-	<li>{{ $vacancy->name }} 
+	<li>
+<nobr>
+	<form action="job/edit_vacancy/{{$vacancy->id}}" method="GET">
+		<button type="submit" class="redact-btn redact-edit">
+			<i class="fas fa-edit"></i>
+		</button>
+	</form>
+</nobr>
+@if($vacancy->url)
+		<a href="{{ $vacancy->url }}">{{ $vacancy->name }}</a>
+@else
+	{{ $vacancy->name }}
+@endif
 		<span class="mark-list">
 		@foreach($vacancy->skills as $skill)
 		<span class="mark">{{$skill->name}}</span>
@@ -84,7 +104,7 @@ $job_talks = App\Job_talk::where('vacancy_id','=',$vacancy->id)->get();
 			<i class="fas fa-edit"></i>
 		</button>
 	</form>
-</nobr>{{ $job_talk->descr }}
+</nobr><pre>{!! $job_talk->descr !!}</pre>
 			</li>
 @endforeach
 		<li>

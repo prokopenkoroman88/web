@@ -135,11 +135,11 @@ class JobTalkController extends CustomResourceController//Controller
         $item = new $this->model();
         //$item = new Firm();
 
-        $lcl=$this->locale();
-        if($lcl)$lcl='/'.$lcl;
-        $prf=$this->prefix;
-        if($prf)$prf='/'.$prf;
-        $path= "$prf$lcl/save_job_talk";//{$this->tableName}
+//        $lcl=$this->locale();
+//        if($lcl)$lcl='/'.$lcl;
+//        $prf=$this->prefix;
+//        if($prf)$prf='/'.$prf;
+        $path= $this->path('save_job_talk');//"$prf$lcl/save_job_talk";//{$this->tableName}
         //~1.6.21//$path=$this->path();
 
 
@@ -153,11 +153,11 @@ class JobTalkController extends CustomResourceController//Controller
 
         $item = $this->model::find($id);
 
-        $lcl=$this->locale();
-        if($lcl)$lcl='/'.$lcl;
-        $prf=$this->prefix;
-        if($prf)$prf='/'.$prf;
-        $path= "$prf$lcl/save_job_talk";//{$this->tableName}
+//        $lcl=$this->locale();
+//        if($lcl)$lcl='/'.$lcl;
+//        $prf=$this->prefix;
+//        if($prf)$prf='/'.$prf;
+        $path= $this->path('save_job_talk');//"$prf$lcl/save_job_talk";//{$this->tableName}
         //~1.6.21//$path=$this->path();
 
         return $this->view('edit',compact('item','path'));
@@ -172,6 +172,7 @@ class JobTalkController extends CustomResourceController//Controller
 
 
 
+/*
         $id=$request->id;
         $request->validate($this->validations);
 
@@ -184,13 +185,15 @@ class JobTalkController extends CustomResourceController//Controller
         };
 
 
-        $lcl=$this->locale();
-        if($lcl)$lcl='/'.$lcl;
-        $prf=$this->prefix;
-        if($prf)$prf='/'.$prf;
-        $path= "$prf$lcl/";//job/wellcome
+//        $lcl=$this->locale();
+//        if($lcl)$lcl='/'.$lcl;
+//        $prf=$this->prefix;
+//        if($prf)$prf='/'.$prf;
+        $path= $this->path(' ');//"$prf$lcl/";//job/wellcome
 
         return redirect($path);
+*/
+        return $this->prepare($request,$request->id,' ');
 
 
     }

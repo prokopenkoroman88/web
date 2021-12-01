@@ -77,6 +77,7 @@ class VacancyController extends CustomResourceController//Controller
     public function store(Request $request)
     {
         //
+        //?//$item->skills()->sync($request->vacancy_skill);
         return parent::store($request);
     }
 
@@ -155,4 +156,32 @@ class VacancyController extends CustomResourceController//Controller
     {
         return parent::destroy($id);
     }
+
+
+
+    //ajax:
+    public function createBy($firm_id){
+        $item = new $this->model();
+        $path= $this->path('save_vacancy');
+        $item->firm_id=$firm_id;
+        return $this->view('create',compact('item','path'));
+    }
+
+    public function editBy($id){
+        $item = $this->model::find($id);
+        $path= $this->path('save_vacancy');
+        return $this->view('edit',compact('item','path'));
+    }
+
+    public function saveBy(Request $request){
+
+        if(!$request->id)
+            $item = $this->model::create($request->all());//new +id
+        else
+            $item = $this->model::find($request->id);
+        $item->skills()->sync($request->vacancy_skill);
+
+        return $this->prepare($request,$request->id,' ');
+    }
+
 }

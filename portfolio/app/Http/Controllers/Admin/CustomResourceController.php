@@ -29,18 +29,20 @@ class CustomResourceController extends Controller
     public function locale(){
         return LocaleMiddleware::getLocale();
     }
-    public function path(){
+    public function path($adr=''){
         $lcl=$this->locale();
         if($lcl)$lcl='/'.$lcl;
         $prf=$this->prefix;
         if($prf)$prf='/'.$prf;
-        return "$prf$lcl/{$this->tableName}";
+        if(!$adr)$adr=$this->tableName;
+        if($adr)$adr='/'.$adr;
+        return "$prf$lcl$adr";
         //return "$lcl$prf/{$this->tableName}";//+13.9.20
         //"$lcl/{$this->prefix}/{$this->tableName}"
     }
 
-    public function redirect(){
-        return redirect($this->path());// '/admin/products'
+    public function redirect($adr=''){
+        return redirect($this->path($adr));// '/admin/products'
     }
 
     public function view($action,$params){
@@ -56,7 +58,7 @@ class CustomResourceController extends Controller
 
 
 
-    public function prepare(Request $request, $id){//+
+    public function prepare(Request $request, $id, $adr=''){//+
         //store(Request $request)
         //update(Request $request, $id)
 
@@ -70,7 +72,7 @@ class CustomResourceController extends Controller
             $item->update($request->all());
         };
 
-        return $this->redirect();
+        return $this->redirect($adr);
         //return redirect($this->path);// '/admin/products'
     }
 

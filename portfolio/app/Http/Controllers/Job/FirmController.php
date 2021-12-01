@@ -135,6 +135,25 @@ class FirmController extends CustomResourceController//Controller
         //
         return parent::destroy($id);
     }
+
+
+    //ajax:
+    public function createBy(){
+        $item = new $this->model();
+        $path= $this->path('save_firm');
+        return $this->view('create',compact('item','path'));
+    }
+
+    public function editBy($id){
+        $item = $this->model::find($id);
+        $path= $this->path('save_firm');
+        return $this->view('edit',compact('item','path'));
+    }
+
+    public function saveBy(Request $request){
+        return $this->prepare($request,$request->id,' ');
+    }
+
 }
 
 
