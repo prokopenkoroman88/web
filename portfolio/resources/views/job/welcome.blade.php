@@ -58,7 +58,11 @@ $firms = App\Firm::all();
 		</button>
 	</form>
 </nobr>
+@if($firm->www)
+		<a href="{{ $firm->www }}">{{ $firm->name }}</a>
+@else
 		{{ $firm->name }}
+@endif
 		<ul>
 <?php
 

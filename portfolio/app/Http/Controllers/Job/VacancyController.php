@@ -175,9 +175,10 @@ class VacancyController extends CustomResourceController//Controller
 
     public function saveBy(Request $request){
 
-        if(!$request->id)
+        if(!$request->id){
             $item = $this->model::create($request->all());//new +id
-        else
+            $request->id = $item->id;//+
+        }else
             $item = $this->model::find($request->id);
         $item->skills()->sync($request->vacancy_skill);
 
