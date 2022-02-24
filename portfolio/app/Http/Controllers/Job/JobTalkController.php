@@ -44,14 +44,15 @@ class JobTalkController extends CustomResourceController//Controller
      */
     public function index()
     {
-        $items = $this->model::all();
-        $path=$this->path();
+//-        $items = $this->model::all();
+//-        $path=$this->path();
         //$fields=$this->fields;
-        $fields=$this->model::$fields;
+//-        $fields=$this->model::$fields;
         //return view('admin.products.index',compact('products','path')); 
+        $dataTable=$this->getDataTable();
 
         //parent::index();//из предка
-        return $this->view('index',compact('items','path','fields'));
+        return $this->view('index',compact('dataTable'));//'items','path','fields',
 
     }
 

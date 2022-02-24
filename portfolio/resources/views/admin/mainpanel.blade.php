@@ -51,3 +51,7 @@ echo $s;
 
 
 @endsection
+@section('jsafter')
+	@parent
+	<script src="{{ asset('js/form-control-script.js') }}" type="module"></script>
+@endsection

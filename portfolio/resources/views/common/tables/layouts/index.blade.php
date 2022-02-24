@@ -5,6 +5,16 @@
 --}}
 @extends('admin.mainpanel')
  
+<?php
+//dd($dataTable);
+//dd($dataTable['items'][0]->descr);//!!!))
+//dd($dataTable['items'][0]->getAttribute('by'));///!!!!!!1)))
+
+//[0]->attributes['descr']
+//item->table
+
+//['table']
+?>
 
 
 {{--   Список объектов класса  
@@ -26,9 +36,19 @@
 
 //require_once ('../resources/views/tables/custom/ViewFuncs.php'); //!!!!!!!!
 //require_once ('../resources/views/tables/custom/ViewFuncs.php'); //!!!!!!!!
-	$actions=['new','edit','del'];
+//verni	$actions=['new','edit','del','id'];
 ?>
-{{view('common.tables.layouts.list',compact('path','fields','items','actions')) }}
+{{--view('common.tables.layouts.list',compact('path','fields','items','actions')) --}}
+{{App\Http\Controllers\Admin\CustomResourceController::showList($dataTable)}}
+
+
+
+
+
+
+
+
+
 {{-- 
 <?php
 	$action='new';

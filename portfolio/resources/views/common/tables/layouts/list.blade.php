@@ -1,6 +1,7 @@
 
 <table class="redact-table">
 	<caption>
+		"{{$dataTable['table']}}"
 	@if(isset($table))
 		{{$table ?? ''}} {{-- для всплыв справочников view --}}
 	@else
@@ -14,7 +15,7 @@
 {{-- 			@if(in_array('select', $actions))
 				<th>id#</th>
 			@endif	 --}}		
-@foreach($fields as $field=>$fieldName)
+@foreach($dataTable['fields'] as $field=>$fieldName)
 			<th>
 @if( substr($fieldName, 0,1)=='@' )
 				{{__(substr($fieldName,1))}}
@@ -30,29 +31,34 @@
 	<tbody>
 <?php
 $action='';
-if(in_array('new', $actions))
+if(in_array('new', $dataTable['actions']))
 {
 	//remove
 	//delete($actions)
 	$action='new';
-	foreach ($actions as $key => $act) {
-		if($act=='new')$actions[$key]='';
+	foreach ($dataTable['actions'] as $key => $act) {
+		if($act=='new')$dataTable['actions'][$key]='';
 	};
 };
 ?>
-@foreach($items as $item)
-		<tr id="ref-@yield('table')-{{$item['id']}}"
-@if(isset($id)&&($item['id']==$id))	class="selected"@endif >
-			{{view('common.tables.layouts.tr',compact('path','item','actions')) }}{{-- 			@if(in_array('select', $actions))
+{{--
+@foreach($dataTable['items'] as $item)
+		<tr @if(isset($id)&&($item['id']==$id))	class="selected"@endif >
+			{{view('common.tables.layouts.tr',compact('path','item','actions')) }}{{- - 			@if(in_array('select', $actions))
 				<td>
 					{{$item['id']}}
 				</td>
-			@endif --}}
-@foreach($fields as $field=>$fieldName)
+			@endif - -}}
+@foreach($dataTable['fields'] as $field=>$fieldName)
 			<td>{{$item[$field]}}</td>
 @endforeach
 		</tr>
 @endforeach
+	--}}
+{{App\Http\Controllers\Admin\CustomResourceController::showTrTd($dataTable)}}
+<?php
+	$path=$dataTable['path'];
+?>
 	</tbody>
 	<tfoot>
 		<tr>

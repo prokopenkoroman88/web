@@ -13,6 +13,7 @@ $place_kinds = $place_kind_model::all();
 <fieldset>
     <legend>@lang('table.job-searching')</legend>
 
+{{--
     <label >
         <span>@lang('table.firm')</span>
 <?php
@@ -43,8 +44,17 @@ $id = $item->vacancy_id;
         <input type="hidden" name="when" value="{{$item->when}}">
         <input type="date" name="when_date" value="{{$item->whenDate}}" oninput=" document.forms[0].elements['when'].value = document.forms[0].elements['when_date'].value +' '+document.forms[0].elements['when_time'].value; ">
         <input type="time" name="when_time" value="{{$item->whenTime}}" oninput=" document.forms[0].elements['when'].value = document.forms[0].elements['when_date'].value +' '+document.forms[0].elements['when_time'].value; ">
-{{--         <input type="time" name="when" value="{{$item->when}}"> --}}
+{{- -         <input type="time" name="when" value="{{$item->when}}"> - -}}
     </label>
+
+--}}
+<?php
+//dd($item);
+
+?>
+{{App\Http\Controllers\Admin\CustomResourceController::showPopupField($item,'firm_id',\App\Http\Controllers\Job\FirmController::class)}}
+{{App\Http\Controllers\Admin\CustomResourceController::showPopupField($item,'vacancy_id',\App\Http\Controllers\Job\VacancyController::class)}}
+{{App\Http\Controllers\Admin\CustomResourceController::showDateField($item,'when')}}
 
     <label >
         <span>@lang('table.phone')</span>

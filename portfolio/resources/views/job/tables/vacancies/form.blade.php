@@ -26,10 +26,10 @@ $place_kinds = $place_kind_model::all();
 <fieldset>
     <legend>@lang('table.vacancy')</legend>
 
-
+{{--
     <label >
         <span>@lang('table.firm')</span>
-{{--         <input type="text" name="firm_id" value="{{$item->firm_id}}"> --}}
+{ {- -         <input type="text" name="firm_id" value="{{$item->firm_id}}"> - -} }
     
 <?php
 
@@ -43,6 +43,10 @@ $id = $item->firm_id;
 
 
     </label>
+--}}
+
+{{App\Http\Controllers\Admin\CustomResourceController::showPopupField($item,'firm_id',\App\Http\Controllers\Job\FirmController::class)}}
+
     <label >
         <span>@lang('table.name')</span>
         <input type="text" name="name" value="{{$item->name}}">

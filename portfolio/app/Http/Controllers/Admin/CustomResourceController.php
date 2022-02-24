@@ -89,6 +89,8 @@ class CustomResourceController extends Controller
     {
         //  данные из потомка
         //return $this->view('index',compact('items','path','fields'));
+        $dataTable=$this->getDataTable();
+        return $this->view('index',compact('dataTable'));
     }
 
     /**
@@ -161,4 +163,161 @@ class CustomResourceController extends Controller
         return $this->redirect();
         //return redirect($this->path());
     }
+
+
+    //=============================
+
+    public function getDataTable(){
+        $dataTable=[
+            'path'=>$this->path(),
+            'fields'=>$this->model::$fields,
+            'items'=>$this->model::all(),
+            'table'=>$this->tableName,
+            'model'=>$this->model,//?
+            //'controller'=$this,
+        ];
+        return $dataTable;
+    }
+
+    public function getDataRow($dataTable, $item){
+        $dataRow=[
+            'table'=>$dataTable,
+            'item'=>$item,
+        ];
+        return $dataRow;
+    }
+
+    //public function getDataField($dataRow, $fieldName){
+    public static function getDataField($item, $fieldName, $fieldLabel=''){
+        $dataField=[
+            'item'=>$item,
+            'fieldName'=>$fieldName,
+        ];
+        return $dataField;
+    }
+
+
+    public static function showDateField($item, $fieldName, $fieldLabel=''){
+        $dataField=self::getDataField($item, $fieldName, $fieldLabel);
+        return view('common.tables.layouts.date-field',compact('dataField'));
+    }
+
+
+
+
+
+
+
+
+    public static function getStaticDataTable($controller){//????
+        //$pth = $controller::class->path();
+        //dd($$controller->path());
+        $dataTable=[
+            'path'=>$controller->path(),
+            'fields'=>$controller->model::$fields,
+            'items'=>$controller->model::all(),
+            'table'=>$controller->tableName,
+            //'controller'=$this,
+        ];
+        return $dataTable;
+    }
+
+/*
+    <label >
+        <span>@lang('table.firm')</span>
+    </label>
+*/
+    public static function showPopupField($item, $fieldName, $controllerClass, $fieldLabel=''){
+        //$path='/firms';
+        //$model = \App\Firm::class;
+        //$fieldName = 'firm_id';
+        //$id = $item->firm_id;
+        //?//return view('common.tables.layouts.popup-field',compact('path','model','fieldName','id'));
+
+        //dd($item);  $item->table
+
+
+        $dataField=self::getDataField($item, $fieldName);
+
+
+        //$controllerClass = \App\Firm::class;
+        //dd($controllerClass);
+        //dd($controllerClass::class::model);
+        //$dataField['model'] = \App\Firm::class;//?//$controllerClass;
+
+        $controllerItem = new $controllerClass;
+
+        //?//$dataField['model'] = $controllerItem->model;
+
+        $dataTable=$controllerItem->getDataTable();
+        //dd($dataTable);
+        $dataTable['actions']=['select','id'];
+        $id=$item[ $fieldName ];
+        $dataTable['id']=$id;
+
+        $dataField['dataTable']=$dataTable;
+
+
+        if(!$fieldLabel){
+            $fieldLabel = 'table.'.$fieldName;
+            //$_id=strpos($fieldLabel, '_id');
+            //if($_id)
+            $fieldLabel=str_replace('_id', '', $fieldLabel);
+        };
+        $dataField['fieldLabel']=$fieldLabel;
+
+        return view('common.tables.layouts.popup-field',compact('dataField'));
+
+    }
+
+
+
+    public static function showList($dataTable){
+        $dataTable['actions']=['new','edit','del','id'];
+        return view('common.tables.layouts.list',compact('dataTable'));
+    }
+
+/*
+    public static function showList($dataTable){
+
+        $path=$dataTable['path'];
+        $fields=$dataTable['fields'];
+        $items=$dataTable['items'];
+
+//require_once ('../resources/views/tables/custom/ViewFuncs.php'); //!!!!!!!!
+//require_once ('../resources/views/tables/custom/ViewFuncs.php'); //!!!!!!!!
+        $actions=['new','edit','del','id'];
+
+        return view('common.tables.layouts.list',compact('path','fields','items','actions'));
+    }
+*/
+
+
+
+    public static function showMatrix($dataTable, $tr, $td){
+
+        foreach($dataTable['items'] as $item){
+
+            $classList='';
+            if(isset($dataTable['id'])&&($item['id']==$dataTable['id'])) $classList='selected';
+            echo "<$tr  class='$classList'>";
+                $path=$dataTable['path'];
+                $actions=$dataTable['actions'];
+                echo view('common.tables.layouts.tr',compact('path','item','actions'));
+                foreach($dataTable['fields'] as $field=>$fieldName){
+                echo "<$td>{$item[$field]}</$td>";
+                };//for
+            echo "</$tr>";
+        };//for
+    }
+
+
+
+    public static function showTrTd($dataTable){
+
+
+        return self::showMatrix($dataTable,'tr','td');
+    }
+
+
 }
