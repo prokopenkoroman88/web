@@ -17,14 +17,22 @@ class Unit extends React.Component{
 			x:props.x,
 			y:props.y,
 		};
-		this.state.gameCanvas.state.u.push(this);
+		//?//this.state.gameCanvas.state.u.push(this);
 		//this.state.
 	};
 	
 	render(){
 		return (
-			<div className="game-unit" style={{ width:this.state.width+'px', height:this.state.height+'px', left:this.state.x+'px', top:this.state.y+'px',   }}>
-				<b>{this.state.name}</b>
+			<div
+				className="game-unit"
+				key={this.props.id}
+				style={{
+					width:this.props.width+'px',
+					height:this.props.height+'px',
+					left:this.props.x+'px',
+					top:this.props.y+'px', 
+				}}>
+				<b>{this.props.name}</b>
 				{/*<Counter />*/}
 			</div>
 		);
