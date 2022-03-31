@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-//import CanvasDraw from "react-canvas-draw";
+import CanvasDraw from "react-canvas-draw";
 import { useSelector, useDispatch } from 'react-redux';
 //import { Counter } from '../../features/counter/Counter';//!))))
 import { Counter } from '../counter/Counter';//!))))
@@ -20,6 +20,7 @@ class GameCanvas extends React.Component{
 			//units:props.units,
 			world:props.world,
 			int1:null,
+			canvasRef:props.canvasRef,//null,//useRef(null),
 		};
 		this.int2=null;
 	};
@@ -77,21 +78,21 @@ class GameCanvas extends React.Component{
 				{/*<Counter />*/}
 
 				{this.state.world.u.map((unit,i)=>
-				<Unit owner={this} name="M" h="32" w="32" x={unit.x} y={unit.y} id={i} />
+				<Unit owner={this} name="M" h="32" w="32" x={unit.x} y={unit.y} id={'unit-'+i} />
 			)}
 				{/*this.state.units.map((unit,i)=>{
 					console.log('maap'+i);
 				(<Unit owner={this} name="M" h="32" w="32" x={unit.x} y={unit.y} />)
 				<canvas width="1200" height="300" style={{ position:'absolute', top:'0px', left:'0px'}} ></canvas>
 
-				<CanvasDraw
-					canvasWidth="1200"
-					canvasHeight="400"
-				/>
 
 			})*/}
 				<p><b>{this.props.step} - {this.state.world.u.length}</b></p>
-
+				<CanvasDraw
+					ref={this.state.canvasRef}
+					canvasWidth={1000}
+					canvasHeight={500}
+				/>
 			</div>
 		);
 	};
