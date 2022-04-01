@@ -77,9 +77,11 @@ class GameCanvas extends React.Component{
 				</ul>
 				{/*<Counter />*/}
 
+				<div>
 				{this.state.world.u.map((unit,i)=>
-				<Unit owner={this} name="M" h="32" w="32" x={unit.x} y={unit.y} id={'unit-'+i} />
+				<Unit owner={this} unit={unit}/>
 			)}
+				</div>
 				{/*this.state.units.map((unit,i)=>{
 					console.log('maap'+i);
 				(<Unit owner={this} name="M" h="32" w="32" x={unit.x} y={unit.y} />)
