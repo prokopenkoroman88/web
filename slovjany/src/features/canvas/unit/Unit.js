@@ -31,13 +31,13 @@ class Unit extends React.Component{
 	//console.log(this.props);
 	//console.log(canvasRef);
 	if(canvasRef){
-      let cnv = canvasRef.current.canvas;
-      let ctx = canvasRef.current.ctx;
+      let cnv = canvasRef.current;//?//.canvas;
+      //let ctx = canvasRef.current.ctx;
 
       //console.log('ctx=');
       //console.log(ctx);
 
-      let canvasToExport = cnv.drawing;
+      let canvasToExport = cnv;//?//.drawing;
       let context = canvasToExport.getContext("2d"); //cache height and width
 
       let width = canvasToExport.width;
@@ -57,12 +57,14 @@ class Unit extends React.Component{
 
       context.putImageData(imageData,0,0);
  		};		
+ 		return null;
 	};
 
 	
 	render(){
-		return (<div>{this.printUnit()}</div>);
+		return this.printUnit();
 /*
+		return (<div>{this.printUnit()}</div>);
 		return (
 			<div
 				className="game-unit"

@@ -105,7 +105,7 @@ function App() {
   };
 
   const clock = (e)=>{
-      f();//+++
+      //f();//+++
       console.log('clock: '+world.u.length);
       for(let i=0; i<world.u.length; i++){
         world.u[i].x+=(Math.random()*10-5);
@@ -120,13 +120,13 @@ function App() {
       };
       setStep(prevStep => prevStep + 1);
       //setState({step:step+1});
-      let cnv = canvasRef.current.canvas;
-      let ctx = canvasRef.current.ctx;
+      let cnv = canvasRef.current;//?//.canvas;
+      //let ctx = canvasRef.current.ctx;
 
       //console.log('ctx=');
       //console.log(ctx);
 
-      let canvasToExport = cnv.drawing;
+      let canvasToExport = cnv;//?//.drawing;
       let context = canvasToExport.getContext("2d"); //cache height and width
 
       let width = canvasToExport.width;
