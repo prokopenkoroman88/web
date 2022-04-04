@@ -1,0 +1,46 @@
+.riches{
+	height: 32px;
+	display: flex;
+	flex-direction: row;
+	background-color: black;
+	/*border:3px groove gold;*/
+}
+
+.riches .sep{
+	width: 16px;
+}
+
+.riches .rich{
+	width: 42px;
+}
+
+.riches .rich .pic{
+	height: 14px;
+	width: 14px;
+	background-image: url('riches.png');
+	margin: 4px auto 0px auto;
+}
+
+.riches .rich .count{
+	color:white;
+	font-size: 10px;
+}
+
+.riches .rich .count.red{
+	color:red;
+}
+
+
+.rich.dub .pic{
+	background-position: calc(0 * -14px) calc(3 * -14px);
+}
+.rich.elka .pic{
+	background-position: calc(1 * -14px) calc(3 * -14px);
+}
+
+.rich.gold .pic{
+	background-position: calc(0 * -14px) calc(4 * -14px);
+}
+.rich.silver .pic{
+	background-position: calc(1 * -14px) calc(4 * -14px);
+}

@@ -13,6 +13,7 @@ function App() {
     width:200,
     height:300,
     u:[],
+    riches:[],
     //[u,setU] : useState();
   };
   console.log('App 1');

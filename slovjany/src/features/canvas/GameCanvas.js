@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Counter } from '../counter/Counter';//!))))
 import  { RealCanvas }  from './../../painting/canvases';
 import  Unit  from './unit/Unit';
+import RichesBar from './../riches/RichesBar';
 
 
 class GameCanvas extends React.Component{
@@ -43,6 +44,11 @@ class GameCanvas extends React.Component{
 		let w=this.props.world.width;
 		let h=this.props.world.height;
 
+		this.props.world.riches.push({rchType:'dub',count:123456});
+		this.props.world.riches.push({rchType:'elka',count:50});
+		this.props.world.riches.push({rchType:'gold',count:123400});
+		this.props.world.riches.push({rchType:'silver',count:456700});
+
 		for(let i=0; i<10; i++){
 			let chng = {x:Math.random()*w, y:Math.random()*h,};
 			chng.name="M";
@@ -69,6 +75,11 @@ class GameCanvas extends React.Component{
 			//this.props.canvasObj = new RealCanvas(this.state.canvasRef);
 			this.setState({canvasObj : new RealCanvas(this.state.canvasRef)});
 			console.log(this.state.canvasObj);
+		};
+
+		if(game.state.world.riches){
+			//
+			game.state.world.riches[1].count++;
 		};
 
 		console.log(game.state.world);
@@ -130,11 +141,14 @@ class GameCanvas extends React.Component{
 				<button onClick={(e)=>this.init}>init</button>
 				<div>
 				{this.state.world.u.map((unit,i)=>
-					<Unit owner={this} unit={unit} canvasObj={this.state.canvasObj}/>
+					<Unit key={'unit-'+i} owner={this} unit={unit} canvasObj={this.state.canvasObj}/>
 				)}
 				{this.putData()}
 				</div>
 				<p><b>{this.props.step} - {this.state.ticks} - {this.state.world.u.length}</b></p>
+				<RichesBar
+					riches={this.props.world.riches}
+				/>
 				<canvas
 					ref={this.state.canvasRef}
 					width={1000}
