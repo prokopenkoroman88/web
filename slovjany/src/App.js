@@ -1,65 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
 //import { Counter } from './features/counter/Counter';
 import dotenv from 'dotenv';
+import  enums  from './common/enums';
 import  ToolPanel  from './features/tools/ToolPanel';
+import  Client  from './structure/Client';
+import  WorldMapCanvas  from './features/canvas/WorldMapCanvas';
+import  LevelTaskCanvas  from './features/canvas/LevelTaskCanvas';
 import  GameCanvas  from './features/canvas/GameCanvas';
 //import { Loader, ResourceLoader } from './http/Loader';
 import { Tribe } from './http/ResourceTables';
 import './App.css';
 
+const client = new Client();
+
 function App() {
-  const world = {
-    name:"param value",
-    width:200,
-    height:300,
-    u:[],
-    riches:[],
-    //[u,setU] : useState();
-  };
   console.log('App 1');
   let tribeLoader;// = new Tribe();//ResourceLoader('tribes');
   let tribes;
-/*
-        <GameCanvas
-          name="param value"
-          width="200"
-          height="100"
-        />
-
-*/
+  //canvases:
+  const cnv = {
+    worldMap : {
+      ref : useRef(null),
+      obj : useRef(null)
+    },
+    levelTask : {
+      ref : useRef(null),
+      obj : useRef(null)
+    },
+    game : {
+      ref : useRef(null),
+      obj : useRef(null)
+    }
+  };
+  const [playMode, setPlayMode] = useState(enums.id('pm','Main'));//aPlayMode.indexOf('Level') //Main
   const [step, setStep] = useState(0);
-  const canvasRef = useRef(null);
-  const canvasObj = useRef(null);
-    if(canvasRef)
-        console.log(canvasRef);
+//  const canvasRef = useRef(null);
+//  const canvasObj = useRef(null);
+    if(cnv.game.ref)
+        console.log(cnv.game.ref);
       else
         console.log('canvasRef==null');
 
-  const canvasRef2 = React.createElement("canvas", {
-/*
-        key: name,
-        ref: function ref(canvas) {
-          if (canvas) {
-            _this3.canvas[name] = canvas;
-            _this3.ctx[name] = canvas.getContext("2d");
-
-            if (isInterface) {
-              _this3.coordSystem.canvas = canvas;
-            }
-          }
-        },
-
-        style: _extends({}, canvasStyle),
-        onMouseDown: isInterface ? _this3.handleDrawStart : undefined,
-        onMouseMove: isInterface ? _this3.handleDrawMove : undefined,
-        onMouseUp: isInterface ? _this3.handleDrawEnd : undefined,
-        onMouseOut: isInterface ? _this3.handleDrawEnd : undefined,
-        onTouchStart: isInterface ? _this3.handleDrawStart : undefined,
-        onTouchMove: isInterface ? _this3.handleDrawMove : undefined,
-        onTouchEnd: isInterface ? _this3.handleDrawEnd : undefined,
-        onTouchCancel: isInterface ? _this3.handleDrawEnd : undefined
-*/
-      });
 
 
   let int1=null,int2=null;
@@ -72,24 +53,17 @@ function App() {
 */
 
   const initClick = (e)=>{
-    if(canvasRef)
-        console.log(canvasRef);
+    if(cnv.canvasRef)
+        console.log(cnv.canvasRef);
       else
         console.log('canvasRef==null');
     let w=1200;//world.width;
     let h=400;//world.height;
     tribeLoader = new Tribe();//ResourceLoader('tribes');
 
-    for(let i=0; i<30; i++){
-      let chng = {x:Math.random()*w, y:Math.random()*h,};
-      chng.name="M";
-      chng.h=32;
-      chng.w=32;
-      world.u.push(chng);
-    };
 
   console.log('canvasRef:');
-        console.log(canvasRef);
+        console.log(cnv.canvasRef);
 
     int2 = setInterval(clock, 125*20);
   };
@@ -116,22 +90,34 @@ function App() {
 
   const clock = (e)=>{
       //f();//+++
-      console.log('clock: '+world.u.length);
-      for(let i=0; i<world.u.length; i++){
-        world.u[i].x+=(Math.random()*10-5);
-        world.u[i].y+=(Math.random()*10-5);
-        /*
-        let x0=world.u[i].x+=(Math.random()*10-5);
-        let y0=world.u[i].y+=(Math.random()*10-5);
-        world.u[i].setState({x:x0,y:y0});
-        */
-        //console.log(i);
-        //console.log(world.u[i]);
-      };
+      console.log('clock: begin client.playMode='+client.mnpltr.playMode);
       setStep(prevStep => prevStep + 1);
       //setState({step:step+1});
       //console.log('clock: end');
   };
+
+  const handlePlayModeChange = (value)=>{
+    setPlayMode(value);
+  }
+
+  const handleLevelChoice = (levelName, savingName)=>{
+    //load level's data
+    console.log('level '+levelName+' '+savingName);
+    //client.loadGame(levelName, savingName);
+    client.mnpltr.loadLevel(levelName, savingName);
+    if(savingName)
+      setPlayMode(enums.id('pm','Level'))
+    else
+      setPlayMode(enums.id('pm','Task'));//new
+  }
+
+  const handleAfterTask = (button)=>{
+    if(button=='OK')
+      setPlayMode(enums.id('pm','Level'))
+    else
+      setPlayMode(enums.id('pm','Main'));//cancel
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -139,13 +125,25 @@ function App() {
       </header>
       <main>
         <button onClick={initClick} >initClick</button>
+        {enums.is(playMode,'pm','Main') &&
+        <WorldMapCanvas
+          worldMap={client.worldMap}
+          onPlayModeChange={handlePlayModeChange}
+          onLevelChoice={handleLevelChoice}
+          canvas={cnv.worldMap}
+        />}
+        {enums.is(playMode,'pm','Task') &&
+        <LevelTaskCanvas
+          mission='mission'
+          onClickButton={handleAfterTask}
+          canvas={cnv.levelTask}
+        />}
+        {enums.is(playMode,'pm','Level') &&
         <GameCanvas
-          world={world}
-          step={step}
+          game={client.game}
           onInit={initClick}
-          canvasRef={canvasRef}
-          canvasObj={canvasObj}
-        />
+          canvas={cnv.game}
+        />}
       </main>
       <footer>
       </footer>
