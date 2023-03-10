@@ -5,9 +5,6 @@ const app = require("./app");
 //??//const cors = require("cors");
 const db = require("./core/db");//pool
 
-//import ResourceController from './common/CustomResourceController';//need a module
-const ResourceController = require('./common/CustomResourceController');//imports class
-const CustomRouter = require('./routers/CustomRouter');
 
 //middleware
 //??//app.use(cors());
@@ -15,13 +12,7 @@ const CustomRouter = require('./routers/CustomRouter');
 
 //==============================================================================
 
-//let tribeController = new ResourceController(app,db,'tribes');
-//tribeController.routes();
-
-//let tribeRouter = new CustomRouter('tribes');
-//tribeRouter.controllerRoutes('TribeController');
-let tribeRouter = new CustomRouter('tribes','TribeController');
-tribeRouter.controllerRoutes();
+const routerManager = require("./routers");
 
 const app_port = process.env.APP_PORT;
 
